@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shapelogin"
+    android:background="@color/colorPrimaryDark"
     tools:context=".SignUp">
 
     <Button
@@ -13,13 +13,14 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shapelogin"
         android:padding="15dp"
+        android:layout_marginBottom="15dp"
         android:shadowColor="@android:color/transparent"
         android:text="@string/log_in"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toTopOf="@+id/signup"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.824" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/signup"
@@ -27,9 +28,20 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="236dp"
         android:padding="15dp"
+        android:background="@drawable/shapelogin"
         android:shadowColor="@android:color/transparent"
         android:text="@string/sign_up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="177dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_dark" />
 </androidx.constraintlayout.widget.ConstraintLayout>
