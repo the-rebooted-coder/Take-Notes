@@ -70,6 +70,10 @@ public class SignUp extends AppCompatActivity {
             if (account !=null){
                 String personName = account.getDisplayName();
                 Toast.makeText(SignUp.this,"Howdy "+personName+" you are in!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUp.this,"Welcome to Take Notes",Toast.LENGTH_LONG).show();
+                Intent i=new Intent(SignUp.this,Landing.class);
+                startActivity(i);
+                finish();
             }
             FirebaseGoogleAuth(acc);
         }
@@ -84,7 +88,6 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    Toast.makeText(SignUp.this,"Welcome to Take Notes",Toast.LENGTH_LONG).show();
                     FirebaseUser user = mAuth.getCurrentUser();
                 }
                 else {
