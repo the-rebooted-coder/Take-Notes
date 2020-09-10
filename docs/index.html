@@ -149,16 +149,15 @@
             <div class="customization-col">
               <!-- Handwriting Font -->
               <div style="padding: 5px 0px 5px 0px;">
-                <b>Customizations</b> <small>(Optional)</small>
+                <b>Details</b> <small>(Optional)</small>
                 <p style="font-size: 0.8rem;">
                   <em
-                    >Note: Few changes may reflect only in the generated image
-                    and not in the preview</em
+                    >Note: 'Effects' applied will be only visible on the Generated Image & not on the Real-Time Preview</em
                   >
                 </p>
               </div>
               <fieldset>
-                <legend>Handwriting Options</legend>
+                <legend>Handwriting</legend>
 
                 <div class="category-grid">
                   <div>
@@ -171,16 +170,16 @@
                         style="font-family: 'Homemade Apple';"
                         value="'Homemade Apple', cursive"
                       >
-                        Homemade Apple
+                        Just Perfect
                       </option>
                       <option value="Hindi_Font">
-                        Kruti-dev(Hindi)
+                        Kruti Dev
                       </option>
                       <option
                         style="font-family: 'Caveat', cursive; font-size: 13pt;"
                         value="'Caveat', cursive"
                       >
-                        Caveat
+                        Just Fit
                       </option>
                       <option
                         style="
@@ -189,13 +188,17 @@
                         "
                         value="'Liu Jian Mao Cao', cursive"
                       >
-                        Liu Jian Mao Cao
+                        Resham
+                      </option>
+
+                      <option value="Hindi_Font">
+                        Developer's Arsenal
                       </option>
                     </select>
                   </div>
                   <div class="upload-handwriting-container">
                     <label class="block" for="font-file"
-                      >Upload your handwriting font <small>(Beta)</small>&nbsp;
+                      >Upload your font <small>(Under β)</small>&nbsp;
                       <a
                         style="font-size: 1.1rem;"
                         title="How to add your own handwriting"
@@ -211,7 +214,7 @@
 
               <!-- Pen ink color, Font size, Vertical position text, Word Spacing -->
               <fieldset>
-                <legend>Page & Text Options</legend>
+                <legend>Pages & Text</legend>
 
                 <div class="category-grid">
                   <div class="postfix-input" data-postfix="pt">
@@ -241,8 +244,8 @@
                   <div>
                     <label class="block" for="page-effects">Effects</label>
                     <select id="page-effects">
-                      <option default value="shadows">Shadows</option>
-                      <option value="scanner">Scanner</option>
+                      <option default value="shadows">Paper Shadow</option>
+                      <option value="scanner">Perfect Scan</option>
                       <option value="no-effect">No Effect</option>
                     </select>
                   </div>
@@ -260,7 +263,7 @@
               </fieldset>
 
               <fieldset>
-                <legend>Spacing Options</legend>
+                <legend>Spacing</legend>
 
                 <div class="category-grid">
                   <div class="postfix-input" data-postfix="px">
@@ -280,12 +283,12 @@
 
               <!-- Letter spacing, Paper Margin, Paper Lines, Paper Curvature -->
               <fieldset>
-                <legend>Margin & Line Options</legend>
+                <legend>Margin & Lines</legend>
 
                 <div class="category-grid">
                   <div>
                     <label for="paper-margin-toggle"
-                      >Paper Margin:
+                      >Paper Margins:
                       <span aria-label="paper margin status" class="status"
                         >on</span
                       >
@@ -320,25 +323,7 @@
                       <div></div>
                     </label>
                   </div>
-                  <div class="experimental">
-                    <label for="paper-curve-toggle"
-                      >Paper Curve:
-                      <span aria-label="paper curve status" class="status"
-                        >off</span
-                      >
-                    </label>
-                    <label
-                      title="Paper Curve (Yet to be implemented)"
-                      class="switch-toggle outer"
-                      style="cursor: not-allowed !important;"
-                    >
-                      <input
-                        aria-checked="false"
-                        aria-label="Paper Curve Button"
-                        id="paper-curve-toggle"
-                        type="checkbox"
-                      />
-                      <div></div>
+                  </div>
                     </label>
                   </div>
                 </div>
