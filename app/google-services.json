@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "720040417053",
+    "firebase_url": "https://take-notes-7efb5.firebaseio.com",
+    "project_id": "take-notes-7efb5",
+    "storage_bucket": "take-notes-7efb5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720040417053:android:b46f7e042bae7ef839f3f4",
+        "android_client_info": {
+          "package_name": "com.aaxena.takenotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720040417053-1obsgv1t6617e6n067cluhi22g898rb5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu2z4DqWNZTdOUlOvexexImjm0Y09MqOM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720040417053-1obsgv1t6617e6n067cluhi22g898rb5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
