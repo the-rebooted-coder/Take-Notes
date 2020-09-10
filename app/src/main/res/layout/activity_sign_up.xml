@@ -8,19 +8,21 @@
     tools:context=".SignUp">
 
     <Button
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shapelogin"
         android:padding="15dp"
         android:shadowColor="@android:color/transparent"
         android:text="Log In"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.824"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintVertical_bias="0.824" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="236dp"
@@ -28,5 +30,6 @@
         android:shadowColor="@android:color/transparent"
         android:text="Sign Up"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
