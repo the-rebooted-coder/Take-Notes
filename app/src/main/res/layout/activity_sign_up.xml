@@ -19,14 +19,19 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="240dp"
-        android:layout_height="248dp"
+    <TextView
+        android:id="@+id/greeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/productsansbold"
+        android:text="@string/greetings"
+        android:textColor="#000000"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/sign_in_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_dark" />
+        app:layout_constraintVertical_bias="0.269" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
