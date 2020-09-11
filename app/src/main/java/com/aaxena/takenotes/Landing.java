@@ -57,8 +57,9 @@ public class Landing extends AppCompatActivity {
         webview.setWebViewClient(new WebViewClient());
         registerForContextMenu(webview);
         webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/");
-        webview.getSettings().setUseWideViewPort(true);
+
         /*
+         webview.getSettings().setUseWideViewPort(true);
         webview.getSettings().setLoadWithOverviewMode(true);
         webview.setVerticalScrollBarEnabled(false);
         webview.setHorizontalScrollBarEnabled(false);
@@ -80,19 +81,8 @@ public class Landing extends AppCompatActivity {
                     }
 
                     DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-                    request.setMimeType(mimeType);
-                    String cookies = CookieManager.getInstance().getCookie(url);
-                    request.addRequestHeader("cookie", cookies);
-                    request.addRequestHeader("User-Agent", userAgent);
-                    request.setDescription(getResources().getString(R.string.msg_downloading));
-                    String filename = URLUtil.guessFileName(url, contentDisposition, mimeType);
-                    request.setTitle(filename);
-                    request.allowScanningByMediaScanner();
-                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
                     DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
                     dm.enqueue(request);
-                    Toast.makeText(getApplicationContext(), R.string.msg_downloading, Toast.LENGTH_LONG).show();
                 }catch(Exception e){
                     e.printStackTrace();
                 }
