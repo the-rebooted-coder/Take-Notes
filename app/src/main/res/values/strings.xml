@@ -7,4 +7,5 @@
     <string name="msg_file_downloaded">Saved in Downloads</string>
     <string name="error_downloading">Error in Downloading</string>
     <string name="success_toast">Note(s) Saved in Downloads</string>
+    <string name="status">Note(s) Saved Successfully</string>
 </resources>

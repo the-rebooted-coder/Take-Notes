@@ -18,8 +18,6 @@ import android.os.Vibrator;
 import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.webkit.CookieManager;
-import android.webkit.URLUtil;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -41,33 +39,24 @@ public class Landing extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
-
         //Runtime External storage permission for saving download files
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_DENIED) {
-                Log.d("permission", "permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
-                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                requestPermissions(permissions, 1);
-            }
-        }
+        checkPerms();
+
+        //Setting Web View Couch for User
+        couchSit();
+    }
+
+    private void couchSit() {
         webview = findViewById(R.id.takenotes_plugin);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setDomStorageEnabled(true);
         webview.setWebViewClient(new WebViewClient());
         registerForContextMenu(webview);
+        webview.getSettings().setUseWideViewPort(true);
         webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/");
+        webview.scrollTo(0, 200);
 
-        /*
-         webview.getSettings().setUseWideViewPort(true);
-        webview.getSettings().setLoadWithOverviewMode(true);
-        webview.setVerticalScrollBarEnabled(false);
-        webview.setHorizontalScrollBarEnabled(false);
-
-         */
         //handle downloading
-
-
         webview.setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             v.vibrate(30);
@@ -87,7 +76,18 @@ public class Landing extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-});
+        });
+    }
+
+    private void checkPerms() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_DENIED) {
+                Log.d("permission", "permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
+                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permissions, 1);
+            }
+        }
     }
 
     public String createAndSaveFileFromBase64Url(String url) {
@@ -119,24 +119,30 @@ public class Landing extends AppCompatActivity {
                     });
 
             //Set notification after download complete and add "click to view" action to that
-            String mimetype = url.substring(url.indexOf(":") + 1, url.indexOf("/"));
-            Intent intent = new Intent();
-            intent.setAction(android.content.Intent.ACTION_VIEW);
-            intent.setDataAndType(Uri.fromFile(file), (mimetype + "/*"));
-            PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
+            if(Build.VERSION.SDK_INT<=25) {
 
-            Notification notification = new NotificationCompat.Builder(this)
-                    .setSmallIcon(R.drawable.logo_dark)
-                    .setColor(getResources().getColor(R.color.colorPrimaryDark))
-                    .setContentText(getString(R.string.msg_file_downloaded))
-                    .setContentTitle(filename)
-                    .setContentIntent(pIntent)
-                    .build();
+                String mimetype = url.substring(url.indexOf(":") + 1, url.indexOf("/"));
+                Intent intent = new Intent();
+                intent.setAction(android.content.Intent.ACTION_VIEW);
+                intent.setDataAndType(Uri.fromFile(file), (mimetype + "/*"));
+                PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
+                Notification notification = new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.logo_dark)
+                        .setColor(getResources().getColor(R.color.colorPrimaryDark))
+                        .setContentText(getString(R.string.msg_file_downloaded))
+                        .setContentTitle(filename)
+                        .setContentIntent(pIntent)
+                        .build();
 
-            notification.flags |= Notification.FLAG_AUTO_CANCEL;
-            int notificationId = 85851;
-            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.notify(notificationId, notification);
+                notification.flags |= Notification.FLAG_AUTO_CANCEL;
+                int notificationId = 85851;
+                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.notify(notificationId, notification);
+            }
+            else {
+                Intent oreoplus = new Intent(Landing.this,ReminderBroadcast.class);
+                startActivity(oreoplus);
+            }
         } catch (IOException e) {
             Log.w("ExternalStorage", "Error writing " + file, e);
             Toast.makeText(getApplicationContext(), R.string.error_downloading, Toast.LENGTH_LONG).show();

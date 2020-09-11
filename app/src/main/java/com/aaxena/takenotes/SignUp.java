@@ -1,7 +1,9 @@
 package com.aaxena.takenotes;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Toast;
 
@@ -46,6 +48,8 @@ public class SignUp extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                v2.vibrate(34);
                 signIn();
             }
         });
