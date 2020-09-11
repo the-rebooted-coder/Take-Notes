@@ -24,12 +24,12 @@ body.dark {
   --primary-button-color: #111;
 }
 @font-face {
+
+  font-family: 'rebooted_coder';
+  src: url(../fonts/Rebooted_Coder.ttf);
+
   font-family: 'Hindi_Font';
   src: url(../fonts/Hindi_Type.ttf);
-  
-  font-family: 'rebooted_coder';
-  src: url(../fonts/rebooted_coder.ttf);
-	
 }
 
 /* Default CSS Changes */
