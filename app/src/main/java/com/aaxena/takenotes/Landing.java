@@ -93,7 +93,7 @@ public class Landing extends AppCompatActivity {
     public String createAndSaveFileFromBase64Url(String url) {
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         String filetype = url.substring(url.indexOf("/") + 1, url.indexOf(";"));
-        String filename = System.currentTimeMillis() + "." + filetype;
+        String filename = "Take Notes "+System.currentTimeMillis() + "." + filetype;
         File file = new File(path, filename);
         try {
             if(!path.exists())
