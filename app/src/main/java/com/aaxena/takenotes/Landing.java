@@ -73,8 +73,7 @@ public class Landing extends AppCompatActivity {
                                         long contentLength) {
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 v.vibrate(30);
-
-
+                
                 String uriString =url;
 
             }});
