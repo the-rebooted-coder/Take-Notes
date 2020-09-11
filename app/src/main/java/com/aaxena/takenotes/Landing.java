@@ -20,8 +20,10 @@ import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.net.http.SslError;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.os.Vibrator;
 import android.util.Base64;
 import android.util.Log;
@@ -43,6 +45,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.reflect.Method;
 
 
 public class Landing extends AppCompatActivity {
@@ -83,26 +86,34 @@ public class Landing extends AppCompatActivity {
                                         long contentLength) {
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 v.vibrate(30);
-                if (url.startsWith("data:")) {  //when url is base64 encoded data
-                    String path = createAndSaveFileFromBase64Url(url);
-                    return;
-                }
+                if(Build.VERSION.SDK_INT>=24){
+                    try{
+                        Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
+                        m.invoke(null);
+                        if (url.startsWith("data:")) {  //when url is base64 encoded data
+                            String path = createAndSaveFileFromBase64Url(url);
+                            return;
+                        }
 
-                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-                request.setMimeType(mimeType);
-                String cookies = CookieManager.getInstance().getCookie(url);
-                request.addRequestHeader("cookie", cookies);
-                request.addRequestHeader("User-Agent", userAgent);
-                request.setDescription(getResources().getString(R.string.msg_downloading));
-                String filename = URLUtil.guessFileName(url, contentDisposition, mimeType);
-                request.setTitle(filename);
-                request.allowScanningByMediaScanner();
-                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
-                DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-                dm.enqueue(request);
-                Toast.makeText(getApplicationContext(), R.string.msg_downloading, Toast.LENGTH_LONG).show();
-            }});
+                        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                        request.setMimeType(mimeType);
+                        String cookies = CookieManager.getInstance().getCookie(url);
+                        request.addRequestHeader("cookie", cookies);
+                        request.addRequestHeader("User-Agent", userAgent);
+                        request.setDescription(getResources().getString(R.string.msg_downloading));
+                        String filename = URLUtil.guessFileName(url, contentDisposition, mimeType);
+                        request.setTitle(filename);
+                        request.allowScanningByMediaScanner();
+                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
+                        DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+                        dm.enqueue(request);
+                        Toast.makeText(getApplicationContext(), R.string.msg_downloading, Toast.LENGTH_LONG).show();
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                }
+    }});
     }
 
     public String createAndSaveFileFromBase64Url(String url) {
