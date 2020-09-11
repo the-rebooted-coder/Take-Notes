@@ -5,16 +5,20 @@ import androidx.browser.customtabs.CustomTabsIntent;
 
 import android.Manifest;
 import android.app.DownloadManager;
+import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Vibrator;
+import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.webkit.CookieManager;
@@ -23,7 +27,10 @@ import android.webkit.SslErrorHandler;
 import android.webkit.URLUtil;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
 
 import saschpe.android.customtabs.CustomTabsHelper;
 import saschpe.android.customtabs.WebViewFallback;
@@ -66,6 +73,10 @@ public class Landing extends AppCompatActivity {
                                         long contentLength) {
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 v.vibrate(30);
+
+
+                String uriString =url;
+
             }});
     }
     @Override
