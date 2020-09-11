@@ -94,6 +94,7 @@ public class Landing extends AppCompatActivity {
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         String filetype = url.substring(url.indexOf("/") + 1, url.indexOf(";"));
         String filename = "Take Notes "+System.currentTimeMillis() + "." + filetype;
+        Toast.makeText(this, R.string.success_toast,Toast.LENGTH_LONG).show();
         File file = new File(path, filename);
         try {
             if(!path.exists())
@@ -125,7 +126,8 @@ public class Landing extends AppCompatActivity {
             PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
             Notification notification = new NotificationCompat.Builder(this)
-                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setSmallIcon(R.drawable.logo_dark)
+                    .setColor(getResources().getColor(R.color.colorPrimaryDark))
                     .setContentText(getString(R.string.msg_file_downloaded))
                     .setContentTitle(filename)
                     .setContentIntent(pIntent)

@@ -4,6 +4,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="greetings">Hello!</string>
     <string name="msg_downloading">Downloading</string>
-    <string name="msg_file_downloaded">Downloaded</string>
+    <string name="msg_file_downloaded">Saved in Downloads</string>
     <string name="error_downloading">Error in Downloading</string>
+    <string name="success_toast">Note(s) Saved in Downloads</string>
 </resources>
