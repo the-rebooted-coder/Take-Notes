@@ -32,13 +32,12 @@ public class Landing extends AppCompatActivity {
     }
 
     private void openCustomTab() {
-        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-        CustomTabsIntent customTabsIntent = builder.build();
+
+        Uri uri = Uri.parse("https://the-rebooted-coder.github.io/Take-Notes/");
         CustomTabsIntent.Builder intentBuilder = new CustomTabsIntent.Builder();
-        builder.setToolbarColor(getResources().getColor(R.color.colorPrimary));
-        intentBuilder.setCloseButtonIcon(BitmapFactory.decodeResource(
-                getResources(), R.drawable.logo));
-        customTabsIntent.launchUrl(this, Uri.parse("https://the-rebooted-coder.github.io/Take-Notes/"));
+        intentBuilder.setToolbarColor(Color.BLACK);
+        intentBuilder.setShowTitle(true);
+        intentBuilder.build().launchUrl(this, uri);
 
     }
 
