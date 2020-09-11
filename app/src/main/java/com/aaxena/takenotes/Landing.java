@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaScannerConnection;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -39,13 +41,41 @@ public class Landing extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
+        //Checking Network
+        checkNetwork();
+
         //Runtime External storage permission for saving download files
         checkPerms();
-
-        //Setting Web View Couch for User
-        couchSit();
     }
 
+    private void checkNetwork() {
+        if(haveNetwork()){
+            //Setting Web View Couch for User
+            couchSit();
+        } else if(!haveNetwork())
+        {
+            Intent intent = new Intent(Landing.this, NoInternet.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+    //Network Checking Boolean
+    private boolean haveNetwork() {
+        boolean have_WIFI = false;
+        boolean have_MobileData = false;
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo[] networkInfos = connectivityManager.getAllNetworkInfo();
+        for (NetworkInfo info : networkInfos) {
+            if (info.getTypeName().equalsIgnoreCase("WIFI"))
+                if (info.isConnected())
+                    have_WIFI = true;
+            if (info.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (info.isConnected())
+                    have_MobileData = true;
+        }
+        return have_MobileData||have_WIFI;
+    }
     private void couchSit() {
         webview = findViewById(R.id.takenotes_plugin);
         webview.getSettings().setJavaScriptEnabled(true);
