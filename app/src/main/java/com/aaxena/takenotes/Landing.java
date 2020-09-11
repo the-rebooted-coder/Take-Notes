@@ -72,9 +72,12 @@ public class Landing extends AppCompatActivity {
         registerForContextMenu(webview);
         webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/");
         webview.getSettings().setUseWideViewPort(true);
+        /*
         webview.getSettings().setLoadWithOverviewMode(true);
         webview.setVerticalScrollBarEnabled(false);
         webview.setHorizontalScrollBarEnabled(false);
+        
+         */
         //handle downloading
 
 
