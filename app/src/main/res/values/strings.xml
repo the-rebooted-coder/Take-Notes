@@ -3,4 +3,7 @@
     <string name="log_in">Log In</string>
     <string name="sign_up">Sign Up</string>
     <string name="greetings">Hello!</string>
+    <string name="msg_downloading" />
+    <string name="msg_file_downloaded" />
+    <string name="error_downloading" />
 </resources>
