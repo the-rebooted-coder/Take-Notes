@@ -20,7 +20,10 @@ import android.os.Environment;
 import android.os.Vibrator;
 import android.util.Base64;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.DownloadListener;
 import android.webkit.SslErrorHandler;
@@ -55,8 +58,8 @@ public class Landing extends AppCompatActivity {
         webview = findViewById(R.id.takenotes_plugin);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setDomStorageEnabled(true);
-        webview.setWebViewClient(new WebViewClient() {
-        });
+        webview.setWebViewClient(new WebViewClient());
+        registerForContextMenu(webview);
         webview.loadUrl("http://the-rebooted-coder.github.io/Take-Notes/");
         webview.getSettings().setUseWideViewPort(true);
         webview.getSettings().setLoadWithOverviewMode(true);
@@ -73,11 +76,72 @@ public class Landing extends AppCompatActivity {
                                         long contentLength) {
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 v.vibrate(30);
-                
+                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                request.allowScanningByMediaScanner();
+
+                request.setNotificationVisibility(
+                        DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+
+                request.setDestinationInExternalPublicDir(
+                        Environment.DIRECTORY_DOWNLOADS,    //Download folder
+                        "download");                        //Name of file
+
+
+                DownloadManager dm = (DownloadManager) getSystemService(
+                        DOWNLOAD_SERVICE);
+
+                dm.enqueue(request);
+
                 String uriString =url;
 
             }});
     }
+
+    // LONG PRESS
+    @Override
+    public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo){
+        super.onCreateContextMenu(contextMenu, view, contextMenuInfo);
+
+        final WebView.HitTestResult webViewHitTestResult = webview.getHitTestResult();
+
+        if (webViewHitTestResult.getType() == WebView.HitTestResult.IMAGE_TYPE ||
+                webViewHitTestResult.getType() == WebView.HitTestResult.SRC_ANCHOR_TYPE ||
+                webViewHitTestResult.getType() == webViewHitTestResult.SRC_IMAGE_ANCHOR_TYPE ||) {
+
+            contextMenu.setHeaderTitle("Download Image From Below");
+
+            contextMenu.add(0, 1, 0, "Save - Download Image")
+                    .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem menuItem) {
+
+                            String DownloadImageURL = webViewHitTestResult.getExtra();
+
+                            if(URLUtil.isValidUrl(DownloadImageURL)){
+
+                                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(DownloadImageURL));
+                                request.allowScanningByMediaScanner();
+                                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                                request.setDestinationInExternalPublicDir(
+                                        Environment.DIRECTORY_DOWNLOADS,    //Download folder
+                                        "download");                        //Name of file
+
+                                DownloadManager dm = (DownloadManager) getSystemService(
+                                        DOWNLOAD_SERVICE);
+
+                                dm.enqueue(request);
+                                Toast.makeText(Landing.this,"Image Downloaded Successfully.",Toast.LENGTH_LONG).show();
+                            }
+                            else {
+                                Toast.makeText(Landing.this,"Sorry.. Something Went Wrong.",Toast.LENGTH_LONG).show();
+                            }
+                            return false;
+                        }
+                    });
+        }
+    }
+
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
