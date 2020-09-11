@@ -3,6 +3,8 @@ package com.aaxena.takenotes;
 import android.Manifest;
 import android.app.DownloadManager;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -32,7 +34,12 @@ public class Landing extends AppCompatActivity {
     private void openCustomTab() {
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
         CustomTabsIntent customTabsIntent = builder.build();
+        CustomTabsIntent.Builder intentBuilder = new CustomTabsIntent.Builder();
+        builder.setToolbarColor(getResources().getColor(R.color.colorPrimary));
+        intentBuilder.setCloseButtonIcon(BitmapFactory.decodeResource(
+                getResources(), R.drawable.logo));
         customTabsIntent.launchUrl(this, Uri.parse("https://the-rebooted-coder.github.io/Take-Notes/"));
+
     }
 
 
