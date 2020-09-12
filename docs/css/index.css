@@ -45,13 +45,6 @@ body.dark {
 
 @font-face {
 
-  font-family: 'Paneer';
-  src: url(../fonts/Paneer.ttf);
-
-}
-
-@font-face {
-
   font-family: 'Horcrux';
   src: url(../fonts/horcrux.ttf);
 
@@ -59,14 +52,7 @@ body.dark {
 
 @font-face {
 
-  font-family: 'got';
-  src: url(../fonts/Winter.ttf);
-
-}
-
-@font-face {
-
-  font-family: 'not_mine';
+  font-family: 'Paneer';
   src: url(../fonts/not_mine.ttf);
 
 }
