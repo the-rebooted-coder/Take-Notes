@@ -154,7 +154,6 @@ public class Landing extends AppCompatActivity {
 
             //Set notification after download complete and add "click to view" action to that
             if(Build.VERSION.SDK_INT<=25) {
-
                 String mimetype = url.substring(url.indexOf(":") + 1, url.indexOf("/"));
                 Intent intent = new Intent();
                 intent.setAction(android.content.Intent.ACTION_VIEW);
@@ -172,10 +171,6 @@ public class Landing extends AppCompatActivity {
                 int notificationId = 85851;
                 NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 notificationManager.notify(notificationId, notification);
-            }
-            else {
-                Intent oreoplus = new Intent(Landing.this,ReminderBroadcast.class);
-                startActivity(oreoplus);
             }
         } catch (IOException e) {
             Log.w("ExternalStorage", "Error writing " + file, e);
