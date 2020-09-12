@@ -188,8 +188,8 @@ public class Landing extends AppCompatActivity {
                 Notification notification = new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.logo_dark)
                         .setColor(getResources().getColor(R.color.colorPrimaryDark))
-                        .setContentText(getString(R.string.msg_file_downloaded))
-                        .setContentTitle(filename)
+                        .setContentText("Check Now!")
+                        .setContentTitle("Your generated note got saved")
                         .setContentIntent(pIntent)
                         .build();
 
