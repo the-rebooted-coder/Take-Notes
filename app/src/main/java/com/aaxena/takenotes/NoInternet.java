@@ -1,11 +1,12 @@
 package com.aaxena.takenotes;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.widget.CompoundButton;
+import android.provider.Settings;
 import android.widget.Switch;
-import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,7 +21,13 @@ public class NoInternet extends AppCompatActivity {
 
         Switch btn = findViewById(R.id.switcher);
         btn.setChecked(wifiManager.isWifiEnabled());
-        btn.setOnCheckedChangeListener((buttonView, isChecked) -> wifiManager.setWifiEnabled(isChecked));
+        btn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                Intent panelIntent = new Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY);
+                startActivityForResult(panelIntent, 545);
+            }
+           else { wifiManager.setWifiEnabled(isChecked);}
+        });
 
     }
 }
