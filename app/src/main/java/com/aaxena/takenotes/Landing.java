@@ -58,6 +58,7 @@ public class Landing extends AppCompatActivity {
         {
             Intent intent = new Intent(Landing.this, NoInternet.class);
             startActivity(intent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         }
     }
