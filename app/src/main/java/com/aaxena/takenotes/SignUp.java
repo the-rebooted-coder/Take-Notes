@@ -83,7 +83,6 @@ public class SignUp extends AppCompatActivity {
         }
         catch (ApiException e){
             Toast.makeText(SignUp.this,"Oops! We ran into trouble",Toast.LENGTH_LONG).show();
-            FirebaseGoogleAuth(null);
         }
     }
     private void FirebaseGoogleAuth(GoogleSignInAccount acct){
