@@ -26,13 +26,26 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Uh-Oh!"
-        android:fontFamily="@font/productsans"
-        android:textSize="25dp"
+        android:fontFamily="@font/productsansbold"
+        android:text="@string/no_internet"
         android:textColor="#000000"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/no_internet_anime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/switcher"
+        android:layout_width="136dp"
+        android:layout_height="46dp"
+        android:background="@drawable/card_background"
+        android:fontFamily="@font/productsans"
+        android:text="@string/wi_fi"
+        android:textColor="@color/browser_actions_text_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_internet_anime" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

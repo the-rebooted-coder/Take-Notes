@@ -8,4 +8,6 @@
     <string name="error_downloading">Error in Downloading</string>
     <string name="success_toast">Note(s) Saved in Documents</string>
     <string name="status">Note(s) Saved Successfully</string>
+    <string name="no_internet">Uh-Oh!</string>
+    <string name="wi_fi">Wi-Fi</string>
 </resources>
