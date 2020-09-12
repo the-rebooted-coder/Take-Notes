@@ -4,8 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NoInternet">
+    tools:context=".NoInternet"
+    android:background="@color/colorAccent">
 
     <!--This Activity Will Get Opened In Case of No Internet-->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/no_internet_anime"
+        android:layout_width="308dp"
+        android:layout_height="305dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.454"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="no_connection.json"
+        app:lottie_loop="true"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Uh-Oh!"
+        android:fontFamily="@font/productsans"
+        android:textSize="25dp"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/no_internet_anime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
