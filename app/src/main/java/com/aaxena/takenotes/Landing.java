@@ -83,6 +83,7 @@ public class Landing extends AppCompatActivity {
         webview.setWebViewClient(new WebViewClient());
         registerForContextMenu(webview);
         webview.getSettings().setUseWideViewPort(true);
+        webview.setInitialScale((int) 1.0);
         webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/");
         webview.scrollTo(0, 200);
 
