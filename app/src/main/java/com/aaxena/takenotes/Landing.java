@@ -164,13 +164,14 @@ public class Landing extends AppCompatActivity {
                 intent.setAction(android.content.Intent.ACTION_VIEW);
                 intent.setDataAndType(Uri.fromFile(file), (mimetype + "/*"));
                 PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
-                NotificationChannel notificationChannel= new NotificationChannel(CHANNEL_ID,"name", NotificationManager.IMPORTANCE_LOW);
+                NotificationChannel notificationChannel= new NotificationChannel(CHANNEL_ID,"Notes Saved Notification", NotificationManager.IMPORTANCE_HIGH);
                 Notification notification = new Notification.Builder(this,CHANNEL_ID)
-                        .setContentText("You have got something new!")
-                        .setContentTitle("File downloaded")
+                        .setContentText("Check Now!")
+                        .setContentTitle("Your generated note got saved")
                         .setContentIntent(pIntent)
                         .setChannelId(CHANNEL_ID)
                         .setSmallIcon(R.drawable.logo_dark)
+                        .setAutoCancel(true)
                         .build();
                 if (notificationManager != null) {
                     notificationManager.createNotificationChannel(notificationChannel);
