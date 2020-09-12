@@ -26,15 +26,58 @@ body.dark {
 @font-face {
 
   font-family: 'Doughnut';
-  src: url(../fonts/dev_arsenal/rebooted_coder.ttf);
+  src: url(../fonts/rebooted_coder.ttf);
 }
 
 @font-face {
 
   font-family: 'Hindi';
-  src: url(../fonts/hindi/Hindi_Type.ttf);
+  src: url(../fonts/Hindi_Type.ttf);
 
 }
+
+@font-face {
+
+  font-family: 'Juet';
+  src: url(../fonts/JUET.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'Paneer';
+  src: url(../fonts/Paneer.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'Horcrux';
+  src: url(../fonts/horcrux.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'got';
+  src: url(../fonts/Winter.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'not_mine';
+  src: url(../fonts/not_mine.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'Duh';
+  src: url(../fonts/Duh.ttf);
+
+}
+
 
 /* Default CSS Changes */
 * {
