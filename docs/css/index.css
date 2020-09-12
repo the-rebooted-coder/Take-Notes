@@ -25,8 +25,14 @@ body.dark {
 }
 @font-face {
 
-  font-family: 'Rebooted_Coder';
-  src: url(../fonts/rebooted_coder.ttf);
+  font-family: 'Doughnut';
+  src: url(../fonts/dev_arsenal/rebooted_coder.ttf);
+}
+
+@font-face {
+
+  font-family: 'Hindi';
+  src: url(../fonts/hindi/Hindi_Type.ttf);
 
 }
 
