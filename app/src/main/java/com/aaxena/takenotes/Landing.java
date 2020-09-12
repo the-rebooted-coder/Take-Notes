@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -153,7 +154,31 @@ public class Landing extends AppCompatActivity {
                     });
 
             //Set notification after download complete and add "click to view" action to that
-            if(Build.VERSION.SDK_INT<=25) {
+
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                final int notificationId = 1;
+                String CHANNEL_ID = "SavedReminderService";
+                final NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                String mimetype = url.substring(url.indexOf(":") + 1, url.indexOf("/"));
+                Intent intent = new Intent();
+                intent.setAction(android.content.Intent.ACTION_VIEW);
+                intent.setDataAndType(Uri.fromFile(file), (mimetype + "/*"));
+                PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
+                NotificationChannel notificationChannel= new NotificationChannel(CHANNEL_ID,"name", NotificationManager.IMPORTANCE_LOW);
+                Notification notification = new Notification.Builder(this,CHANNEL_ID)
+                        .setContentText("You have got something new!")
+                        .setContentTitle("File downloaded")
+                        .setContentIntent(pIntent)
+                        .setChannelId(CHANNEL_ID)
+                        .setSmallIcon(R.drawable.logo_dark)
+                        .build();
+                if (notificationManager != null) {
+                    notificationManager.createNotificationChannel(notificationChannel);
+                    notificationManager.notify(notificationId, notification);
+                }
+
+            }
+            else {
                 String mimetype = url.substring(url.indexOf(":") + 1, url.indexOf("/"));
                 Intent intent = new Intent();
                 intent.setAction(android.content.Intent.ACTION_VIEW);
