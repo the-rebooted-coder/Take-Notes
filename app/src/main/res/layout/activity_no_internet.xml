@@ -48,4 +48,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/no_internet_anime" />
 
+    <Button
+        android:id="@+id/mdata"
+        android:layout_width="123dp"
+        android:layout_height="39dp"
+        android:background="@drawable/card_background"
+        android:fontFamily="@font/productsans"
+        android:text="Mobile Data"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switcher" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
