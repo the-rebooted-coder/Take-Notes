@@ -169,6 +169,7 @@ public class Landing extends AppCompatActivity {
                         .setContentText("Check Now!")
                         .setContentTitle("Your generated note got saved")
                         .setContentIntent(pIntent)
+                        .setColor(getResources().getColor(R.color.notification))
                         .setChannelId(CHANNEL_ID)
                         .setSmallIcon(R.drawable.logo_dark)
                         .setAutoCancel(true)
@@ -187,7 +188,7 @@ public class Landing extends AppCompatActivity {
                 PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
                 Notification notification = new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.logo_dark)
-                        .setColor(getResources().getColor(R.color.colorPrimaryDark))
+                        .setColor(getResources().getColor(R.color.notification))
                         .setContentText("Check Now!")
                         .setContentTitle("Your generated note got saved")
                         .setContentIntent(pIntent)
