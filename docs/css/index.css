@@ -23,11 +23,6 @@ body.dark {
   --primary-button-bg: #eee;
   --primary-button-color: #111;
 }
-@font-face {
-
-  font-family: 'Doughnut';
-  src: url(../fonts/rebooted_coder.ttf);
-}
 
 @font-face {
 
