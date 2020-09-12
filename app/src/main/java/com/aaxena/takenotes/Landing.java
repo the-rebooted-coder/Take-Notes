@@ -1,6 +1,7 @@
 package com.aaxena.takenotes;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -76,10 +77,12 @@ public class Landing extends AppCompatActivity {
         }
         return have_MobileData||have_WIFI;
     }
+    @SuppressLint("SetJavaScriptEnabled")
     private void couchSit() {
         webview = findViewById(R.id.takenotes_plugin);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setDomStorageEnabled(true);
+        webview.getSettings().setDatabaseEnabled(true);
         webview.setWebViewClient(new WebViewClient());
         registerForContextMenu(webview);
         webview.getSettings().setUseWideViewPort(true);
