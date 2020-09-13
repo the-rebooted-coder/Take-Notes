@@ -26,7 +26,7 @@ public class SplashScreen extends AppCompatActivity {
         fireSplashScreen();
     }
     private void fireSplashScreen() {
-        int splash_screen_time_out = 2000;
+        int splash_screen_time_out = 3000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
