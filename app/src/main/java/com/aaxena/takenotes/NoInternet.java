@@ -1,6 +1,5 @@
 package com.aaxena.takenotes;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiManager;
@@ -9,11 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.provider.Settings;
-import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 

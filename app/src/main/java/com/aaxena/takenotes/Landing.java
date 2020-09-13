@@ -172,7 +172,7 @@ public class Landing extends AppCompatActivity {
                         .setContentIntent(pIntent)
                         .setColor(getResources().getColor(R.color.notification))
                         .setChannelId(CHANNEL_ID)
-                        .setSmallIcon(R.drawable.logo_dark)
+                        .setSmallIcon(R.drawable.logo_take_notes)
                         .setAutoCancel(true)
                         .build();
                 if (notificationManager != null) {
@@ -188,7 +188,7 @@ public class Landing extends AppCompatActivity {
                 intent.setDataAndType(Uri.fromFile(file), (mimetype + "/*"));
                 PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
                 Notification notification = new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.logo_dark)
+                        .setSmallIcon(R.drawable.logo_take_notes)
                         .setColor(getResources().getColor(R.color.notification))
                         .setContentText("Check Now!")
                         .setContentTitle("Your generated note got saved")
