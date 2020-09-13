@@ -12,4 +12,4 @@ Below mentioned Android Versions are supported
 
 ### Do not create an issue directly!
 
-Mail your suggestions here 
+Mail your suggestions [here](mailto:connectwithspandan@gmail.com?subject=[GitHub]Security Vulnerability)
