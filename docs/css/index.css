@@ -28,6 +28,34 @@ body.dark {
   src: url(../fonts/Hindi_Type.ttf);
 }
 
+@font-face {
+
+  font-family: 'Juet';
+  src: url(../fonts/JUET.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'Horcrux';
+  src: url(../fonts/horcrux.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'Paneer';
+  src: url(../fonts/not_mine.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'Duh';
+  src: url(../fonts/Duh.ttf);
+
+}
+
 /* Default CSS Changes */
 * {
   box-sizing: border-box;
