@@ -20,7 +20,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="theme-color" content="#535353" />
+    <meta name="theme-color" content="#09f" />
     <meta
       name="description"
       content="Lot's of assignment? Relax I am here to save your day!"
@@ -30,8 +30,8 @@
       content="text to handwriting, text-to-handwrting, take notes, convert text to image, write assignments"
     />
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="author" content="Spandan Saxena" />
-    <meta name="copyright" content="Spandan Saxena" />
+    <meta name="author" content="Shrish Sharma" />
+    <meta name="copyright" content="Shrish Sharma" />
     <meta name="robots" content="follow" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Take Notes" />
@@ -47,6 +47,9 @@
 
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="337" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@saurabhcodes" />
 
     <title>Take Notes</title>
     <link
@@ -97,13 +100,13 @@
             src="images/moon.svg"
         /></span>
       </button>
-      <h1>Take<br>Notes!</h1>
+      <h1>Text to Handwriting</h1>
       <section style="font-size: 1rem; padding: 20px 0px;">
         <p>
-         So New Assignment Huh?<br>
+          So New Assignment Huh?<br>
          Maybe you've got some important work to do,<br>
          Let's help you out! 🎊
-          <br /><br /><br />
+         <br><br><br>
         </p>
       </section>
       <section class="generate-image-section">
@@ -122,11 +125,7 @@
                   <div class="display-flex left-margin-and-content">
                     <div contenteditable="true" class="left-margin"></div>
                     <div class="paper-content" id="note" contenteditable="true">
-                     Baked with love <br>in Jaypee University<br>of Engineering & Technology!
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>By-<br>
-                     Spandan Saxena<br>
-                     Shrish Sharma
+                      Baked with love in Jaypee University of Engineering & Technology! 
                     </div>
                   </div>
                   <div class="overlay"></div>
@@ -149,7 +148,7 @@
             <div class="customization-col">
               <!-- Handwriting Font -->
               <div style="padding: 5px 0px 5px 0px;">
-                <b>Details</b> <small>(Optional)</small>
+                <b>Customizations</b> <small>(Optional)</small>
                 <p style="font-size: 0.8rem;">
                   <em
                     >Note: 'Effects' applied will be only visible on the Generated Image & not on the Real-Time Preview</em
@@ -172,8 +171,8 @@
                       >
                         Just Perfect
                       </option>
-                      <option value="Hindi">
-                        Kruti Dev
+                      <option value="Hindi_Font">
+                        Hindi
                       </option>
                       <option
                         style="font-family: 'Caveat', cursive; font-size: 13pt;"
@@ -204,27 +203,25 @@
                       </option>
                     </select>
                   </div>
-                  <!--
-                  <div class="upload-handwriting-container">
+                  <!-- <div class="upload-handwriting-container">
                     <label class="block" for="font-file"
-                      >Upload your font <small>(Under β)</small>&nbsp;
+                      >Upload your handwriting font <small>(Beta)</small>&nbsp;
                       <a
                         style="font-size: 1.1rem;"
-                        title="Want to add your own handwriting?"
+                        title="How to add your own handwriting"
                         href="#how-to-add-handwriting"
                       >
                         &#9432;
                       </a>
                     </label>
                     <input accept=".ttf, .otf" type="file" id="font-file" />
-                  </div>
-              -->
+                  </div> -->
                 </div>
               </fieldset>
 
               <!-- Pen ink color, Font size, Vertical position text, Word Spacing -->
               <fieldset>
-                <legend>Pages & Text</legend>
+                <legend>Page & Text Options</legend>
 
                 <div class="category-grid">
                   <div class="postfix-input" data-postfix="pt">
@@ -293,12 +290,12 @@
 
               <!-- Letter spacing, Paper Margin, Paper Lines, Paper Curvature -->
               <fieldset>
-                <legend>Margin & Lines</legend>
+                <legend>Margin & Line Options</legend>
 
                 <div class="category-grid">
                   <div>
                     <label for="paper-margin-toggle"
-                      >Paper Margins:
+                      >Paper Margin:
                       <span aria-label="paper margin status" class="status"
                         >on</span
                       >
@@ -364,11 +361,11 @@
       <section>
         <h2 id="output-header">Output</h2>
         <div id="output" class="output" style="text-align: center;">
-          Click "Create Assignment" Button above to start generating new images.
+          Click "Generate Assignment" Button to generate new images.
         </div>
         <div style="text-align: center; padding: 30px;">
           <button class="imp-button" id="download-as-pdf-button">
-          	Image as .jpeg will be stored in your phone's 'Documents' folder
+            Image as .jpeg will be stored in your phone's 'Documents' folder
           </button>
         </div>
       </section>
@@ -378,7 +375,8 @@
         <div>
           <ul>
             <li>
-              In order to add your handwriting, you will have to create a .ttf (True Type Font) file of the same
+              To use your handwriting, you will have to generate font of your
+              handwriting.
             </li>
             <li>
               There are websites like
@@ -396,7 +394,6 @@
             </li>
           </ul>
         </div>
-      </section>
     </main>
     <footer style="padding: 40px 0px 10px 0px;">
       Thank you for using <b>Take Notes App</b><br>
@@ -449,6 +446,7 @@
         </div>
       </div>
     </section>
+
     <script
       src="./js/vendors/html2canvas.min.js"
       crossorigin="anonymous"
