@@ -23,42 +23,10 @@ body.dark {
   --primary-button-bg: #eee;
   --primary-button-color: #111;
 }
-
 @font-face {
-
-  font-family: 'Hindi';
+  font-family: 'Hindi_Font';
   src: url(../fonts/Hindi_Type.ttf);
-
 }
-
-@font-face {
-
-  font-family: 'Juet';
-  src: url(../fonts/JUET.ttf);
-
-}
-
-@font-face {
-
-  font-family: 'Horcrux';
-  src: url(../fonts/horcrux.ttf);
-
-}
-
-@font-face {
-
-  font-family: 'Paneer';
-  src: url(../fonts/not_mine.ttf);
-
-}
-
-@font-face {
-
-  font-family: 'Duh';
-  src: url(../fonts/Duh.ttf);
-
-}
-
 
 /* Default CSS Changes */
 * {

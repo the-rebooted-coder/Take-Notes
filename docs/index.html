@@ -23,21 +23,21 @@
     <meta name="theme-color" content="#09f" />
     <meta
       name="description"
-      content="Lot's of assignment? Relax I am here to save your day!"
+      content="I hate writing assignments so I made this tool that converts text to an image that looks like handwriting. You can copy paste text content into the textbox and click generate image button to generate image. Text to Handwriting"
     />
     <meta
       name="keywords"
-      content="text to handwriting, text-to-handwrting, take notes, convert text to image, write assignments"
+      content="text to handwriting, text-to-handwrting, saurabh text to handwriting, convert text to image, write assignment online"
     />
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="author" content="Shrish Sharma" />
-    <meta name="copyright" content="Shrish Sharma" />
+    <meta name="author" content="Saurabh Daware" />
+    <meta name="copyright" content="Saurabh Daware" />
     <meta name="robots" content="follow" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Take Notes" />
+    <meta property="og:title" content="Text to Handwriting" />
     <meta
       property="og:url"
-      content="https://the-rebooted-coder.github.io/Take-Notes/"
+      content="https://saurabhdaware.github.io/text-to-handwriting"
     />
     <meta
       property="og:description"
@@ -45,13 +45,23 @@
     />
     <meta property="og:site_name" content="Text to Handwriting" />
 
+    <meta
+      property="og:image:secure_url"
+      itemprop="image"
+      content="https://res.cloudinary.com/saurabhdaware/image/upload/v1585413874/saurabh2019/projects/text-to-handwriting.png"
+    />
+    <meta
+      property="og:image"
+      itemprop="image"
+      content="https://res.cloudinary.com/saurabhdaware/image/upload/v1585413874/saurabh2019/projects/text-to-handwriting.png"
+    />
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="337" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@saurabhcodes" />
 
-    <title>Take Notes</title>
+    <title>Text to Handwriting</title>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -103,10 +113,14 @@
       <h1>Text to Handwriting</h1>
       <section style="font-size: 1rem; padding: 20px 0px;">
         <p>
-          So New Assignment Huh?<br>
-         Maybe you've got some important work to do,<br>
-         Let's help you out! 🎊
-         <br><br><br>
+          Hey everyone! Thank you for supporting Text to Handwriting 🎉
+          <br /><br />If you want to use additional fonts, you can check out
+          comments in
+          <a
+            href="https://github.com/saurabhdaware/text-to-handwriting/issues/78"
+            >text-to-handwriting issue#78</a
+          >. After downloading the .ttf or .otf file of font, you can import it
+          with "Upload your Handwriting Font" button. <br /><br /><br />
         </p>
       </section>
       <section class="generate-image-section">
@@ -115,8 +129,8 @@
           <div class="display-flex output-grid responsive-flex">
             <div class="flex-1 page-container-super">
               <div>
-                <h2 style="margin-top: 0px;">Your Text Goes Here</h2>
-                <label class="block" for="note">Type or Paste text here and see changes in real-time!</label>
+                <h2 style="margin-top: 0px;">Input</h2>
+                <label class="block" for="note">Type/Paste text here</label>
               </div>
 
               <div class="flex-1 page-container">
@@ -125,7 +139,24 @@
                   <div class="display-flex left-margin-and-content">
                     <div contenteditable="true" class="left-margin"></div>
                     <div class="paper-content" id="note" contenteditable="true">
-                      Baked with love in Jaypee University of Engineering & Technology! 
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Ut rhoncus dui eget tortor feugiat iaculis. Morbi et dolor
+                      in felis viverra efficitur. Integer id laoreet arcu.
+                      Mauris turpis nibh, scelerisque sed tristique non,
+                      hendrerit in erat. Duis interdum nisl risus, ac ultrices
+                      ipsum auctor at. Aliquam faucibus iaculis metus sit amet
+                      tincidunt. Vestibulum cursus urna vel nunc imperdiet
+                      suscipit. Ut eu augue egestas, porta orci lobortis,
+                      pharetra orci. Morbi eu tellus quis nisi tempor accumsan
+                      nec eu urna. empor, ullamcorper tortor. Mauris quis
+                      fermentum augue. Phasellus ac nisl hendrerit, fringilla
+                      enim aliquam, placerat odio. Ut tortor nisi, pellentesque
+                      sed nisi at, hendrerit imperdiet turpis. Proin interdum
+                      porttitor metus at hendrerit. Proin ipsum nisl, lacinia
+                      vitae purus ullamcorper, maximus convallis sem. Sed nec
+                      lacinia lorem. Duis arcu metus, cursus non odio quis,
+                      tincidunt tempor augue. Donec eget vestibulum risus.
+                      Nullam blandit quis est vitae feugiat.
                     </div>
                   </div>
                   <div class="overlay"></div>
@@ -140,7 +171,7 @@
                   style="font-size: 0.9rem; margin-top: 5px;"
                   class="draw-button"
                 >
-                  Add Drawing <small>(Under β)</small>
+                  Draw <small>(Beta)</small>
                 </button>
               </div>
             </div>
@@ -151,12 +182,13 @@
                 <b>Customizations</b> <small>(Optional)</small>
                 <p style="font-size: 0.8rem;">
                   <em
-                    >Note: 'Effects' applied will be only visible on the Generated Image & not on the Real-Time Preview</em
+                    >Note: Few changes may reflect only in the generated image
+                    and not in the preview</em
                   >
                 </p>
               </div>
               <fieldset>
-                <legend>Handwriting</legend>
+                <legend>Handwriting Options</legend>
 
                 <div class="category-grid">
                   <div>
@@ -169,16 +201,16 @@
                         style="font-family: 'Homemade Apple';"
                         value="'Homemade Apple', cursive"
                       >
-                        Just Perfect
+                        Homemade Apple
                       </option>
                       <option value="Hindi_Font">
-                        Hindi
+                        Kruti-dev(Hindi)
                       </option>
                       <option
                         style="font-family: 'Caveat', cursive; font-size: 13pt;"
                         value="'Caveat', cursive"
                       >
-                        Just Fit
+                        Caveat
                       </option>
                       <option
                         style="
@@ -187,23 +219,11 @@
                         "
                         value="'Liu Jian Mao Cao', cursive"
                       >
-                        Resham
-                      </option>
-                      <option value="Juet">
-                        JUET
-                      </option>
-                      <option value="Paneer">
-                        Paneer
-                      </option>
-                      <option value="Horcrux">
-                        The 9th Horcrux
-                      </option>
-                      <option value="Duh">
-                        Duh! ¯\_(ツ)_/¯
+                        Liu Jian Mao Cao
                       </option>
                     </select>
                   </div>
-                  <!-- <div class="upload-handwriting-container">
+                  <div class="upload-handwriting-container">
                     <label class="block" for="font-file"
                       >Upload your handwriting font <small>(Beta)</small>&nbsp;
                       <a
@@ -215,7 +235,7 @@
                       </a>
                     </label>
                     <input accept=".ttf, .otf" type="file" id="font-file" />
-                  </div> -->
+                  </div>
                 </div>
               </fieldset>
 
@@ -251,8 +271,8 @@
                   <div>
                     <label class="block" for="page-effects">Effects</label>
                     <select id="page-effects">
-                      <option default value="shadows">Paper Shadow</option>
-                      <option value="scanner">Perfect Scan</option>
+                      <option default value="shadows">Shadows</option>
+                      <option value="scanner">Scanner</option>
                       <option value="no-effect">No Effect</option>
                     </select>
                   </div>
@@ -270,7 +290,7 @@
               </fieldset>
 
               <fieldset>
-                <legend>Spacing</legend>
+                <legend>Spacing Options</legend>
 
                 <div class="category-grid">
                   <div class="postfix-input" data-postfix="px">
@@ -330,7 +350,25 @@
                       <div></div>
                     </label>
                   </div>
-                  </div>
+                  <div class="experimental">
+                    <label for="paper-curve-toggle"
+                      >Paper Curve:
+                      <span aria-label="paper curve status" class="status"
+                        >off</span
+                      >
+                    </label>
+                    <label
+                      title="Paper Curve (Yet to be implemented)"
+                      class="switch-toggle outer"
+                      style="cursor: not-allowed !important;"
+                    >
+                      <input
+                        aria-checked="false"
+                        aria-label="Paper Curve Button"
+                        id="paper-curve-toggle"
+                        type="checkbox"
+                      />
+                      <div></div>
                     </label>
                   </div>
                 </div>
@@ -349,7 +387,7 @@
                   data-testid="generate-image-button"
                   class="button generate-image-button"
                 >
-                  Create Assignment
+                  Generate Image
                 </button>
               </div>
             </div>
@@ -361,17 +399,17 @@
       <section>
         <h2 id="output-header">Output</h2>
         <div id="output" class="output" style="text-align: center;">
-          Click "Generate Assignment" Button to generate new images.
+          Click "Generate Image" Button to generate new image.
         </div>
         <div style="text-align: center; padding: 30px;">
           <button class="imp-button" id="download-as-pdf-button">
-            Image as .jpeg will be stored in your phone's 'Documents' folder
+            Download All Images as PDF
           </button>
         </div>
       </section>
 
       <section id="how-to-add-handwriting">
-        <h2>🤘 Want to add your own handwriting?</h2>
+        <h2>🤓 Guide to add your own handwriting</h2>
         <div>
           <ul>
             <li>
@@ -394,14 +432,67 @@
             </li>
           </ul>
         </div>
+      </section>
+
+      <section id="sponsors">
+        <h2>🤗 Sponsors</h2>
+        <p>
+          This tool is completely free and neither stores any of your data for
+          money so maybe you can consider being patron or making an one time
+          payment with buy me a coffee to help sustain 🤗
+        </p>
+        <p>
+          <a href="https://www.patreon.com/bePatron?u=31891872">
+            <img
+              loading="lazy"
+              style="border-radius: 4px;"
+              alt="Buy me a Coffee Button"
+              width="200"
+              src="https://c5.patreon.com/external/logo/become_a_patron_button.png"
+            />
+          </a>
+          &nbsp;
+          <a href="https://www.buymeacoffee.com/saurabhdaware">
+            <img
+              loading="lazy"
+              style="border-radius: 4px;"
+              alt="Buy me a Coffee Button"
+              width="200"
+              src="https://cdn.buymeacoffee.com/buttons/default-yellow.png"
+            />
+          </a>
+        </p>
+      </section>
+
+      <section id="github-contributors">
+        <h2>👫 GitHub Contributors</h2>
+        <div class="project-contributors" id="project-contributors"></div>
+        <div style="padding: 20px 5px;">
+          Text-to-Handwriting is an open-source tool built with HTML, CSS, and
+          JavaScript! <br />You can check out
+          <a
+            href="https://github.com/saurabhdaware/text-to-handwriting/blob/master/CONTRIBUTING.md"
+            >CONTRIBUTING.md on GitHub</a
+          >, if you want to contribute.
+        </div>
+      </section>
     </main>
     <footer style="padding: 40px 0px 10px 0px;">
-      Thank you for using <b>Take Notes App</b><br>
-      <b><i>Remember:</i></b> There's no alternative to hands-on practice!<br><br><br>
-      Want to meet the developers? <br><br>
-      <button class="imp-button">
-        <a href="devs.html">Meet The Devs! &#10084;</a> 
-      </button>
+      Thank you for using Text to Handwriting! If you have any
+      questions/suggestions/feedback, you can drop me a message on
+      <a href="https://twitter.com/saurabhcodes">Twitter @saurabhcodes</a> or
+      drop an email at
+      <a href="mailto:saurabhdaware99@gmail.com">saurabhdaware99@gmail.com</a>.
+      <br /><br />Do star the
+      <a href="https://github.com/saurabhdaware/text-to-handwriting"
+        >Text-to-Handwriting GitHub Repository</a
+      >
+      and If you're using it for writing assignments, make sure you use it at
+      your own risk and If it fails and your teacher catch this tool, ask them
+      to star my GitHub as well :D <br />
+      <br />byeeee! <br /><br />
+      ~ Saurabh (<a href="https://saurabhdaware.in">https://saurabhdaware.in</a
+      >)
     </footer>
 
     <!-- Fixed Elements -->
@@ -446,6 +537,43 @@
         </div>
       </div>
     </section>
+    <!-- GitHub Corner logo -->
+    <a
+      tabindex="0"
+      href="https://github.com/saurabhdaware/text-to-handwriting"
+      rel="noopener noreferrer"
+      target="_blank"
+      class="github-corner"
+      aria-label="View source on GitHub"
+    >
+      <svg
+        width="80"
+        height="80"
+        viewBox="0 0 250 250"
+        style="
+          fill: #151513;
+          color: #fff;
+          position: absolute;
+          top: 0;
+          border: 0;
+          right: 0;
+        "
+        aria-hidden="true"
+      >
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path
+          d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+          fill="currentColor"
+          style="transform-origin: 130px 106px;"
+          class="octo-arm"
+        ></path>
+        <path
+          d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+          fill="currentColor"
+          class="octo-body"
+        ></path>
+      </svg>
+    </a>
 
     <script
       src="./js/vendors/html2canvas.min.js"
