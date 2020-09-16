@@ -24,11 +24,7 @@ ___
 
 ___
 
-<img src="https://readme-maker.herokuapp.com/uploads/4159f274df38c861-Mobile1.png" width="1200">
-<img src="https://readme-maker.herokuapp.com/uploads/4f67123315ba9c19-Mobile2.png" width="1200">
-<img src="https://readme-maker.herokuapp.com/uploads/505f18713f9f3ffd-Mobile3.png" width="1200">
-<img src="https://readme-maker.herokuapp.com/uploads/866ce77eb0f21fc3-Mobile4.png" width="1200">
-<img src="https://readme-maker.herokuapp.com/uploads/f66d23d89d63804d-Mobile5.png" width="1200">
+<img src="https://readme-maker.herokuapp.com/uploads/4f67123315ba9c19-Mobile2.png" width="400" height="600">&nbsp;<img src="https://readme-maker.herokuapp.com/uploads/4159f274df38c861-Mobile1.png" width="400" height="600">&nbsp;<img src="https://readme-maker.herokuapp.com/uploads/505f18713f9f3ffd-Mobile3.png" width="400" height="600">&nbsp;<img src="https://readme-maker.herokuapp.com/uploads/866ce77eb0f21fc3-Mobile4.png" width="400" height="600">&nbsp;<img src="https://readme-maker.herokuapp.com/uploads/f66d23d89d63804d-Mobile5.png" width="400" height="600">
 
 ## :information_source: Sobre
 
@@ -40,7 +36,7 @@ Students often struggle writing notes and homework all by hand. To ease their wo
 
 ## :seedling: Requisitos Mínimos
 
-Android Phones with a minimum of Android JellyBean
+Android Phones with a minimum of Android 5 (Lollipop SDK = 21)
 
 ## :rocket: Tecnologias Utilizadas 
 
