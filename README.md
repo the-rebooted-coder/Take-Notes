@@ -3,7 +3,7 @@
 
 ___
 <p align="center">
-  <img src="https://readme-maker.herokuapp.com/uploads/e265172ff5899872-Untitled-design.png" width="300" heigth="300"\>
+  <img src="https://i.ibb.co/Jv7ChLQ/Untitled-design.png" width="300" heigth="300"\>
 </p>
 
 <p align="center">
@@ -27,7 +27,7 @@ ___
 </h3>
 
 ___
-<img src="https://readme-maker.herokuapp.com/uploads/4159f274df38c861-Mobile1.png" width="200"><img src="https://readme-maker.herokuapp.com/uploads/4f67123315ba9c19-Mobile2.png" width="200"><img src="https://readme-maker.herokuapp.com/uploads/505f18713f9f3ffd-Mobile3.png" width="200"><img src="https://readme-maker.herokuapp.com/uploads/866ce77eb0f21fc3-Mobile4.png" width="200"> <img src="https://readme-maker.herokuapp.com/uploads/f66d23d89d63804d-Mobile5.png" width="200"> 
+<img src="https://i.ibb.co/NyfSwLt/Mobile1.png" width="200"><img src="https://i.ibb.co/LpmqVBs/Mobile2.png" width="200"><img src="https://i.ibb.co/DLGdwC0/Mobile3.png" width="200"><img src="https://i.ibb.co/QCgRV6C/Mobile4.png" width="200"> <img src="https://i.ibb.co/bPz4SB6/Mobile5.png" width="200"> 
 
 ## :information_source: About
 
