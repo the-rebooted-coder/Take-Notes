@@ -33,7 +33,12 @@ public class NoInternet extends AppCompatActivity {
                 startActivity(intent);
             }
             else {
-                startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+                Intent intent = new Intent();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setAction(android.provider.Settings.ACTION_DATA_ROAMING_SETTINGS);
+                startActivity(intent);
+                //Intent intent = new Intent(android.provider.Settings.ACTION_DATA_ROAMING_SETTINGS);
+                //startActivity(intent);
             }
         });
 
