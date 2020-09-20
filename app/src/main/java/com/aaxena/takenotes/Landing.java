@@ -22,6 +22,7 @@ import android.os.Vibrator;
 import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -83,6 +84,7 @@ public class Landing extends AppCompatActivity {
     private void couchSit() {
         webview = findViewById(R.id.takenotes_plugin);
         webview.getSettings().setJavaScriptEnabled(true);
+        webview.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         webview.getSettings().setDomStorageEnabled(true);
         webview.getSettings().setDatabaseEnabled(true);
         webview.setWebViewClient(new WebViewClient());
@@ -91,6 +93,8 @@ public class Landing extends AppCompatActivity {
         webview.setInitialScale((int) 1.0);
         webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/");
         webview.scrollTo(0, 200);
+
+        webview.setWebChromeClient(new MyWebChromeClient());
 
         //handle downloading
         webview.setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {

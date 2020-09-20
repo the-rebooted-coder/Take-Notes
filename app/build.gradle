@@ -35,6 +35,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'androidx.browser:browser:1.2.0'
 
+
     //Lottie Anims
     implementation "com.airbnb.android:lottie:3.4.0"
     
