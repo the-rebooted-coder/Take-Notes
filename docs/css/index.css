@@ -1,8 +1,8 @@
 /* CSS Variables */
 body {
-  --background-primary: #DEEAF6;
+  --background-primary: #fff;
   --font-color-primary: #333;
-  --elevation-background: #c2cbd9;
+  --elevation-background: #f3f3f3;
   --link-color: #006eb8;
   --font-family-primary: 'Roboto', cursive;
   --handwriting-font: 'Homemade Apple', cursive;
@@ -12,10 +12,9 @@ body {
   --field-borders: #e0e0e0;
   --primary-button-bg: #1d1d1d;
   --primary-button-color: #eee;
-  --box-shadow:  9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
 }
 body.dark {
-  --background-primary: #000000;
+  --background-primary: #121212;
   --font-color-primary: #ccc;
   --elevation-background: #1d1d1d;
   --link-color: #09f;
@@ -23,7 +22,6 @@ body.dark {
   --field-borders: #222;
   --primary-button-bg: #eee;
   --primary-button-color: #111;
-  --box-shadow:  9px 9px 16px rgba(48, 48, 51, 0.6), -9px -9px 16px    rgba(40, 40, 42, 0.6);
 }
 @font-face {
   font-family: 'Hindi_Font';
@@ -80,7 +78,6 @@ button {
   border: none;
   background-color: var(--elevation-background);
   color: var(--font-color-primary);
-  box-shadow: var(--box-shadow);
   border-radius: 6px;
   cursor: pointer;
   padding: 10px 20px;
