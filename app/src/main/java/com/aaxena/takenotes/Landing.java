@@ -102,36 +102,6 @@ public class Landing extends AppCompatActivity {
         webview.scrollTo(0, 200);
 
         webview.setWebChromeClient(new WebChromeClient() {
-            //For Android 3.0+
-            public void openFileChooser(ValueCallback<Uri> uploadMsg) {
-
-                mUM = uploadMsg;
-                Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-                i.addCategory(Intent.CATEGORY_OPENABLE);
-                i.setType("*/*");
-                Landing.this.startActivityForResult(Intent.createChooser(i, "File Chooser"), FCR);
-            }
-            // For Android 3.0+, above method not supported in some android 3+ versions, in such case we use this
-            public void openFileChooser(ValueCallback uploadMsg, String acceptType) {
-
-                mUM = uploadMsg;
-                Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-                i.addCategory(Intent.CATEGORY_OPENABLE);
-                i.setType("*/*");
-                Landing.this.startActivityForResult(
-                        Intent.createChooser(i, "File Browser"),
-                        FCR);
-            }
-
-            //For Android 4.1+
-            public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
-
-                mUM = uploadMsg;
-                Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-                i.addCategory(Intent.CATEGORY_OPENABLE);
-                i.setType("*/*");
-                Landing.this.startActivityForResult(Intent.createChooser(i, "File Chooser"), Landing.FCR);
-            }
             //For Android 5.0+
             public boolean onShowFileChooser(
                     WebView webView, ValueCallback<Uri[]> filePathCallback,
