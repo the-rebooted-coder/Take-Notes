@@ -272,7 +272,7 @@ public class Landing extends AppCompatActivity {
             mUM.onReceiveValue(result);
             mUM = null;
         } else
-            Toast.makeText(this, "Failed to Upload Font", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.failed_to_load_fnt, Toast.LENGTH_LONG).show();
     }
 
     @Override

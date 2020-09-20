@@ -9,4 +9,5 @@
     <string name="status">Note(s) Saved Successfully</string>
     <string name="no_internet">Uh-Oh!</string>
     <string name="wi_fi">Wi-Fi</string>
+    <string name="failed_to_load_fnt">Failed to Upload Font</string>
 </resources>
