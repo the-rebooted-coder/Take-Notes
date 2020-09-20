@@ -10,12 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class SplashScreen extends AppCompatActivity {
-    private FirebaseUser mFirebaseUser;
-    private FirebaseAuth mFirebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +23,11 @@ public class SplashScreen extends AppCompatActivity {
     }
     private void fireSplashScreen() {
         int splash_screen_time_out = 3000;
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                v.vibrate(30);
-                check();
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v.vibrate(30);
+            check();
+            finish();
         }, splash_screen_time_out);
     }
     private void check(){
