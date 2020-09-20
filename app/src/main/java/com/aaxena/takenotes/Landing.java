@@ -44,7 +44,6 @@ public class Landing extends AppCompatActivity {
     private WebView webview;
     private final static int FCR = 1;
     public static final int REQUEST_SELECT_FILE = 100;
-    private String mCM;
     private ValueCallback<Uri> mUM;
     public ValueCallback<Uri[]> mUMA;
 
@@ -127,12 +126,11 @@ public class Landing extends AppCompatActivity {
                 Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
                 contentSelectionIntent.setType("*/*");
-
                 Intent chooserIntent = new Intent(Intent.ACTION_CHOOSER);
                 chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
                 try {
-
                     startActivityForResult(chooserIntent, REQUEST_SELECT_FILE);
+                    Toast.makeText(Landing.this,"Pick a .ttf file",Toast.LENGTH_LONG).show();
                 } catch (ActivityNotFoundException e) {
                     mUMA = null;
                     Toast.makeText(Landing.this, "Cannot Open File Picker", Toast.LENGTH_LONG).show();
@@ -140,14 +138,6 @@ public class Landing extends AppCompatActivity {
                 }
                 return true;
             }
-
-            //    Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
-              //  contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
-                //contentSelectionIntent.setType("*/*");
-
-                //Intent chooserIntent = new Intent(Intent.ACTION_CHOOSER);
-                //chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
-                //startActivityForResult(chooserIntent, FCR);
         });
 
         //handle downloading
@@ -272,16 +262,12 @@ public class Landing extends AppCompatActivity {
             if (requestCode == REQUEST_SELECT_FILE) {
                if (mUMA == null)
                    return;
-                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                v.vibrate(30);
                 mUMA.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, intent));
                 mUMA = null;
             }
         } else if (requestCode == FCR) {
             if (null == mUM)
                return;
-            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v.vibrate(30);
             Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
             mUM.onReceiveValue(result);
             mUM = null;
