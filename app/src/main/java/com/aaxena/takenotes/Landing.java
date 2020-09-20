@@ -7,6 +7,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -119,10 +120,9 @@ public class Landing extends AppCompatActivity {
 
                 if (mUMA != null) {
                     mUMA.onReceiveValue(null);
+                    mUMA = null;
                 }
-
                 mUMA = filePathCallback;
-
 
                 Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -130,10 +130,24 @@ public class Landing extends AppCompatActivity {
 
                 Intent chooserIntent = new Intent(Intent.ACTION_CHOOSER);
                 chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
-                startActivityForResult(chooserIntent, FCR);
+                try {
 
+                    startActivityForResult(chooserIntent, REQUEST_SELECT_FILE);
+                } catch (ActivityNotFoundException e) {
+                    mUMA = null;
+                    Toast.makeText(Landing.this, "Cannot Open File Picker", Toast.LENGTH_LONG).show();
+                    return false;
+                }
                 return true;
             }
+
+            //    Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
+              //  contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
+                //contentSelectionIntent.setType("*/*");
+
+                //Intent chooserIntent = new Intent(Intent.ACTION_CHOOSER);
+                //chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
+                //startActivityForResult(chooserIntent, FCR);
         });
 
         //handle downloading
@@ -256,14 +270,18 @@ public class Landing extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, intent);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (requestCode == REQUEST_SELECT_FILE) {
-                if (mUMA == null)
-                    return;
+               if (mUMA == null)
+                   return;
+                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                v.vibrate(30);
                 mUMA.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, intent));
                 mUMA = null;
             }
-        } else if (requestCode == REQUEST_SELECT_FILE) {
+        } else if (requestCode == FCR) {
             if (null == mUM)
-                return;
+               return;
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v.vibrate(30);
             Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
             mUM.onReceiveValue(result);
             mUM = null;
