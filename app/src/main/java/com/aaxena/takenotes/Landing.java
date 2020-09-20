@@ -215,7 +215,7 @@ public class Landing extends AppCompatActivity {
                 PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
                 NotificationChannel notificationChannel= new NotificationChannel(CHANNEL_ID,"Notes Saved Notification", NotificationManager.IMPORTANCE_HIGH);
                 Notification notification = new Notification.Builder(this,CHANNEL_ID)
-                        .setContentText("Check Now!")
+                        .setContentText("Tap to Check Now!")
                         .setContentTitle("Your generated note got saved")
                         .setContentIntent(pIntent)
                         .setColor(getResources().getColor(R.color.notification))
@@ -238,7 +238,7 @@ public class Landing extends AppCompatActivity {
                 Notification notification = new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.logo_take_notes)
                         .setColor(getResources().getColor(R.color.notification))
-                        .setContentText("Check Now!")
+                        .setContentText("Tap to Check Now!")
                         .setContentTitle("Your generated note got saved")
                         .setContentIntent(pIntent)
                         .build();
