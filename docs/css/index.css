@@ -1,6 +1,6 @@
 /* CSS Variables */
 body {
-  --background-primary: #fff;
+  --background-primary: #DEEAF6;
   --font-color-primary: #333;
   --elevation-background: #f3f3f3;
   --link-color: #006eb8;
@@ -14,7 +14,7 @@ body {
   --primary-button-color: #eee;
 }
 body.dark {
-  --background-primary: #121212;
+  --background-primary: #000000;
   --font-color-primary: #ccc;
   --elevation-background: #1d1d1d;
   --link-color: #09f;
