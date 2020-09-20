@@ -42,9 +42,10 @@ import java.lang.reflect.Method;
 public class Landing extends AppCompatActivity {
     private WebView webview;
     private final static int FCR = 1;
+    public static final int REQUEST_SELECT_FILE = 100;
     private String mCM;
     private ValueCallback<Uri> mUM;
-    private ValueCallback<Uri[]> mUMA;
+    public ValueCallback<Uri[]> mUMA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,15 @@ public class Landing extends AppCompatActivity {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         }
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mUMA == null)
+            return;
+
+        mUMA.onReceiveValue(new Uri[]{});
+        mUMA = null;
     }
     //Network Checking Boolean
     private boolean haveNetwork() {
@@ -112,36 +122,19 @@ public class Landing extends AppCompatActivity {
                 }
 
                 mUMA = filePathCallback;
-                // Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
 
                 Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
                 contentSelectionIntent.setType("*/*");
-//                Intent[] intentArray;
-//
-//                if (takePictureIntent != null) {
-//                    intentArray = new Intent[]{takePictureIntent};
-//                } else {
-//                    intentArray = new Intent[0];
-//                }
 
                 Intent chooserIntent = new Intent(Intent.ACTION_CHOOSER);
                 chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
-                // chooserIntent.putExtra(Intent.EXTRA_TITLE, "Image Chooser");
-                // chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentArray);
                 startActivityForResult(chooserIntent, FCR);
 
                 return true;
             }
         });
-        class Callback extends WebViewClient {
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                Toast.makeText(getApplicationContext(), "Failed loading app!", Toast.LENGTH_SHORT).show();
-            }
-        }
-
-
 
         //handle downloading
         webview.setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {
@@ -257,6 +250,25 @@ public class Landing extends AppCompatActivity {
         }
 
         return file.toString();
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (requestCode == REQUEST_SELECT_FILE) {
+                if (mUMA == null)
+                    return;
+                mUMA.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, intent));
+                mUMA = null;
+            }
+        } else if (requestCode == REQUEST_SELECT_FILE) {
+            if (null == mUM)
+                return;
+            Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
+            mUM.onReceiveValue(result);
+            mUM = null;
+        } else
+            Toast.makeText(this, "Failed to Upload Font", Toast.LENGTH_LONG).show();
     }
 
     @Override
