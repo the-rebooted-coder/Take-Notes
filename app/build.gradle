@@ -34,6 +34,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'androidx.browser:browser:1.2.0'
+    implementation 'com.google.android.play:core:1.8.0'
 
 
     //Lottie Anims

@@ -33,6 +33,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.review.testing.FakeReviewManager;
+import com.google.android.play.core.tasks.Task;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -57,7 +63,29 @@ public class Landing extends AppCompatActivity {
 
         //Runtime External storage permission for saving download files
         checkPerms();
+
+        //Asking for Rating
+        askRatings();
     }
+
+    void askRatings() {
+         ReviewManager manager = new FakeReviewManager(this);
+         Task<ReviewInfo> request = manager.requestReviewFlow();
+         request.addOnCompleteListener(task -> {
+             if (task.isSuccessful()) {
+                 // We can get the ReviewInfo object
+                 ReviewInfo reviewInfo = task.getResult();
+                 Task<Void> flow = manager.launchReviewFlow(this, reviewInfo);
+                 flow.addOnCompleteListener(task2 -> {
+                     // The flow has finished. The API does not indicate whether the user
+                     // reviewed or not, or even whether the review dialog was shown. Thus, no
+                     // matter the result, we continue our app flow.
+                 });
+             } else {
+                 // There was some problem, continue regardless of the result.
+             }
+         });
+     }
 
     private void checkNetwork() {
         if(haveNetwork()){
