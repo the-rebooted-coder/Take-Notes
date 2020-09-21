@@ -36,27 +36,34 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="334dp"
+        android:layout_height="54dp"
         android:layout_marginBottom="44dp"
+        android:background="@drawable/card_background"
         android:text="Sign Out"
         android:textColor="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/card_background"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.919" />
 
-    <ImageView
+
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/imageView3"
-        android:layout_width="201dp"
-        android:layout_height="142dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="213dp"
+        android:elevation="20dp"
+        android:layout_height="201dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/profile"
+        app:civ_border_color="#3f51b5"
+        app:civ_border_width="4dp"
+        app:civ_shadow="true"
+        app:civ_shadow_color="#3f51b5"
+        app:civ_shadow_radius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/profile" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

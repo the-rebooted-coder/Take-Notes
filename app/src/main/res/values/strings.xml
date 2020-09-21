@@ -10,4 +10,5 @@
     <string name="no_internet">Uh-Oh!</string>
     <string name="wi_fi">Wi-Fi</string>
     <string name="failed_to_load_fnt">Failed to Upload Font</string>
+    <string name="photo_of_gaccount_user">Photo of GAccount User</string>
 </resources>
