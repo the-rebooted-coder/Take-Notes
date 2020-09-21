@@ -1,9 +1,9 @@
 package com.aaxena.takenotes;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class UserInfo extends AppCompatActivity {
     ImageView imageview;

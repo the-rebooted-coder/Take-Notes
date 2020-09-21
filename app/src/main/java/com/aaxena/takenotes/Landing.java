@@ -10,6 +10,7 @@ import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.media.MediaScannerConnection;
 import android.net.ConnectivityManager;
@@ -33,10 +34,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.InstallState;
+import com.google.android.play.core.install.InstallStateUpdatedListener;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.InstallStatus;
+import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
-import com.google.android.play.core.review.testing.FakeReviewManager;
 import com.google.android.play.core.tasks.Task;
 
 import java.io.File;
@@ -52,6 +59,8 @@ public class Landing extends AppCompatActivity {
     public static final int REQUEST_SELECT_FILE = 100;
     private ValueCallback<Uri> mUM;
     public ValueCallback<Uri[]> mUMA;
+    private AppUpdateManager mAppUpdateManager;
+    private static final int RC_APP_UPDATE = 11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +77,49 @@ public class Landing extends AppCompatActivity {
         askRatings();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAppUpdateManager = AppUpdateManagerFactory.create(this);
+
+        mAppUpdateManager.registerListener(installStateUpdatedListener);
+
+        mAppUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {
+
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE /*AppUpdateType.IMMEDIATE*/)){
+
+                try {
+                    mAppUpdateManager.startUpdateFlowForResult(
+                            appUpdateInfo, AppUpdateType.IMMEDIATE /*AppUpdateType.IMMEDIATE*/, Landing.this, RC_APP_UPDATE);
+
+                } catch (IntentSender.SendIntentException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            else {
+            }
+        });
+    }
+
+    InstallStateUpdatedListener installStateUpdatedListener = new
+            InstallStateUpdatedListener() {
+                @Override
+                public void onStateUpdate(InstallState state) {
+                     if (state.installStatus() == InstallStatus.INSTALLED){
+                        if (mAppUpdateManager != null){
+                            mAppUpdateManager.unregisterListener(installStateUpdatedListener);
+                        }
+
+                    } else {
+                       //Do Nothing
+                    }
+                }
+            };
+
     void askRatings() {
-         ReviewManager manager = new FakeReviewManager(this);
+         ReviewManager manager = ReviewManagerFactory.create(this);
          Task<ReviewInfo> request = manager.requestReviewFlow();
          request.addOnCompleteListener(task -> {
              if (task.isSuccessful()) {
@@ -77,9 +127,6 @@ public class Landing extends AppCompatActivity {
                  ReviewInfo reviewInfo = task.getResult();
                  Task<Void> flow = manager.launchReviewFlow(this, reviewInfo);
                  flow.addOnCompleteListener(task2 -> {
-                     // The flow has finished. The API does not indicate whether the user
-                     // reviewed or not, or even whether the review dialog was shown. Thus, no
-                     // matter the result, we continue our app flow.
                  });
              } else {
                  // There was some problem, continue regardless of the result.
@@ -168,7 +215,7 @@ public class Landing extends AppCompatActivity {
             }
         });
 
-        //handle downloading
+        //Handles Downloading
         webview.setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             v.vibrate(30);
@@ -283,6 +330,15 @@ public class Landing extends AppCompatActivity {
 
         return file.toString();
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mAppUpdateManager != null) {
+            mAppUpdateManager.unregisterListener(installStateUpdatedListener);
+        }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
