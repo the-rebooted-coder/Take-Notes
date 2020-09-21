@@ -39,7 +39,7 @@ Students often struggle writing notes and homework all by hand. To ease their wo
 
 ## :seedling: Requirements
 
-Android Phones with a minimum of Android 5 (Lollipop SDK = 21)
+Android Phones with a minimum of Android 7 (Nougat SDK = 24)
 
 ## :rocket: Technologies Used
 
