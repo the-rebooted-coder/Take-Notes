@@ -176,7 +176,7 @@ public class Landing extends AppCompatActivity {
     private void couchSit() {
         webview = findViewById(R.id.takenotes_plugin);
         webview.getSettings().setJavaScriptEnabled(true);
-        webview.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+        webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         webview.getSettings().setDomStorageEnabled(true);
         webview.getSettings().setDatabaseEnabled(true);
         webview.setWebViewClient(new WebViewClient());
