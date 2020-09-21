@@ -3,8 +3,10 @@ package com.aaxena.takenotes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 public class UserInfo extends AppCompatActivity {
+    ImageView imageview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
