@@ -113,7 +113,7 @@ public class Landing extends AppCompatActivity {
                         }
 
                     } else {
-                       //Do Nothing
+                      //App Is Fully Updated Nothing To Do Continuing Normal WorkFlow
                     }
                 }
             };
