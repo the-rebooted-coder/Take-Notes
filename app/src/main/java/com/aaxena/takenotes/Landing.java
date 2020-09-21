@@ -223,6 +223,19 @@ public class Landing extends AppCompatActivity {
             }
         });
 
+        webview.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (url.matches("https://the-rebooted-coder.github.io/Take-Notes/")) {
+                    Intent i=new Intent(Landing.this,UserInfo.class);
+                    startActivity(i);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    finish();
+                }
+
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+        });
         //Handles Downloading
         webview.setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
