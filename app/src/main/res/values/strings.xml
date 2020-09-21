@@ -11,4 +11,9 @@
     <string name="wi_fi">Wi-Fi</string>
     <string name="failed_to_load_fnt">Failed to Upload Font</string>
     <string name="photo_of_gaccount_user">Photo of GAccount User</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="not_yet_in">You are not yet signed-in</string>
+    <string name="def_name_on_userInfo">Your Name</string>
+    <string name="def_email">email@takenotes.com</string>
+    <string name="sign_out_greeting">Signing you out and closing app</string>
 </resources>
