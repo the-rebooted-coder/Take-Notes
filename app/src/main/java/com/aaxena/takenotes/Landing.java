@@ -222,7 +222,6 @@ public class Landing extends AppCompatActivity {
                 return true;
             }
         });
-
         webview.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -231,6 +230,9 @@ public class Landing extends AppCompatActivity {
                     startActivity(i);
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     finish();
+                }
+                else if (url.contains("https://the-rebooted-coder.github.io/Take-Notes/devs.html")) {
+                   Toast.makeText(Landing.this,"Tip: Tap on Image to Reveal More!",Toast.LENGTH_LONG).show();
                 }
 
                 return super.shouldOverrideUrlLoading(view, url);
