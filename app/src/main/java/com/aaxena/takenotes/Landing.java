@@ -185,9 +185,17 @@ public class Landing extends AppCompatActivity {
         webview.setInitialScale((int) 1.0);
         webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/");
         webview.scrollTo(0, 200);
-
         webview.setWebChromeClient(new WebChromeClient() {
-            //For Android 5.0+
+
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (url.equals("Navigation://OpenNativeScreen")) {
+                    startActivity(new Intent(Landing.this, UserInfo.class));
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+           //File Chooser
             public boolean onShowFileChooser(
                     WebView webView, ValueCallback<Uri[]> filePathCallback,
                     WebChromeClient.FileChooserParams fileChooserParams) {

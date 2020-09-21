@@ -40,8 +40,8 @@
 
     <Button
         android:id="@+id/sign_out"
-        android:layout_width="334dp"
-        android:layout_height="54dp"
+        android:layout_width="237dp"
+        android:layout_height="57dp"
         android:layout_marginBottom="44dp"
         android:background="@drawable/card_background"
         android:fontFamily="@font/productsansbold"
