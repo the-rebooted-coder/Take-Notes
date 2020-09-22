@@ -72,9 +72,6 @@ public class Landing extends AppCompatActivity {
 
         //Runtime External storage permission for saving download files
         checkPerms();
-
-        //Asking for Rating
-        askRatings();
     }
 
     @Override
@@ -113,26 +110,10 @@ public class Landing extends AppCompatActivity {
                         }
 
                     } else {
-                      //App Is Fully Updated Nothing To Do Continuing Normal WorkFlow
+                      //App Is Fully Updated Nothing To Do Continuing Normal WorkFlow but do not erase the else func
                     }
                 }
             };
-
-    void askRatings() {
-         ReviewManager manager = ReviewManagerFactory.create(this);
-         Task<ReviewInfo> request = manager.requestReviewFlow();
-         request.addOnCompleteListener(task -> {
-             if (task.isSuccessful()) {
-                 // We can get the ReviewInfo object
-                 ReviewInfo reviewInfo = task.getResult();
-                 Task<Void> flow = manager.launchReviewFlow(this, reviewInfo);
-                 flow.addOnCompleteListener(task2 -> {
-                 });
-             } else {
-                 // There was some problem, continue regardless of the result.
-             }
-         });
-     }
 
     private void checkNetwork() {
         if(haveNetwork()){
@@ -183,18 +164,9 @@ public class Landing extends AppCompatActivity {
         registerForContextMenu(webview);
         webview.getSettings().setUseWideViewPort(true);
         webview.setInitialScale((int) 1.0);
-        webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/");
+        webview.loadUrl("https://shrish-sharma-codes.github.io/tn-testing/");
         webview.scrollTo(0, 200);
         webview.setWebChromeClient(new WebChromeClient() {
-
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (url.equals("Navigation://OpenNativeScreen")) {
-                    startActivity(new Intent(Landing.this, UserInfo.class));
-                    finish();
-                    return true;
-                }
-                return false;
-            }
            //File Chooser
             public boolean onShowFileChooser(
                     WebView webView, ValueCallback<Uri[]> filePathCallback,
@@ -213,7 +185,7 @@ public class Landing extends AppCompatActivity {
                 chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
                 try {
                     startActivityForResult(chooserIntent, REQUEST_SELECT_FILE);
-                    Toast.makeText(Landing.this,"Pick a .ttf file",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Landing.this,"Pick a suitable file",Toast.LENGTH_LONG).show();
                 } catch (ActivityNotFoundException e) {
                     mUMA = null;
                     Toast.makeText(Landing.this, "Cannot Open File Picker", Toast.LENGTH_LONG).show();
@@ -225,32 +197,31 @@ public class Landing extends AppCompatActivity {
         webview.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (url.matches("https://the-rebooted-coder.github.io/Take-Notes/ample_time.png")) {
+                if (url.matches("https://shrish-sharma-codes.github.io/tn-testing/ample_time.png")) {
                     Intent i=new Intent(Landing.this,UserInfo.class);
                     startActivity(i);
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     finish();
                 }
-                else if (url.contains("https://the-rebooted-coder.github.io/Take-Notes/devs.html")) {
+                else if (url.contains("https://shrish-sharma-codes.github.io/tn-testing/devs.html")) {
                    Toast.makeText(Landing.this,"Tip: Tap on Image to Reveal More!",Toast.LENGTH_LONG).show();
                 }
-
                 return super.shouldOverrideUrlLoading(view, url);
             }
         });
         //Handles Downloading
         webview.setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {
-            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v.vibrate(30);
             if(Build.VERSION.SDK_INT>=24){
                 try{
                     Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
                     m.invoke(null);
-                    if (url.startsWith("data:")) {  //when url is base64 encoded data
+                    if (url.startsWith("data:")) {
+                        //when url is base64 encoded data
+                        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                        v.vibrate(30);
                         String path = createAndSaveFileFromBase64Url(url);
                         return;
                     }
-
                     DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
                     DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
                     dm.enqueue(request);
@@ -260,6 +231,7 @@ public class Landing extends AppCompatActivity {
             }
         });
     }
+
 
     private void checkPerms() {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
