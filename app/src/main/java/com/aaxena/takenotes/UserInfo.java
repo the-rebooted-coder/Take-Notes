@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,17 +37,6 @@ public class UserInfo extends AppCompatActivity {
         email = findViewById(R.id.email);
         signOut = findViewById(R.id.sign_out);
 
-        signOut.setOnClickListener(v -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(30);
-            Toast.makeText(this, R.string.sign_out_greeting,Toast.LENGTH_LONG).show();
-            int death_text = 2700;
-            new Handler().postDelayed(() -> {
-                ((ActivityManager)this.getSystemService(ACTIVITY_SERVICE))
-                        .clearApplicationUserData();
-            }, death_text);
-        });
-
         if (account !=null){
             //User Signed In, Displaying Info
             String personName = account.getDisplayName();
@@ -56,11 +44,24 @@ public class UserInfo extends AppCompatActivity {
             String personEmail = account.getEmail();
             email.setText(personEmail);
             Uri photoUrl = account.getPhotoUrl(); Glide.with(this).load(photoUrl).into(photo);
+            signOut.setOnClickListener(v -> {
+                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                v2.vibrate(30);
+                Toast.makeText(this, R.string.sign_out_greeting,Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Goodbye "+personName,Toast.LENGTH_SHORT).show();
+                int death_text = 2800;
+                new Handler().postDelayed(() -> {
+                    ((ActivityManager)this.getSystemService(ACTIVITY_SERVICE))
+                            .clearApplicationUserData();
+                }, death_text);
+            });
         }
         else {
             //Opened by Mistake
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             v.vibrate(30);
+            Intent taking_out = new Intent(UserInfo.this, SignUp.class);
+            startActivity(taking_out);
             Toast.makeText(this, R.string.not_yet_in,Toast.LENGTH_LONG).show();
         }
     }

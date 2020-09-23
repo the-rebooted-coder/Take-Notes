@@ -35,6 +35,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.NotificationCompat;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
 import com.google.android.play.core.install.InstallState;
@@ -65,7 +67,6 @@ public class Landing extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
-
         //Checking Network
         checkNetwork();
 
@@ -163,7 +164,7 @@ public class Landing extends AppCompatActivity {
         registerForContextMenu(webview);
         webview.getSettings().setUseWideViewPort(true);
         webview.setInitialScale((int) 1.0);
-        webview.loadUrl("https://shrish-sharma-codes.github.io/tn-testing/");
+        webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/");
         webview.scrollTo(0, 200);
         webview.setWebChromeClient(new WebChromeClient() {
            //File Chooser
@@ -245,6 +246,19 @@ public class Landing extends AppCompatActivity {
                 Log.d("permission", "permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
                 String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
                 requestPermissions(permissions, 1);
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+                if (account !=null) {
+                    String personName = account.getDisplayName();
+                    Toast.makeText(Landing.this, "Howdy " + personName + " you are in!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Landing.this, "Welcome to Take Notes", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(Landing.this, R.string.not_yet_in,Toast.LENGTH_LONG).show();
+                    Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    v2.vibrate(30);
+                    Intent taking_out = new Intent(Landing.this, SignUp.class);
+                    startActivity(taking_out);
+                }
             }
         }
     }
