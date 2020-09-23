@@ -16,4 +16,6 @@
     <string name="def_name_on_userInfo">Your Name</string>
     <string name="def_email">email@takenotes.com</string>
     <string name="sign_out_greeting">Signing you out and closing app</string>
+    <string name="notifications_admin_channel_name">Remote Notification Service</string>
+    <string name="notifications_admin_channel_description">Channel for Remote Firebase Events</string>
 </resources>
