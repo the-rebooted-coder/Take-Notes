@@ -17,9 +17,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 public class UserInfo extends AppCompatActivity {
-   ImageView photo;
+   CircularImageView photo;
    TextView username;
    TextView email;
    Button signOut;

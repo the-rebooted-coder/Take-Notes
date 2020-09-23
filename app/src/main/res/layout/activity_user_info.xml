@@ -12,15 +12,16 @@
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:fontFamily="@font/productsans"
         android:text="@string/def_name_on_userInfo"
         android:textAlignment="center"
-        android:textColor="#fff"
+        android:textColor="@color/ic_launcher_background"
         android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accphoto" />
+        app:layout_constraintTop_toBottomOf="@+id/accphoto"
+        app:layout_constraintVertical_bias="0.35000002" />
 
     <TextView
         android:id="@+id/email"
@@ -30,13 +31,13 @@
         android:fontFamily="@font/productsans"
         android:text="@string/def_email"
         android:textAlignment="center"
-        android:textColor="#000"
+        android:textColor="#004aad"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/sign_out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username"
-        app:layout_constraintVertical_bias="0.78" />
+        app:layout_constraintVertical_bias="0.909" />
 
     <Button
         android:id="@+id/sign_out"
@@ -54,18 +55,18 @@
         app:layout_constraintTop_toBottomOf="@+id/username"
         app:layout_constraintVertical_bias="0.919" />
 
-
-    <ImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/accphoto"
-        android:layout_width="137dp"
-        android:layout_height="127dp"
-        android:contentDescription="@string/photo_of_gaccount_user"
-        android:elevation="30dp"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:src="@drawable/profile"
+        app:civ_border_color="#FFFFFF"
+        app:civ_border_width="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17000002" />
+        app:layout_constraintVertical_bias="0.248" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

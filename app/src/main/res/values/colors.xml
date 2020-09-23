@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#bebcc9</color>
     <color name="colorAccent">#ffffff</color>
     <color name="notification">#EC7979</color>
+    <color name="back_photo">#004aad</color>
 </resources>

@@ -22,7 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UserInfo" />
+        <activity android:name=".UserInfo"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity android:name=".NoInternet" />
         <activity android:name=".Landing" />
         <activity android:name=".SignUp" />
