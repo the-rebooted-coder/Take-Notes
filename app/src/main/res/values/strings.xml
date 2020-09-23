@@ -18,4 +18,8 @@
     <string name="sign_out_greeting">Signing you out and closing app</string>
     <string name="notifications_admin_channel_name">Remote Notification Service</string>
     <string name="notifications_admin_channel_description">Channel for Remote Firebase Events</string>
+    <string name="take_notes_image_to_be_displayed">https://the-rebooted-coder.github.io/Take-Notes/ample_time.png</string>
+    <string name="developer_page">https://the-rebooted-coder.github.io/Take-Notes/devs.html</string>
+    <string name="play_store_link">https://play.google.com/store/apps/details?id=com.aaxena.takenotes</string>
+    <string name="custom_font">https://www.calligraphr.com/en/</string>
 </resources>

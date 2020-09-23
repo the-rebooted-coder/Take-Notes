@@ -32,6 +32,7 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.NotificationCompat;
 
 import com.google.android.play.core.appupdate.AppUpdateManager;
@@ -41,16 +42,14 @@ import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
-import com.google.android.play.core.review.ReviewInfo;
-import com.google.android.play.core.review.ReviewManager;
-import com.google.android.play.core.review.ReviewManagerFactory;
-import com.google.android.play.core.tasks.Task;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
+
+import static android.graphics.Color.BLACK;
 
 
 public class Landing extends AppCompatActivity {
@@ -197,14 +196,20 @@ public class Landing extends AppCompatActivity {
         webview.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (url.matches("https://the-rebooted-coder.github.io/Take-Notes/ample_time.png")) {
+                if (url.matches(getString(R.string.take_notes_image_to_be_displayed))) {
                     Intent i=new Intent(Landing.this,UserInfo.class);
                     startActivity(i);
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     finish();
                 }
-                else if (url.contains("https://the-rebooted-coder.github.io/Take-Notes/devs.html")) {
-                   Toast.makeText(Landing.this,"Tip: Tap on Image to Reveal More!",Toast.LENGTH_LONG).show();
+                else if (url.matches(getString(R.string.developer_page))) {
+                   Toast.makeText(Landing.this,"Tip: Tap on our PFP's to reveal more!",Toast.LENGTH_LONG).show();
+                }
+                else if (url.matches(getString(R.string.custom_font))){
+                    CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                    builder.setToolbarColor(BLACK);
+                    CustomTabsIntent customTabsIntent = builder.build();
+                    customTabsIntent.launchUrl(Landing.this, Uri.parse(url));
                 }
                 return super.shouldOverrideUrlLoading(view, url);
             }
