@@ -1,16 +1,11 @@
 <resources>
     <string name="app_name">Take Notes</string>
-    <string name="log_in">Log In</string>
-    <string name="sign_up">Sign Up</string>
     <string name="greetings">Hello!</string>
-    <string name="msg_downloading">Downloading</string>
     <string name="error_downloading">Error in Downloading</string>
     <string name="success_toast">Note(s) Saved in Documents</string>
-    <string name="status">Note(s) Saved Successfully</string>
     <string name="no_internet">Uh-Oh!</string>
     <string name="wi_fi">Wi-Fi</string>
     <string name="failed_to_load_fnt">Failed to Upload Font</string>
-    <string name="photo_of_gaccount_user">Photo of GAccount User</string>
     <string name="sign_out">Sign Out</string>
     <string name="not_yet_in">You are not yet signed-in</string>
     <string name="def_name_on_userInfo">Your Name</string>
@@ -20,6 +15,5 @@
     <string name="notifications_admin_channel_description">Channel for Remote Firebase Events</string>
     <string name="take_notes_image_to_be_displayed">https://the-rebooted-coder.github.io/Take-Notes/ample_time.png</string>
     <string name="developer_page">https://the-rebooted-coder.github.io/Take-Notes/devs.html</string>
-    <string name="play_store_link">https://play.google.com/store/apps/details?id=com.aaxena.takenotes</string>
     <string name="custom_font">https://www.calligraphr.com/en/</string>
 </resources>
