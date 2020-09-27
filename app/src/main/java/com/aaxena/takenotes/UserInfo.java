@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,13 @@ public class UserInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
+
+        Button abt_dev = findViewById(R.id.abt_dev);
+        abt_dev.setOnClickListener(v -> {
+            Vibrator dev_vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            dev_vibe.vibrate(30);
+            Toast.makeText(UserInfo.this, R.string.developer,Toast.LENGTH_LONG).show();
+        });
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
 

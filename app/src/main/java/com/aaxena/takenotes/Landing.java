@@ -198,12 +198,16 @@ public class Landing extends AppCompatActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (url.matches(getString(R.string.take_notes_image_to_be_displayed))) {
+                    Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    v2.vibrate(28);
                     Intent i=new Intent(Landing.this,UserInfo.class);
                     startActivity(i);
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     finish();
                 }
                 else if (url.matches(getString(R.string.developer_page))) {
+                    Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    v2.vibrate(25);
                    Toast.makeText(Landing.this,"Tip: Tap on our PFP's to reveal more!",Toast.LENGTH_LONG).show();
                 }
                 else if (url.matches(getString(R.string.custom_font))){
