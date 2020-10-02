@@ -27,7 +27,7 @@ ___
 </h3>
 
 ___
-<img src="https://i.ibb.co/NyfSwLt/Mobile1.png" width="200"><img src="https://i.ibb.co/LpmqVBs/Mobile2.png" width="200"><img src="https://i.ibb.co/DLGdwC0/Mobile3.png" width="200"><img src="https://i.ibb.co/QCgRV6C/Mobile4.png" width="200"> <img src="https://i.ibb.co/bPz4SB6/Mobile5.png" width="200"> 
+<img src="https://i.ibb.co/NyfSwLt/Mobile1.png" width="200"><img src="https://i.ibb.co/LpmqVBs/Mobile2.png" width="200"><img src="https://i.ibb.co/yBrr8db/3.png" width="200"><img src="https://i.ibb.co/7nsNbYr/4.png" width="200"><img src="https://i.ibb.co/SscdVFz/ocr.png" width="200"><img src="https://i.ibb.co/bPz4SB6/Mobile5.png" width="200"> 
 
 ## :information_source: About
 
