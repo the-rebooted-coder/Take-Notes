@@ -1,4 +1,3 @@
-
 <h2 align="center">Take Notes</h2>
 
 ___
