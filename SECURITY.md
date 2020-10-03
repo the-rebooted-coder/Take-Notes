@@ -6,7 +6,7 @@ Below mentioned Android Versions are supported
 
 | Version  | Supported          |
 | -------  | ------------------ |
-| 5.1.x +  | :white_check_mark: |
+| 7.0.x +  | :white_check_mark: |
 
 ## Reporting a Vulnerability
 
