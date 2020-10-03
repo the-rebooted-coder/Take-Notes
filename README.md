@@ -6,11 +6,11 @@ ___
 </p>
 
 <p align="center">
-  <a href="LICENSE">
-    <img alt="License" src="https://img.shields.io/badge/License-MIT-success.svg">
-  </a>
   <a href = "https://opensource.org/">
     <img alt="License" src="https://badges.frapsoft.com/os/v2/open-source.svg?v=103">
+  </a>
+    <a href="LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/License-MIT-success.svg">
   </a>
 </p>
 
