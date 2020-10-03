@@ -8,7 +8,6 @@ Below mentioned Android Versions are supported
 | -------  | ------------------ |
 | 7.0.x +  | :white_check_mark: |
 
-API Level : 24
 
 ## Reporting a Vulnerability
 
