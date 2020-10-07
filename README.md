@@ -1,4 +1,3 @@
-
 <h2 align="center">Take Notes</h2>
 
 ___
@@ -7,11 +6,11 @@ ___
 </p>
 
 <p align="center">
-  <a href="LICENSE">
-    <img alt="License" src="https://img.shields.io/badge/License-MIT-success.svg">
-  </a>
   <a href = "https://opensource.org/">
     <img alt="License" src="https://badges.frapsoft.com/os/v2/open-source.svg?v=103">
+  </a>
+  <a href="LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/License-MIT-success.svg">
   </a>
 </p>
 
@@ -27,7 +26,7 @@ ___
 </h3>
 
 ___
-<img src="https://i.ibb.co/NyfSwLt/Mobile1.png" width="200"><img src="https://i.ibb.co/LpmqVBs/Mobile2.png" width="200"><img src="https://i.ibb.co/DLGdwC0/Mobile3.png" width="200"><img src="https://i.ibb.co/QCgRV6C/Mobile4.png" width="200"> <img src="https://i.ibb.co/bPz4SB6/Mobile5.png" width="200"> 
+<img src="https://i.ibb.co/NyfSwLt/Mobile1.png" width="200"><img src="https://i.ibb.co/LpmqVBs/Mobile2.png" width="200"><img src="https://i.ibb.co/yBrr8db/3.png" width="200"><img src="https://i.ibb.co/7nsNbYr/4.png" width="200"><img src="https://i.ibb.co/SscdVFz/ocr.png" width="200"><img src="https://i.ibb.co/bPz4SB6/Mobile5.png" width="200"> 
 
 ## :information_source: About
 
