@@ -37,9 +37,6 @@ dependencies {
     implementation 'androidx.browser:browser:1.2.0'
     implementation 'com.google.android.play:core:1.8.2'
 
-    //OCR
-    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:16.1.1'
-
     //Circular Image View
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
 
