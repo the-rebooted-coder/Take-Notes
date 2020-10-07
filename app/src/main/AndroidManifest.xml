@@ -22,13 +22,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UserInfo"
+        <activity android:name=".OCR"></activity>
+        <activity
+            android:name=".UserInfo"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity android:name=".NoInternet" />
         <activity android:name=".Landing" />
         <activity android:name=".SignUp" />
-        <activity android:name=".SplashScreen"
+        <activity
+            android:name=".SplashScreen"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -37,9 +40,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@mipmap/ic_launcher" />
+
         <service
             android:name=".MyFirebaseMessagingService"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -48,10 +53,12 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimary" />
-        <meta-data android:name="com.google.android.gms.version"
+        <meta-data
+            android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
