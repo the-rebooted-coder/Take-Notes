@@ -24,7 +24,6 @@ public class UserInfo extends AppCompatActivity {
    TextView username;
    TextView email;
    Button signOut;
-   //https://pairedlife.com/etiquette/Funny-Responses-to-Compliments
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
