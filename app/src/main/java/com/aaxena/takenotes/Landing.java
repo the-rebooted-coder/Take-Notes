@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -15,6 +16,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaScannerConnection;
 import android.net.ConnectivityManager;
@@ -85,6 +87,18 @@ public class Landing extends AppCompatActivity {
 
         //Runtime External storage permission for saving download files
         checkPerms();
+
+        //Checking First Time
+        //This is for Cougar Onwards
+        if (isFirstTime()) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Export Folder as PDF")
+                    .setMessage(R.string.instructions)
+                    .setCancelable(false)
+                    // A null listener allows the button to dismiss the dialog and take no further action.
+                    .setNeutralButton("Fantastic", null)
+                    .create().show();
+        }
     }
 
     @Override
@@ -516,6 +530,18 @@ public class Landing extends AppCompatActivity {
             progressDialog.dismiss();
             Toast.makeText(context, "PDF Saved at: " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
         }
+    }
+
+    private boolean isFirstTime() {
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.commit();
+        }
+        return !ranBefore;
     }
 
 }
