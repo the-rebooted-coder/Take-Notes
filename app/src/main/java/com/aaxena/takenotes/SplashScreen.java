@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,13 +15,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 public class SplashScreen extends AppCompatActivity {
 
+    protected AlphaAnimation fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
-
-        //Initiating Flash Screen
         fireSplashScreen();
+        TextView appName = findViewById(R.id.title);
+        appName.setText(R.string.app_name);
+        appName.startAnimation(fadeIn);
+        fadeIn.setDuration(1500);
     }
 
 
