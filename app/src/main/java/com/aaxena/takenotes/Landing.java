@@ -442,6 +442,7 @@ public class Landing extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            
             progressDialog = new ProgressDialog(context);
             progressDialog.setTitle("Hmmmm...");
             progressDialog.setMessage(getString(R.string.advice));
