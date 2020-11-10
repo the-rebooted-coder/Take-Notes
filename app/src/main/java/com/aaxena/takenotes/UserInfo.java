@@ -76,7 +76,7 @@ public class UserInfo extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i=new Intent(UserInfo.this,Landing.class);
+        Intent i=new Intent(UserInfo.this,Settings.class);
         startActivity(i);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();

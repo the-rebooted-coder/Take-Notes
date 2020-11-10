@@ -22,6 +22,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".PrivacyPolicy"></activity>
+        <activity android:name=".MeetDevs" />
+        <activity android:name=".feature" />
+        <activity android:name=".Settings" />
         <activity android:name=".OCR" />
         <activity
             android:name=".UserInfo"

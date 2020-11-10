@@ -3,6 +3,7 @@ package com.aaxena.takenotes;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
+import android.app.AlarmManager;
 import android.app.DownloadManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -14,7 +15,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaScannerConnection;
 import android.net.ConnectivityManager;
@@ -24,7 +24,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.os.StrictMode;
 import android.os.Vibrator;
 import android.util.Base64;
@@ -37,7 +36,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.NotificationCompat;
@@ -87,18 +85,6 @@ public class Landing extends AppCompatActivity {
 
         //Runtime External storage permission for saving download files
         checkPerms();
-
-        //Checking First Time
-        //This is for Cougar Onwards
-        if (isFirstTime()) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Export Folder as PDF")
-                    .setMessage(R.string.instructions)
-                    .setCancelable(false)
-                    // A null listener allows the button to dismiss the dialog and take no further action.
-                    .setNeutralButton("Fantastic", null)
-                    .create().show();
-        }
     }
 
     @Override
@@ -131,13 +117,13 @@ public class Landing extends AppCompatActivity {
             InstallStateUpdatedListener() {
                 @Override
                 public void onStateUpdate(InstallState state) {
-                     if (state.installStatus() == InstallStatus.INSTALLED){
+                    if (state.installStatus() == InstallStatus.INSTALLED){
                         if (mAppUpdateManager != null){
                             mAppUpdateManager.unregisterListener(installStateUpdatedListener);
                         }
 
                     } else {
-                      //App Is Fully Updated Nothing To Do Continuing Normal WorkFlow but do not erase the else func
+                        //App Is Fully Updated Nothing To Do Continuing Normal WorkFlow but do not erase the else func
                     }
                 }
             };
@@ -194,7 +180,7 @@ public class Landing extends AppCompatActivity {
         webview.loadUrl("https://shrish-sharma-codes.github.io/tn-testing-V2/");
         webview.scrollTo(0, 200);
         webview.setWebChromeClient(new WebChromeClient() {
-           //File Chooser
+            //File Chooser
             public boolean onShowFileChooser(
                     WebView webView, ValueCallback<Uri[]> filePathCallback,
                     WebChromeClient.FileChooserParams fileChooserParams) {
@@ -244,14 +230,13 @@ public class Landing extends AppCompatActivity {
                         }
                         new CreatePdfTask(Landing.this, imagesArrayList).execute();
                     } catch (Exception e) {
-                        webview.loadUrl("https://shrish-sharma-codes.github.io/tn-testing-V2/");
-                       Toast.makeText(Landing.this,"No Images Under Take Notes Folder",Toast.LENGTH_LONG).show();
+                        Toast.makeText(Landing.this,"No Images Under Take Notes Folder",Toast.LENGTH_LONG).show();
                     }
                 }
                 else if (url.matches(getString(R.string.developer_page))) {
                     Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     v2.vibrate(25);
-                   Toast.makeText(Landing.this,"Tip: Tap on our PFP's to reveal more!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Landing.this,"Tip: Tap on our PFP's to reveal more!",Toast.LENGTH_LONG).show();
                 }
                 else if (url.matches(getString(R.string.custom_font))){
                     CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
@@ -411,14 +396,14 @@ public class Landing extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, intent);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (requestCode == REQUEST_SELECT_FILE) {
-               if (mUMA == null)
-                   return;
+                if (mUMA == null)
+                    return;
                 mUMA.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, intent));
                 mUMA = null;
             }
         } else if (requestCode == FCR) {
             if (null == mUM)
-               return;
+                return;
             Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
             mUM.onReceiveValue(result);
             mUM = null;
@@ -455,7 +440,6 @@ public class Landing extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/error.png");
             progressDialog = new ProgressDialog(context);
             progressDialog.setTitle("Hmmmm...");
             progressDialog.setMessage(getString(R.string.advice));
@@ -530,29 +514,8 @@ public class Landing extends AppCompatActivity {
         protected void onPostExecute(File file) {
             super.onPostExecute(file);
             progressDialog.dismiss();
-            int vibrate_like_actual_switch = 100;
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                    v.vibrate(30);
-                }
-            }, vibrate_like_actual_switch);
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(25);
+            Toast.makeText(context, "PDF Saved at: " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
         }
-    }
-
-    private boolean isFirstTime() {
-        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-        boolean ranBefore = preferences.getBoolean("RanBefore", false);
-        if (!ranBefore) {
-            // first time
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("RanBefore", true);
-            editor.commit();
-        }
-        return !ranBefore;
     }
 
 }

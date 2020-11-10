@@ -20,4 +20,9 @@
     <string name="print">https://the-rebooted-coder.github.io/Take-Notes/loader.png</string>
     <string name="advice">The TakeNotes folder should contain only images, check once!\n\nDelete or Move Unsupported Files\n\nPDF cannot be saved :(\n\nIn order to ensure privacy you need to sign in again</string>
     <string name="instructions">From now Onwards you can export your entire TakeNotes Folder into a single PDF file\n\nEnsure that folder contains only those images which you need in the PDF while using this functionality\n\nHappy Note Taking!</string>
+    <string name="request_a_feature">Request a Feature</string>
+    <string name="developers">developers</string>
+    <string name="my_account">My Account</string>
+    <string name="privacy_info">Privacy Info</string>
+    <string name="privacy_policy"><b>Privacy Policy</b>\n\nOne Silicon Diode built the Take Notes app as an Open Source app. This SERVICE is provided by One Silicon Diode at no cost and is intended for use as is.\n\nIf you choose to use Take Notes, then you agree to the collection and use of information in relation to this policy. <b>NO Data is ever sent, saved or stored in any form neither on the device nor online.</b>\n\n<b>Contact Us</b>\nIf you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at <i>connectwithspandan@gmail.com</i>.</string>
 </resources>
