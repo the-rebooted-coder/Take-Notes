@@ -24,6 +24,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.os.Vibrator;
 import android.util.Base64;
@@ -230,6 +231,7 @@ public class Landing extends AppCompatActivity {
                         }
                         new CreatePdfTask(Landing.this, imagesArrayList).execute();
                     } catch (Exception e) {
+                        webview.loadUrl("https://shrish-sharma-codes.github.io/tn-testing-V2/");
                        Toast.makeText(Landing.this,"No Images Under Take Notes Folder",Toast.LENGTH_LONG).show();
                     }
                 }
@@ -514,7 +516,16 @@ public class Landing extends AppCompatActivity {
         protected void onPostExecute(File file) {
             super.onPostExecute(file);
             progressDialog.dismiss();
-            Toast.makeText(context, "PDF Saved at: " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
+            int vibrate_like_actual_switch = 100;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    v.vibrate(30);
+                }
+            }, vibrate_like_actual_switch);
+            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v2.vibrate(25);
         }
     }
 
