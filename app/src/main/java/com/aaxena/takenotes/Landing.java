@@ -193,7 +193,7 @@ public class Landing extends AppCompatActivity {
         registerForContextMenu(webview);
         webview.getSettings().setUseWideViewPort(true);
         webview.setInitialScale((int) 1.0);
-        webview.loadUrl("https://shrish-sharma-codes.github.io/tn-testing-V2/");
+        webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/");
         webview.setWebChromeClient(new WebChromeClient() {
             //File Chooser
             public boolean onShowFileChooser(
@@ -228,7 +228,7 @@ public class Landing extends AppCompatActivity {
                 if (url.matches(getString(R.string.take_notes_image_to_be_displayed))) {
                     Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     v2.vibrate(28);
-                    Intent i=new Intent(Landing.this,UserInfo.class);
+                    Intent i=new Intent(Landing.this,Settings.class);
                     startActivity(i);
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     finish();
@@ -261,17 +261,6 @@ public class Landing extends AppCompatActivity {
                                 })
                                 .create().show();
                     }
-                }
-                else if (url.matches(getString(R.string.developer_page))) {
-                    Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                    v2.vibrate(25);
-                    Toast.makeText(Landing.this,"Tip: Tap on our PFP's to reveal more!",Toast.LENGTH_LONG).show();
-                }
-                else if (url.matches(getString(R.string.custom_font))){
-                    CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                    builder.setToolbarColor(BLACK);
-                    CustomTabsIntent customTabsIntent = builder.build();
-                    customTabsIntent.launchUrl(Landing.this, Uri.parse(url));
                 }
                 return super.shouldOverrideUrlLoading(view, url);
             }
