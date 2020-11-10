@@ -52,8 +52,10 @@ import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.ExceptionConverter;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -192,7 +194,6 @@ public class Landing extends AppCompatActivity {
         webview.getSettings().setUseWideViewPort(true);
         webview.setInitialScale((int) 1.0);
         webview.loadUrl("https://shrish-sharma-codes.github.io/tn-testing-V2/");
-        webview.scrollTo(0, 200);
         webview.setWebChromeClient(new WebChromeClient() {
             //File Chooser
             public boolean onShowFileChooser(
@@ -244,7 +245,21 @@ public class Landing extends AppCompatActivity {
                         }
                         new CreatePdfTask(Landing.this, imagesArrayList).execute();
                     } catch (Exception e) {
-                        Toast.makeText(Landing.this,"No Images Under Take Notes Folder",Toast.LENGTH_LONG).show();
+                        new AlertDialog.Builder(Landing.this)
+                                .setTitle("No Images Found")
+                                .setMessage(R.string.no_img)
+                                .setCancelable(false)
+                                // A null listener allows the button to dismiss the dialog and take no further action.
+                                .setPositiveButton("I Know", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent i=new Intent(Landing.this,Landing.class);
+                                        startActivity(i);
+                                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                                        finish();
+                                    }
+                                })
+                                .create().show();
                     }
                 }
                 else if (url.matches(getString(R.string.developer_page))) {
@@ -289,25 +304,23 @@ public class Landing extends AppCompatActivity {
     }
 
     private void checkPerms() {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_DENIED) {
-                Log.d("permission", "permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
-                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                requestPermissions(permissions, 1);
-                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-                if (account !=null) {
-                    String personName = account.getDisplayName();
-                    Toast.makeText(Landing.this, "Howdy " + personName + " you are in!", Toast.LENGTH_LONG).show();
-                    Toast.makeText(Landing.this, "Welcome to Take Notes", Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Toast.makeText(Landing.this, R.string.not_yet_in,Toast.LENGTH_LONG).show();
-                    Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                    v2.vibrate(30);
-                    Intent taking_out = new Intent(Landing.this, SignUp.class);
-                    startActivity(taking_out);
-                }
+        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_DENIED) {
+            Log.d("permission", "permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
+            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            requestPermissions(permissions, 1);
+            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+            if (account !=null) {
+                String personName = account.getDisplayName();
+                Toast.makeText(Landing.this, "Howdy " + personName + " you are in!", Toast.LENGTH_LONG).show();
+                Toast.makeText(Landing.this, "Welcome to Take Notes", Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(Landing.this, R.string.not_yet_in,Toast.LENGTH_LONG).show();
+                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                v2.vibrate(30);
+                Intent taking_out = new Intent(Landing.this, SignUp.class);
+                startActivity(taking_out);
             }
         }
     }
@@ -471,64 +484,70 @@ public class Landing extends AppCompatActivity {
 
         @Override
         protected File doInBackground(String... strings) {
-            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-            String username = account.getDisplayName();
-            File outputMediaFile =  new File(Environment.getExternalStorageDirectory(), Environment.DIRECTORY_DOCUMENTS+"/"+username+ System.currentTimeMillis() + ".pdf");
-            Document document = new Document(PageSize.A4, 38.0f, 38.0f, 50.0f, 38.0f);
+
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+                String username = account.getDisplayName();
+                File outputMediaFile = new File(Environment.getExternalStorageDirectory(), Environment.DIRECTORY_DOCUMENTS + "/" + username + System.currentTimeMillis() + ".pdf");
+                Document document = new Document(PageSize.A4, 38.0f, 38.0f, 50.0f, 38.0f);
+                try {
+                    PdfWriter.getInstance(document, new FileOutputStream(outputMediaFile));
+                } catch (DocumentException | ExceptionConverter e) {
+                    e.printStackTrace();
+                    progressDialog.dismiss();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                    progressDialog.dismiss();
+                    return null;
+                }
+            document.open();
             try {
-                PdfWriter.getInstance(document, new FileOutputStream(outputMediaFile));
+                document.add(new Chunk(""));
             } catch (DocumentException e) {
                 e.printStackTrace();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                return null;
             }
-            document.open();
 
             int i = 0;
-            while (true) {
-                if (i < this.files.size()) {
-                    try {
-                        Image image = Image.getInstance(files.get(i).getAbsolutePath());
+                while (true) {
+                    if (i < this.files.size()) {
+                        try {
+                            Image image = Image.getInstance(files.get(i).getAbsolutePath());
 
-                        float scaler = ((document.getPageSize().getWidth() - document.leftMargin()
-                                - document.rightMargin() - 0) / image.getWidth()) * 100; // 0 means you have no indentation. If you have any, change it.
-                        image.scalePercent(scaler);
-                        image.setAlignment(Image.ALIGN_CENTER | Image.ALIGN_TOP);
-                        image.setAbsolutePosition((document.getPageSize().getWidth() - image.getScaledWidth()) / 2.0f,
-                                (document.getPageSize().getHeight() - image.getScaledHeight()) / 2.0f);
+                            float scaler = ((document.getPageSize().getWidth() - document.leftMargin()
+                                    - document.rightMargin() - 0) / image.getWidth()) * 100; // 0 means you have no indentation. If you have any, change it.
+                            image.scalePercent(scaler);
+                            image.setAlignment(Image.ALIGN_CENTER | Image.ALIGN_TOP);
+                            image.setAbsolutePosition((document.getPageSize().getWidth() - image.getScaledWidth()) / 2.0f,
+                                    (document.getPageSize().getHeight() - image.getScaledHeight()) / 2.0f);
 
-                        document.add(image);
-                        document.newPage();
-                        publishProgress(i);
-                        i++;
-                    } catch (BadElementException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (DocumentException e) {
-                        e.printStackTrace();
+                            document.add(image);
+                            document.newPage();
+                            publishProgress(i);
+                            i++;
+                        } catch (BadElementException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (DocumentException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        document.close();
+                        return outputMediaFile;
                     }
-                } else {
-                    document.close();
-                    return outputMediaFile;
                 }
-            }
         }
+
 
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-            StringBuilder sb = new StringBuilder();
-            sb.append("There seems an error!");
-            progressDialog.setTitle(sb.toString());
+            progressDialog.dismiss();
         }
 
         @Override
         protected void onPostExecute(File file) {
             super.onPostExecute(file);
             progressDialog.dismiss();
-            Toast.makeText(context, "PDF Saved at: " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
         }
     }
 

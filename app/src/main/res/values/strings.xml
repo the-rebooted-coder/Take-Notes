@@ -25,4 +25,5 @@
     <string name="my_account">My Account</string>
     <string name="privacy_info">Privacy Info</string>
     <string name="privacy_policy"><b>Privacy Policy</b>\n\nOne Silicon Diode built the Take Notes app as an Open Source app. This SERVICE is provided by One Silicon Diode at no cost and is intended for use as is.\n\nIf you choose to use Take Notes, then you agree to the collection and use of information in relation to this policy. <b>NO Data is ever sent, saved or stored in any form neither on the device nor online.</b>\n\n<b>Contact Us</b>\nIf you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at <i>connectwithspandan@gmail.com</i>.</string>
+    <string name="no_img">There were no images under the TakeNotes Folder\n\nSave the Image and Try Again!</string>
 </resources>
