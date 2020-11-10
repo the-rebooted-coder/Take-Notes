@@ -3,7 +3,6 @@ package com.aaxena.takenotes;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
-import android.app.AlarmManager;
 import android.app.DownloadManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -15,6 +14,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaScannerConnection;
 import android.net.ConnectivityManager;
@@ -37,6 +37,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.NotificationCompat;
@@ -86,6 +87,18 @@ public class Landing extends AppCompatActivity {
 
         //Runtime External storage permission for saving download files
         checkPerms();
+
+        //Checking First Time
+        //This is for Cougar Onwards
+        if (isFirstTime()) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Export Folder as PDF")
+                    .setMessage(R.string.instructions)
+                    .setCancelable(false)
+                    // A null listener allows the button to dismiss the dialog and take no further action.
+                    .setNeutralButton("Fantastic", null)
+                    .create().show();
+        }
     }
 
     @Override
@@ -442,7 +455,7 @@ public class Landing extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            
+            webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/error.png");
             progressDialog = new ProgressDialog(context);
             progressDialog.setTitle("Hmmmm...");
             progressDialog.setMessage(getString(R.string.advice));
@@ -528,6 +541,18 @@ public class Landing extends AppCompatActivity {
             Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             v2.vibrate(25);
         }
+    }
+
+    private boolean isFirstTime() {
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.commit();
+        }
+        return !ranBefore;
     }
 
 }

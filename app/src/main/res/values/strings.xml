@@ -19,4 +19,5 @@
     <string name="developer">App Developed By One Silicon Diode ;)</string>
     <string name="print">https://the-rebooted-coder.github.io/Take-Notes/loader.png</string>
     <string name="advice">The TakeNotes folder should contain only images, check once!\n\nDelete or Move Unsupported Files\n\nPDF cannot be saved :(\n\nIn order to ensure privacy you need to sign in again</string>
+    <string name="instructions">From now Onwards you can export your entire TakeNotes Folder into a single PDF file\n\nEnsure that folder contains only those images which you need in the PDF while using this functionality\n\nHappy Note Taking!</string>
 </resources>
