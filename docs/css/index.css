@@ -1,18 +1,18 @@
 /* CSS Variables */
 body {
-  --background-primary: #DEEAF6;
+  --background-primary: #ffae42;
   --font-color-primary: #333;
-  --elevation-background: #c2cbd9;
+  --elevation-background: #fed8b1;
   --link-color: #006eb8;
   --font-family-primary: 'Roboto', cursive;
   --handwriting-font: 'Homemade Apple', cursive;
   --primary-color: #1a73e8;
   --ink-color: #000f55;
   --label-color: #333;
-  --field-borders: #e0e0e0;
+  --field-borders: #FF4500;
   --primary-button-bg: #1d1d1d;
   --primary-button-color: #eee;
-  --box-shadow:  9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
+  --box-shadow:  9px 9px 16px rgb(248, 113, 2), -9px -9px 16px rgba(255, 185, 116, 0.63);
 }
 body.dark {
   --background-primary: #1A1A1A;
