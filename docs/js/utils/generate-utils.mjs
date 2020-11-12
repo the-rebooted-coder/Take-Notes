@@ -92,7 +92,7 @@ function renderOutput(outputImages) {
           class="button download-image-button" 
           download 
           href="${outputImageCanvas.toDataURL('image/jpeg')}
-        ">Download Image</a>
+        ">Save Image</a>
       </div>
     </div>
     `
