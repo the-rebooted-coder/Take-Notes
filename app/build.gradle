@@ -50,9 +50,6 @@ dependencies {
     //Lottie Anims
     implementation "com.airbnb.android:lottie:3.4.0"
 
-    //Dialog Box
-    implementation 'com.shreyaspatil:MaterialDialog:2.1'
-
     //FireBase
     implementation 'com.google.firebase:firebase-inappmessaging-display:19.1.2'
     implementation 'com.google.firebase:firebase-auth:20.0.1'

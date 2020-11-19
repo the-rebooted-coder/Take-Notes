@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffae42"
+    android:background="@drawable/rounded_layout"
     tools:context=".SplashScreen">
 
     <TextView
@@ -31,9 +31,9 @@
         app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.50"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="takenotes_diwali_loader.json"
+        app:lottie_fileName="takenotes_loader.json"
         app:lottie_loop="false" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

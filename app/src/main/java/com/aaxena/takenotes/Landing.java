@@ -92,6 +92,7 @@ public class Landing extends AppCompatActivity {
 
         //Checking First Time
         //This is for Cougar Onwards
+
         if (isFirstTime()) {
             new AlertDialog.Builder(this)
                     .setTitle("Export Folder as PDF")
