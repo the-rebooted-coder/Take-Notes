@@ -13,8 +13,8 @@ android {
         applicationId "com.aaxena.takenotes"
         minSdkVersion 24
         targetSdkVersion 29
-        versionCode 25
-        versionName "Cougar"
+        versionCode 30
+        versionName "Lynx"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -50,13 +50,16 @@ dependencies {
     //Lottie Anims
     implementation "com.airbnb.android:lottie:3.4.0"
 
+    //Dialog Box
+    implementation 'com.shreyaspatil:MaterialDialog:2.1'
+
     //FireBase
     implementation 'com.google.firebase:firebase-inappmessaging-display:19.1.2'
-    implementation 'com.google.firebase:firebase-auth:20.0.0'
+    implementation 'com.google.firebase:firebase-auth:20.0.1'
     implementation 'com.google.firebase:firebase-messaging:21.0.0'
     implementation 'com.google.firebase:firebase-analytics:18.0.0'
     implementation 'com.google.firebase:firebase-core:18.0.0'
-    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
