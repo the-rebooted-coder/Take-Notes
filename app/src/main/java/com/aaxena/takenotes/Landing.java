@@ -3,7 +3,6 @@ package com.aaxena.takenotes;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.app.Notification;
@@ -18,6 +17,7 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.media.MediaScannerConnection;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -68,8 +68,6 @@ import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-import static android.graphics.Color.BLACK;
-
 
 public class Landing extends AppCompatActivity {
     private WebView webview;
@@ -101,9 +99,22 @@ public class Landing extends AppCompatActivity {
                     // A null listener allows the button to dismiss the dialog and take no further action.
                     .setNeutralButton("Fantastic", null)
                     .create().show();
+            new AlertDialog.Builder(this)
+                    .setTitle("Tutorial")
+                    .setMessage("Would you like to go through a quick tutorial to master Take Notes?")
+                    .setCancelable(false)
+                    // A null listener allows the button to dismiss the dialog and take no further action.
+                    .setNeutralButton("Sure", (dialog, which) -> {
+                        String url ="https://the-rebooted-coder.github.io/Take-Notes-Web/tutorial";
+                        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                        builder.setToolbarColor(Color.parseColor("#006400"));
+                        CustomTabsIntent customTabsIntent = builder.build();
+                        customTabsIntent.launchUrl(Landing.this, Uri.parse(url));
+                    })
+                    .setNegativeButton("Nope", (dialog, which) -> Toast.makeText(Landing.this,"You can view the tutorial from settings",Toast.LENGTH_SHORT).show())
+                    .create().show();
         }
     }
-
     @Override
     protected void onStart() {
         super.onStart();
