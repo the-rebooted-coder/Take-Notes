@@ -69,4 +69,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.79" />
+
+    <Button
+        android:id="@+id/tutorial"
+        android:layout_width="198dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_background"
+        android:elevation="30dp"
+        android:fontFamily="@font/productsans"
+        android:text="@string/tutorial"
+        android:textColor="@color/ic_launcher_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.93" />
 </androidx.constraintlayout.widget.ConstraintLayout>
