@@ -563,5 +563,4 @@ public class Landing extends AppCompatActivity {
         }
         return !ranBefore;
     }
-
 }
