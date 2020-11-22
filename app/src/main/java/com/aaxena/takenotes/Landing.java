@@ -525,7 +525,11 @@ public class Landing extends AppCompatActivity {
         @Override
         protected void onPostExecute(File file) {
             super.onPostExecute(file);
+            Intent intent = new Intent(Landing.this,PdfProcessed.class);
+            startActivity(intent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             progressDialog.dismiss();
+            finish();
         }
     }
 
