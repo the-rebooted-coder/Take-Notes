@@ -310,19 +310,6 @@ public class Landing extends AppCompatActivity {
             Log.d("permission", "permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
             String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
             requestPermissions(permissions, 1);
-            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-            if (account !=null) {
-                String personName = account.getDisplayName();
-                Toast.makeText(Landing.this, "Howdy " + personName + " you are in!", Toast.LENGTH_LONG).show();
-                Toast.makeText(Landing.this, "Welcome to Take Notes", Toast.LENGTH_LONG).show();
-            }
-            else {
-                Toast.makeText(Landing.this, R.string.not_yet_in,Toast.LENGTH_LONG).show();
-                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                v2.vibrate(30);
-                Intent taking_out = new Intent(Landing.this, SignUp.class);
-                startActivity(taking_out);
-            }
         }
     }
 
@@ -331,9 +318,7 @@ public class Landing extends AppCompatActivity {
     public String createAndSaveFileFromBase64Url(String url) {
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS+"/TakeNotes");
         String filetype = url.substring(url.indexOf("/") + 1, url.indexOf(";"));
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        String personName = account.getDisplayName();
-        String filename = personName+"'s notes "+System.currentTimeMillis() + "." + filetype;
+        String filename ="Take Notes "+System.currentTimeMillis() + "." + filetype;
         Toast.makeText(this, R.string.success_toast,Toast.LENGTH_SHORT).show();
         File file = new File(path, filename);
         try {
@@ -485,8 +470,7 @@ public class Landing extends AppCompatActivity {
 
         @Override
         protected File doInBackground(String... strings) {
-
-                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
                 String username = account.getDisplayName();
                 File outputMediaFile = new File(Environment.getExternalStorageDirectory(), Environment.DIRECTORY_DOCUMENTS + "/" + username + System.currentTimeMillis() + ".pdf");
                 Document document = new Document(PageSize.A4, 38.0f, 38.0f, 50.0f, 38.0f);

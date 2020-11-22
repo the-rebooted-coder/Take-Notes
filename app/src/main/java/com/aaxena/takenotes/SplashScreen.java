@@ -7,14 +7,17 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SplashScreen extends AppCompatActivity {
-
+    private FirebaseAuth mAuth;
     protected AlphaAnimation fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;
 
     @Override
