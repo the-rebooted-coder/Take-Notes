@@ -454,25 +454,18 @@ public class Landing extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog = new ProgressDialog(context);
-            progressDialog.setTitle("Hmmmm...");
+            progressDialog.setTitle("Processing...");
             progressDialog.setMessage(getString(R.string.advice));
             progressDialog.setIndeterminate(false);
             progressDialog.setCancelable(false);
-            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "I Know!", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    ((ActivityManager)context.getSystemService(ACTIVITY_SERVICE))
-                            .clearApplicationUserData();
-                }
-            });
+            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "I Know!", (dialog, which) -> ((ActivityManager)context.getSystemService(ACTIVITY_SERVICE))
+                    .clearApplicationUserData());
             progressDialog.show();
         }
 
         @Override
         protected File doInBackground(String... strings) {
-             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-                String username = account.getDisplayName();
-                File outputMediaFile = new File(Environment.getExternalStorageDirectory(), Environment.DIRECTORY_DOCUMENTS + "/" + username + System.currentTimeMillis() + ".pdf");
+                File outputMediaFile = new File(Environment.getExternalStorageDirectory(), Environment.DIRECTORY_DOCUMENTS + "/" + "Take Notes" + System.currentTimeMillis() + ".pdf");
                 Document document = new Document(PageSize.A4, 38.0f, 38.0f, 50.0f, 38.0f);
                 try {
                     PdfWriter.getInstance(document, new FileOutputStream(outputMediaFile));
