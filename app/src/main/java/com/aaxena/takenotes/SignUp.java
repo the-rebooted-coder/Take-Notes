@@ -65,12 +65,12 @@ public class SignUp extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-
+            Toast.makeText(SignUp.this,"User cancelled the Login",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(FacebookException error) {
-
+                Toast.makeText(SignUp.this,"Oops something went wrong",Toast.LENGTH_SHORT).show();
             }
         });
         signInButton = findViewById(R.id.sign_in_button);

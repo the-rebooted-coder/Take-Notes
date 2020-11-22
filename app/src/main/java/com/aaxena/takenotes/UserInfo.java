@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 public class UserInfo extends AppCompatActivity {
@@ -23,6 +25,7 @@ public class UserInfo extends AppCompatActivity {
    TextView username;
    TextView email;
    Button signOut;
+   FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +45,11 @@ public class UserInfo extends AppCompatActivity {
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         signOut = findViewById(R.id.sign_out);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser mUser = mAuth.getCurrentUser();
 
         if (account !=null){
-            //User Signed In, Displaying Info
+            //Google
             String personName = account.getDisplayName();
             username.setText(personName);
             String personEmail = account.getEmail();
@@ -63,12 +68,24 @@ public class UserInfo extends AppCompatActivity {
             });
         }
         else {
-            //Opened by Mistake
-            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v.vibrate(30);
-            Intent taking_out = new Intent(UserInfo.this, SignUp.class);
-            startActivity(taking_out);
-            Toast.makeText(this, R.string.not_yet_in,Toast.LENGTH_LONG).show();
+            //Facebook
+            String name = mUser.getDisplayName();
+            String fbmail = mUser.getEmail();
+            String photoURL = mUser.getPhotoUrl().toString();
+            Glide.with(this).load(photoURL).into(photo);
+            username.setText(name);
+            email.setText(fbmail);
+            signOut.setOnClickListener(v -> {
+                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                v2.vibrate(30);
+                Toast.makeText(this, R.string.sign_out_greeting,Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Goodbye "+name,Toast.LENGTH_SHORT).show();
+                int death_text = 2800;
+                new Handler().postDelayed(() -> {
+                    ((ActivityManager)this.getSystemService(ACTIVITY_SERVICE))
+                            .clearApplicationUserData();
+                }, death_text);
+            });
         }
     }
 
