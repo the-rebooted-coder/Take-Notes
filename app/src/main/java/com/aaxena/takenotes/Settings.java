@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -22,6 +23,22 @@ public class Settings extends AppCompatActivity {
     }
 
     private void init() {
+        Button share=findViewById(R.id.share);
+        share.setOnClickListener(v -> {
+            /*Create an ACTION_SEND Intent*/
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            /*This will be the actual content you wish you share.*/
+            String shareBody = "Take Notes is an awesome app for writing handwritten notes, I am using it and believe it will help you too!\n\nDownload here: https://play.google.com/store/apps/details?id=com.aaxena.takenotes";
+            /*The type of the content is text, obviously.*/
+            intent.setType("text/plain");
+            /*Applying information Subject and Body.*/
+            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject));
+            intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+            /*Fire!*/
+            startActivity(Intent.createChooser(intent, getString(R.string.share_using)));
+        });
+
+
         Button profile = findViewById(R.id.myacc);
         profile.setOnClickListener(v -> {
             Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);

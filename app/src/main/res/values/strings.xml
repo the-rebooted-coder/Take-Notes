@@ -32,4 +32,6 @@
     <string name="yay">Yay!\nPDF got processed</string>
     <string name="sign_in_with_facebook">Sign In</string>
     <string name="sign_in">Sign In</string>
+    <string name="share_subject">Have a look at Take Notes</string>
+    <string name="share_using">Choose app to share Take Notes</string>
 </resources>
