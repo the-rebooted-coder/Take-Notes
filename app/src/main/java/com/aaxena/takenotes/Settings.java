@@ -25,6 +25,8 @@ public class Settings extends AppCompatActivity {
     private void init() {
         Button share=findViewById(R.id.share);
         share.setOnClickListener(v -> {
+            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v2.vibrate(22);
             /*Create an ACTION_SEND Intent*/
             Intent intent = new Intent(Intent.ACTION_SEND);
             /*This will be the actual content you wish you share.*/

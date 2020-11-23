@@ -1,10 +1,8 @@
 package com.aaxena.takenotes;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Vibrator;
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 
@@ -12,10 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreen extends AppCompatActivity {
-    private FirebaseAuth mAuth;
     protected AlphaAnimation fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;
 
     @Override
@@ -26,15 +22,13 @@ public class SplashScreen extends AppCompatActivity {
         TextView appName = findViewById(R.id.title);
         appName.setText(R.string.app_name);
         appName.startAnimation(fadeIn);
-        fadeIn.setDuration(1500);
+        fadeIn.setDuration(1200);
     }
 
 
     private void fireSplashScreen() {
-        int splash_screen_time_out = 3000;
+        int splash_screen_time_out = 2800;
         new Handler().postDelayed(() -> {
-            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v.vibrate(30);
             check();
             finish();
         }, splash_screen_time_out);
