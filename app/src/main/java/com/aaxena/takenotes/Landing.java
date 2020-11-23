@@ -42,8 +42,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.NotificationCompat;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
 import com.google.android.play.core.install.InstallState;
@@ -51,6 +49,7 @@ import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.firebase.auth.FirebaseAuth;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -77,6 +76,7 @@ public class Landing extends AppCompatActivity {
     public ValueCallback<Uri[]> mUMA;
     private AppUpdateManager mAppUpdateManager;
     private static final int RC_APP_UPDATE = 11;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +90,6 @@ public class Landing extends AppCompatActivity {
 
         //Checking First Time
         //This is for Cougar Onwards
-
         if (isFirstTime()) {
             new AlertDialog.Builder(this)
                     .setTitle("Export Folder as PDF")

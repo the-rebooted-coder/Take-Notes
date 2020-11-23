@@ -40,7 +40,6 @@ public class UserInfo extends AppCompatActivity {
         });
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-
         photo = findViewById(R.id.accphoto);
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
