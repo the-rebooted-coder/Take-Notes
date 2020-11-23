@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,8 +17,9 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -26,8 +28,6 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
@@ -35,14 +35,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.Arrays;
+
 public class SignUp extends AppCompatActivity {
-    private SignInButton signInButton;
+    private Button signInButton;
     private GoogleSignInClient mGoogleSignInClient;
     private String TAG = "Login";
     private FirebaseAuth mAuth;
     private int RC_SIGN_IN =1;
     CallbackManager mCallbackManager;
-    LoginButton loginButton;
+    Button loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,22 +57,29 @@ public class SignUp extends AppCompatActivity {
         // Initialize Facebook Login button
         mCallbackManager = CallbackManager.Factory.create();
         loginButton = findViewById(R.id.login_button);
-        loginButton.setReadPermissions("email", "public_profile");
-        loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.d(TAG, "facebook:onSuccess:" + loginResult);
-                handleFacebookAccessToken(loginResult.getAccessToken());
-            }
+            public void onClick(View v) {
+                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                v2.vibrate(30);
+                LoginManager.getInstance().logInWithReadPermissions(SignUp.this, Arrays.asList("email","public_profile"));
+                LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        Log.d(TAG, "facebook:onSuccess:" + loginResult);
+                        handleFacebookAccessToken(loginResult.getAccessToken());
+                    }
 
-            @Override
-            public void onCancel() {
-            Toast.makeText(SignUp.this,"User cancelled the Login",Toast.LENGTH_SHORT).show();
-            }
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(SignUp.this,"User cancelled the Login",Toast.LENGTH_SHORT).show();
+                    }
 
-            @Override
-            public void onError(FacebookException error) {
-                Toast.makeText(SignUp.this,"Oops something went wrong",Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onError(FacebookException error) {
+                        Toast.makeText(SignUp.this,"Oops something went wrong",Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
         signInButton = findViewById(R.id.sign_in_button);
@@ -84,7 +93,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                v2.vibrate(34);
+                v2.vibrate(30);
                 signIn();
             }
         });
@@ -153,7 +162,7 @@ public class SignUp extends AppCompatActivity {
             FirebaseGoogleAuth(acc);
         }
         catch (ApiException e){
-            Toast.makeText(SignUp.this,"Oops! We ran into trouble",Toast.LENGTH_LONG).show();
+            Toast.makeText(SignUp.this,"Something went wrong",Toast.LENGTH_LONG).show();
         }
     }
     private void FirebaseGoogleAuth(GoogleSignInAccount acct){

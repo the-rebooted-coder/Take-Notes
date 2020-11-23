@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#bebcc9</color>
     <color name="colorAccent">#ffffff</color>
     <color name="notification">#EC7979</color>
+    <color name="fb_blue">#3b5998</color>
 </resources>

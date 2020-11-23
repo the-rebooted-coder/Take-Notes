@@ -30,4 +30,6 @@
     <string name="facebook_app_id">839436513489183</string>
     <string name="fb_login_protocol_scheme">fb839436513489183</string>
     <string name="yay">Yay!\nPDF got processed</string>
+    <string name="sign_in_with_facebook">Sign In</string>
+    <string name="sign_in">Sign In</string>
 </resources>
