@@ -67,7 +67,7 @@ public class Settings extends AppCompatActivity {
         tutorial.setOnClickListener(v -> {
             Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             v2.vibrate(25);
-            String url ="https://the-rebooted-coder.github.io/Take-Notes-Web/tutorial";
+            String url ="https://the-rebooted-coder.github.io/Take-Notes/tutorial";
             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
             builder.setToolbarColor(Color.parseColor("#006400"));
             CustomTabsIntent customTabsIntent = builder.build();

@@ -104,7 +104,7 @@ public class Landing extends AppCompatActivity {
                     .setMessage("Would you like to go through a quick tutorial to master Take Notes?")
                     .setCancelable(false)
                     // A null listener allows the button to dismiss the dialog and take no further action.
-                    .setNeutralButton("Sure", (dialog, which) -> {
+                    .setPositiveButton("Sure", (dialog, which) -> {
                         String url ="https://the-rebooted-coder.github.io/Take-Notes-Web/tutorial";
                         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
                         builder.setToolbarColor(Color.parseColor("#006400"));
