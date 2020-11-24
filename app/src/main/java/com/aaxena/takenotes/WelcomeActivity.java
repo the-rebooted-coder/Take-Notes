@@ -3,7 +3,6 @@ package com.aaxena.takenotes;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +53,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 R.layout.welcome_side3,
                 R.layout.welcome_side4,
                 R.layout.welcome_side5,
-                R.layout.welcome_side6};
+                R.layout.welcome_side6,
+                R.layout.welcome_side7};
 
         // making notification bar transparent
         changeStatusBarColor();
@@ -120,11 +120,9 @@ public class WelcomeActivity extends AppCompatActivity {
      * Making notification bar transparent
      */
     private void changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(Color.TRANSPARENT);
     }
 
     /**

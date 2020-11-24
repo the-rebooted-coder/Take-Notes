@@ -38,7 +38,7 @@
     <!--Intro-->
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
+    <string name="start">START</string>
 
     <string name="slide_1_title">Welcome to Take Notes</string>
     <string name="slide_1_desc">The easiest and fastest way to generate handwritten notes</string>
@@ -57,6 +57,9 @@
 
     <string name="slide_6_title">Tap Save Button</string>
     <string name="slide_6_desc">Now that was a li\'ll obvious</string>
+
+    <string name="slide_7_title">Tip</string>
+    <string name="slide_7_desc">You may switch between light/dark modes by tapping the button in top right corner</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>

@@ -25,6 +25,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.58000004" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/sign_up_anim"
+        android:layout_width="245dp"
+        android:layout_height="220dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.69"
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="sign_up_loader.json"
+        app:lottie_loop="true" />
+
     <Button
         android:id="@+id/login_button"
         android:layout_width="271dp"

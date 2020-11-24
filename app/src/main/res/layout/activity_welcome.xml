@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tutorial_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:showIn="@layout/activity_welcome">
@@ -26,29 +27,29 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:alpha=".5"
         android:layout_above="@id/layoutDots"
+        android:alpha=".5"
         android:background="@android:color/white" />
 
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:fontFamily="@font/productsans"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:background="@null"
+        android:fontFamily="@font/productsans"
         android:text="@string/next"
         android:textColor="@android:color/black" />
 
     <Button
         android:id="@+id/btn_skip"
         android:layout_width="wrap_content"
-        android:fontFamily="@font/productsans"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
         android:background="@null"
+        android:fontFamily="@font/productsans"
         android:text="@string/skip"
         android:textColor="@android:color/black" />
 
