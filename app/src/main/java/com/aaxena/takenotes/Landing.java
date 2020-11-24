@@ -85,18 +85,6 @@ public class Landing extends AppCompatActivity {
 
         //Runtime External storage permission for saving download files
         checkPerms();
-
-        //Checking First Time
-        //This is for Cougar Onwards
-        if (isFirstTime()) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Export Folder as PDF")
-                    .setMessage(R.string.instructions)
-                    .setCancelable(false)
-                    // A null listener allows the button to dismiss the dialog and take no further action.
-                    .setNeutralButton("Fantastic", null)
-                    .create().show();
-        }
     }
     @Override
     protected void onStart() {

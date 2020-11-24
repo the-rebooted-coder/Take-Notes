@@ -19,7 +19,6 @@
     <string name="developer">App Developed By One Silicon Diode ;)</string>
     <string name="print">https://the-rebooted-coder.github.io/Take-Notes/loader.png</string>
     <string name="advice">The TakeNotes folder should contain only images, check once!\n\nDelete or Move Unsupported Files\n\nPDF cannot be saved :(\n\nIn order to ensure privacy you need to sign in again</string>
-    <string name="instructions">From now Onwards you can export your entire TakeNotes Folder into a single PDF file\n\nEnsure that folder contains only those images which you need in the PDF while using this functionality\n\nHappy Note Taking!</string>
     <string name="request_a_feature">Request a Feature</string>
     <string name="developers">developers</string>
     <string name="my_account">My Account</string>
@@ -64,6 +63,6 @@
     <string name="slide_8_title">All set, Let\'s Begin!</string>
     <string name="slide_8_desc">Remember, there is no alternative to handwritten notes\n\nThanks for downloading Take Notes</string>
 
-    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
-    <string name="play_again">Play Again</string>
+    <string name="slide_9_title">Export Folder as PDF</string>
+    <string name="slide_9_desc">You can convert all image(s) inside your Take Notes folder into a single PDF file</string>
 </resources>
