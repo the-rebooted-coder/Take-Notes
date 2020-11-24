@@ -47,7 +47,7 @@
     <string name="slide_2_desc">Adjust the spacing and lines according to your desired output</string>
 
     <string name="slide_3_title">Choose da Font</string>
-    <string name="slide_3_desc">Choose from one of the already provided font, or upload one of your own!</string>
+    <string name="slide_3_desc">Choose from one of the already provided fonts, or upload one of your own!</string>
 
     <string name="slide_4_title">Choose and tweak the page according to your choice</string>
     <string name="slide_4_desc">Structure your notes from the root</string>
@@ -60,6 +60,9 @@
 
     <string name="slide_7_title">Tip</string>
     <string name="slide_7_desc">You may switch between light/dark modes by tapping the button in top right corner</string>
+
+    <string name="slide_8_title">All set, Let\'s Begin!</string>
+    <string name="slide_8_desc">Remember, there is no alternative to handwritten notes\n\nThanks for downloading Take Notes</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>

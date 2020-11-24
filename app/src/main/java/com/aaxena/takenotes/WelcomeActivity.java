@@ -54,7 +54,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 R.layout.welcome_side4,
                 R.layout.welcome_side5,
                 R.layout.welcome_side6,
-                R.layout.welcome_side7};
+                R.layout.welcome_side7,
+                R.layout.welcome_side8};
 
         // making notification bar transparent
         changeStatusBarColor();
