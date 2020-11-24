@@ -17,7 +17,6 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.media.MediaScannerConnection;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -39,7 +38,6 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.NotificationCompat;
 
 import com.google.android.play.core.appupdate.AppUpdateManager;
@@ -97,20 +95,6 @@ public class Landing extends AppCompatActivity {
                     .setCancelable(false)
                     // A null listener allows the button to dismiss the dialog and take no further action.
                     .setNeutralButton("Fantastic", null)
-                    .create().show();
-            new AlertDialog.Builder(this)
-                    .setTitle("Tutorial")
-                    .setMessage("Would you like to go through a quick tutorial to master Take Notes?")
-                    .setCancelable(false)
-                    // A null listener allows the button to dismiss the dialog and take no further action.
-                    .setPositiveButton("Sure", (dialog, which) -> {
-                        String url ="https://the-rebooted-coder.github.io/Take-Notes-Web/tutorial";
-                        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                        builder.setToolbarColor(Color.parseColor("#006400"));
-                        CustomTabsIntent customTabsIntent = builder.build();
-                        customTabsIntent.launchUrl(Landing.this, Uri.parse(url));
-                    })
-                    .setNegativeButton("Nope", (dialog, which) -> Toast.makeText(Landing.this,"You can view the tutorial from settings",Toast.LENGTH_SHORT).show())
                     .create().show();
         }
     }

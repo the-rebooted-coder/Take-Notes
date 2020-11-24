@@ -43,7 +43,7 @@ public class SplashScreen extends AppCompatActivity {
         }
         else {
             //Newbie
-            Intent i=new Intent(SplashScreen.this,SignUp.class);
+            Intent i=new Intent(SplashScreen.this,WelcomeActivity.class);
             startActivity(i);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }

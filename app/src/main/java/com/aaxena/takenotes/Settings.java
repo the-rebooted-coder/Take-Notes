@@ -81,18 +81,6 @@ public class Settings extends AppCompatActivity {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         });
-
-        Button tutorial = findViewById(R.id.tutorial);
-        tutorial.setOnClickListener(v -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(25);
-            String url ="https://the-rebooted-coder.github.io/Take-Notes/tutorial";
-            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-            builder.setToolbarColor(Color.parseColor("#006400"));
-            CustomTabsIntent customTabsIntent = builder.build();
-            customTabsIntent.launchUrl(Settings.this, Uri.parse(url));
-        });
-
     }
 
     @Override

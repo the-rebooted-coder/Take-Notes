@@ -34,4 +34,30 @@
     <string name="sign_in">Sign In</string>
     <string name="share_subject">Have a look at Take Notes</string>
     <string name="share_using">Choose app to share Take Notes</string>
+
+    <!--Intro-->
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Welcome to Take Notes</string>
+    <string name="slide_1_desc">The easiest and fastest way to generate handwritten notes</string>
+
+    <string name="slide_2_title">Write almost anything on the real time paper</string>
+    <string name="slide_2_desc">Adjust the spacing and lines according to your desired output</string>
+
+    <string name="slide_3_title">Choose da Font</string>
+    <string name="slide_3_desc">Choose from one of the already provided font, or upload one of your own!</string>
+
+    <string name="slide_4_title">Choose and tweak the page according to your choice</string>
+    <string name="slide_4_desc">Structure your notes from the root</string>
+
+    <string name="slide_5_title">Get your magic wand ready, hit the button</string>
+    <string name="slide_5_desc">Your notes are ready steaming hot!</string>
+
+    <string name="slide_6_title">Tap Save Button</string>
+    <string name="slide_6_desc">Now that was a li\'ll obvious</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
 </resources>
