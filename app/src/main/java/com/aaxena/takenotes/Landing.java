@@ -47,6 +47,10 @@ import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Chunk;
@@ -83,8 +87,26 @@ public class Landing extends AppCompatActivity {
         //Checking Network
         checkNetwork();
 
+        //Ask for a Review
+        askRatings();
+
         //Runtime External storage permission for saving download files
         checkPerms();
+    }
+    void askRatings() {
+        ReviewManager manager = ReviewManagerFactory.create(this);
+        Task<ReviewInfo> request = manager.requestReviewFlow();
+        request.addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                // We can get the ReviewInfo object
+                ReviewInfo reviewInfo = task.getResult();
+                Task<Void> flow = manager.launchReviewFlow(this, reviewInfo);
+                flow.addOnCompleteListener(task2 -> {
+                });
+            } else {
+                // There was some problem, continue regardless of the result.
+            }
+        });
     }
     @Override
     protected void onStart() {
