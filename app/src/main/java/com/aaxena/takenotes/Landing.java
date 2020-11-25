@@ -267,6 +267,14 @@ public class Landing extends AppCompatActivity {
                                 .create().show();
                     }
                 }
+                else if (url.matches("https://the-rebooted-coder.github.io/Take-Notes/ocr_handler.png")) {
+                    Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    v2.vibrate(25);
+                    Intent i=new Intent(Landing.this,OCR.class);
+                    startActivity(i);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    finish();
+                }
                 return super.shouldOverrideUrlLoading(view, url);
             }
         });

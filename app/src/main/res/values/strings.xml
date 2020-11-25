@@ -65,5 +65,9 @@
 
     <string name="slide_9_title">Export Folder as PDF</string>
     <string name="slide_9_desc">You can convert all image(s) inside your Take Notes folder into a single PDF file</string>
+
+    <string name="slide_10_title">Got an Image with Text?</string>
+    <string name="slide_10_desc">Tap <b>OCR!</b>\nConvert all to text, just a tap.</string>
+
     <string name="ocr_image_preview">OCR Image Preview</string>
 </resources>

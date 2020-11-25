@@ -55,11 +55,11 @@ public class WelcomeActivity extends AppCompatActivity {
                 R.layout.welcome_side6,
                 R.layout.welcome_side7,
                 R.layout.welcome_side9,
+                R.layout.welcome_side10,
                 R.layout.welcome_side8};
 
         // making notification bar transparent
         changeStatusBarColor();
-
         myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);

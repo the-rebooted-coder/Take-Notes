@@ -26,7 +26,6 @@
         android:layout_marginTop="27dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="41dp"
-        android:onClick="pick_image"
         android:text="Pick"
         app:layout_constraintBottom_toTopOf="@+id/result"
         app:layout_constraintEnd_toEndOf="parent"
