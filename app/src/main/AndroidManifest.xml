@@ -28,7 +28,6 @@
         <activity android:name=".MeetDevs" />
         <activity android:name=".feature" />
         <activity android:name=".Settings" />
-        <activity android:name=".OCR" />
         <activity
             android:name=".UserInfo"
             android:screenOrientation="portrait"
