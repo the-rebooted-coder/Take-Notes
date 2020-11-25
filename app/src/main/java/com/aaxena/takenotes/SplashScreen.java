@@ -24,8 +24,6 @@ public class SplashScreen extends AppCompatActivity {
         appName.startAnimation(fadeIn);
         fadeIn.setDuration(1200);
     }
-
-
     private void fireSplashScreen() {
         int splash_screen_time_out = 2800;
         new Handler().postDelayed(() -> {
