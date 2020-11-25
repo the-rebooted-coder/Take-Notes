@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".WelcomeActivity"/>
+        <activity android:name=".OCR"></activity>
+        <activity android:name=".WelcomeActivity" />
         <activity android:name=".PdfProcessed" />
         <activity android:name=".PrivacyPolicy" />
         <activity android:name=".MeetDevs" />
