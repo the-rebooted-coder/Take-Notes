@@ -1,5 +1,7 @@
 package com.aaxena.takenotes;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -55,6 +57,11 @@ public class OCR extends AppCompatActivity {
                         .addOnSuccessListener(result -> {
                             // Task completed successfully
                             resultTv.setText(result.getText());
+                            String copied_value = resultTv.getText().toString();
+                            ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                            ClipData clip = ClipData.newPlainText("Take Notes OCR", copied_value);
+                            clipboard.setPrimaryClip(clip);
+                            Toast.makeText(getApplicationContext(),"Text copied to the clipboard",Toast.LENGTH_SHORT).show();
                         })
                         .addOnFailureListener(
                                 e -> {
