@@ -55,8 +55,8 @@
 
     <Button
         android:id="@+id/copy_button"
-        android:layout_width="39dp"
-        android:layout_height="45dp"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
         android:layout_marginStart="159dp"
         android:layout_marginTop="11dp"
         android:layout_marginEnd="164dp"
