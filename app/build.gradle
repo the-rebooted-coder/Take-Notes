@@ -54,9 +54,17 @@ dependencies {
     //FireBase
     implementation 'com.google.firebase:firebase-inappmessaging-display:19.1.2'
     implementation 'com.google.firebase:firebase-auth:20.0.1'
+    //Vision
+    implementation 'com.google.android.gms:play-services-vision:20.1.2'
+
+    // ML Kit dependencies
+    implementation 'com.google.firebase:firebase-ml-vision:24.1.0'
+    implementation 'com.google.android.gms:play-services-vision-image-label:18.1.0'
     implementation 'com.google.firebase:firebase-messaging:21.0.0'
     implementation 'com.google.firebase:firebase-analytics:18.0.0'
     implementation 'com.google.firebase:firebase-crashlytics:17.3.0'
+    implementation 'com.google.firebase:firebase-ml-vision:24.1.0'
+    implementation 'com.google.android.gms:play-services-vision-image-label:18.1.0'
     implementation 'com.google.firebase:firebase-core:18.0.0'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
