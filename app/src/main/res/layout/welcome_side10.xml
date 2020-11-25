@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -14,17 +14,17 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/first"
-            android:layout_width="230dp"
-            android:layout_height="250dp"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
             app:lottie_autoPlay="true"
-            app:lottie_fileName="paper.json"
+            app:lottie_fileName="export_pdf.json"
             app:lottie_loop="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/productsansbold"
-            android:text="@string/slide_2_title"
+            android:text="@string/slide_9_title"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="@dimen/slide_title"
@@ -37,12 +37,11 @@
             android:fontFamily="@font/productsans"
             android:paddingLeft="@dimen/desc_padding"
             android:paddingRight="@dimen/desc_padding"
-            android:text="@string/slide_2_desc"
+            android:text="@string/slide_9_desc"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="@dimen/slide_desc" />
 
     </LinearLayout>
-
 
 </RelativeLayout>
