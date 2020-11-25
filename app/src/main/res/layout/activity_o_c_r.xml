@@ -5,46 +5,53 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".OCR">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:contentDescription="@string/ocr_image_preview"
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="246dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_background"
+        android:elevation="20dp"
+        android:fontFamily="@font/productsansbold"
+        android:text="@string/choose_image"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.89" />
 
-    <Button
-        android:id="@+id/button2"
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="41dp"
-        android:text="Pick"
-        app:layout_constraintBottom_toTopOf="@+id/result"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="353dp"
-        android:layout_height="146dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="33dp"
-        android:textSize="20sp"
+        android:layout_height="504dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="29dp"
+                android:layout_marginEnd="29dp"
+                android:fontFamily="@font/productsans"
+                android:hint="@string/pre_scan_text_holder"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

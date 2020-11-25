@@ -1,8 +1,12 @@
 package com.aaxena.takenotes;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,20 +21,21 @@ import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
 import java.io.IOException;
 
 public class OCR extends AppCompatActivity {
-    ImageView imageView;
-    TextView resultTv;
+    EditText resultTv;
     Button choose;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_o_c_r);
-        imageView = findViewById(R.id.imageView);
         resultTv = findViewById(R.id.result);
         choose = findViewById(R.id.button2);
-
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         choose.setOnClickListener(view -> {
+            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v2.vibrate(26);
             Intent i = new Intent();
-            i.setType("image/**");
+            i.setType("image/*");
             i.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(Intent.createChooser(i,"Select an Image to get text from"),121);
         });
@@ -41,13 +46,11 @@ public class OCR extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode ==121){
-            imageView.setImageURI(data.getData());
             FirebaseVisionImage image;
             try {
                 image = FirebaseVisionImage.fromFilePath(getApplicationContext(), data.getData());
                 FirebaseVisionTextRecognizer textRecognizer = FirebaseVision.getInstance()
                         .getOnDeviceTextRecognizer();
-
                 textRecognizer.processImage(image)
                         .addOnSuccessListener(result -> {
                             // Task completed successfully
@@ -62,5 +65,13 @@ public class OCR extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(OCR.this,Landing.class);
+        startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
     }
 }

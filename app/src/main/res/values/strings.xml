@@ -70,4 +70,6 @@
     <string name="slide_10_desc">Tap <b>OCR!</b>\nConvert all to text, just a tap.</string>
 
     <string name="ocr_image_preview">OCR Image Preview</string>
+    <string name="choose_image">Choose Image</string>
+    <string name="pre_scan_text_holder">Extracted text would be displayed here.\n\n\nText will be auto copied to your clipboard.</string>
 </resources>
