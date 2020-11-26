@@ -46,9 +46,9 @@ public class Settings extends AppCompatActivity {
             public void onClick(View view) {
                 Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 v2.vibrate(25);
-                String url = "https://the-rebooted-coder.github.io/Take-Notes/devs";
+                String url = "https://the-rebooted-coder.github.io/Take-Notes/take_notes_journey";
                 CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                builder.setToolbarColor(Color.parseColor("#A2C994"));
+                builder.setToolbarColor(Color.parseColor("#2F2BFA"));
                 CustomTabsIntent customTabsIntent = builder.build();
                 builder.setShowTitle(true);
                 customTabsIntent.launchUrl(getApplicationContext(), Uri.parse(url));
