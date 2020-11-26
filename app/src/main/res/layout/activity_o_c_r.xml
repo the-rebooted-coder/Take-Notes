@@ -5,7 +5,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@drawable/ocr_bg"
     tools:context=".OCR">
 
     <Button
@@ -49,14 +49,15 @@
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textColorHint="@color/colorPrimary"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:importantForAutofill="no" />
         </LinearLayout>
     </ScrollView>
 
     <Button
         android:id="@+id/copy_button"
-        android:layout_width="35dp"
-        android:layout_height="33dp"
+        android:layout_width="28dp"
+        android:layout_height="29dp"
         android:layout_marginStart="159dp"
         android:layout_marginTop="11dp"
         android:layout_marginEnd="164dp"

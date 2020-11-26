@@ -65,9 +65,12 @@ public class Settings extends AppCompatActivity {
         devs.setOnClickListener(v -> {
             Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             v2.vibrate(25);
-            Toast.makeText(Settings.this,"Tip: Tap on our PFP's to reveal more!",Toast.LENGTH_LONG).show();
-            Intent i=new Intent(Settings.this,MeetDevs.class);
-            startActivity(i);
+            Toast.makeText(Settings.this,"Tip: Tap on our PFP's to reveal more!",Toast.LENGTH_SHORT).show();
+            String url = "https://the-rebooted-coder.github.io/Take-Notes/devs";
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            CustomTabsIntent customTabsIntent = builder.build();
+            builder.setToolbarColor(Color.parseColor("1a1a1a"));
+            customTabsIntent.launchUrl(this, Uri.parse(url));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         });
