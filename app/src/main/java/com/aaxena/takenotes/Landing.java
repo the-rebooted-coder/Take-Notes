@@ -198,6 +198,7 @@ public class Landing extends AppCompatActivity {
         registerForContextMenu(webview);
         webview.getSettings().setUseWideViewPort(true);
         webview.setInitialScale((int) 1.0);
+        webview.scrollTo(0, 250);
         webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/");
         webview.setWebChromeClient(new WebChromeClient() {
             //File Chooser
