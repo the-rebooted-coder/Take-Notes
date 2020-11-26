@@ -123,23 +123,20 @@ public class SignUp extends AppCompatActivity {
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                            finish();
-                        } else {
-                            loginButton.setVisibility(View.VISIBLE);
-                            signInButton.setVisibility(View.VISIBLE);
-                            loading.setVisibility(View.INVISIBLE);
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(SignUp.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        updateUI(user);
+                        finish();
+                    } else {
+                        loginButton.setVisibility(View.VISIBLE);
+                        signInButton.setVisibility(View.VISIBLE);
+                        loading.setVisibility(View.INVISIBLE);
+                        // If sign in fails, display a message to the user.
+                        Toast.makeText(SignUp.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                        updateUI(null);
                     }
                 });
     }
