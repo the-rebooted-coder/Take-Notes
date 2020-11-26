@@ -69,10 +69,10 @@ public class Settings extends AppCompatActivity {
             String url = "https://the-rebooted-coder.github.io/Take-Notes/devs";
             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
             CustomTabsIntent customTabsIntent = builder.build();
-            builder.setToolbarColor(Color.parseColor("1a1a1a"));
+            builder.setToolbarColor(Color.BLACK);
+            builder.setShowTitle(true);
             customTabsIntent.launchUrl(this, Uri.parse(url));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();
         });
 
         Button privacy = findViewById(R.id.privacy);

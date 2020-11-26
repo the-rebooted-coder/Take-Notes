@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.454"
         app:lottie_autoPlay="true"
         app:lottie_fileName="no_connection.json"
-        app:lottie_loop="true"/>
+        app:lottie_loop="false"/>
 
     <TextView
         android:id="@+id/textView"
