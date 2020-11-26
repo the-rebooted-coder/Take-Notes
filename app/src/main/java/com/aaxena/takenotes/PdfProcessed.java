@@ -13,7 +13,7 @@ public class PdfProcessed extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdf_processed);
 
-        int time_out = 1900;
+        int time_out = 1850;
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(PdfProcessed.this,Landing.class);
             startActivity(intent);
