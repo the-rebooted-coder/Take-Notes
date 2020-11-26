@@ -10,8 +10,8 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="246dp"
-        android:layout_height="wrap_content"
+        android:layout_width="194dp"
+        android:layout_height="43dp"
         android:background="@drawable/card_background"
         android:elevation="20dp"
         android:fontFamily="@font/productsansbold"
