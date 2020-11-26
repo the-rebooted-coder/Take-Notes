@@ -73,4 +73,5 @@
     <string name="choose_image">Choose Image</string>
     <string name="pre_scan_text_holder">Extracted text would be displayed here.\n\n\nText will be auto copied to your clipboard.</string>
     <string name="text_copied_to_clipboard_message">Text copied to the clipboard</string>
+    <string name="take_notes_journey">Take Notes Journey</string>
 </resources>
