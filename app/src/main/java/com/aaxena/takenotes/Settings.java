@@ -40,6 +40,21 @@ public class Settings extends AppCompatActivity {
             startActivity(Intent.createChooser(intent, getString(R.string.share_using)));
         });
 
+        Button tn_journey = findViewById(R.id.take_notes_journey);
+        tn_journey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                v2.vibrate(25);
+                String url = "https://the-rebooted-coder.github.io/Take-Notes/devs";
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                builder.setToolbarColor(Color.parseColor("#A2C994"));
+                CustomTabsIntent customTabsIntent = builder.build();
+                builder.setShowTitle(true);
+                customTabsIntent.launchUrl(getApplicationContext(), Uri.parse(url));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
 
         Button profile = findViewById(R.id.myacc);
         profile.setOnClickListener(v -> {
