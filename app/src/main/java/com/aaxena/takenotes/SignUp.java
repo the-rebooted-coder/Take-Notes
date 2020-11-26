@@ -63,40 +63,37 @@ public class SignUp extends AppCompatActivity {
         // Initialize Facebook Login button
         mCallbackManager = CallbackManager.Factory.create();
         loginButton = findViewById(R.id.login_button);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                v2.vibrate(30);
-                    loginButton.setVisibility(View.INVISIBLE);
-                    signInButton.setVisibility(View.INVISIBLE);
-                    loading.setVisibility(View.VISIBLE);
-                    loading.playAnimation();
-                LoginManager.getInstance().logInWithReadPermissions(SignUp.this, Arrays.asList("email","public_profile"));
-                LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        Toast.makeText(SignUp.this,"Logged In Successfully, Please wait!",Toast.LENGTH_SHORT).show();
-                        handleFacebookAccessToken(loginResult.getAccessToken());
-                    }
+        loginButton.setOnClickListener(v -> {
+            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v2.vibrate(30);
+                loginButton.setVisibility(View.INVISIBLE);
+                signInButton.setVisibility(View.INVISIBLE);
+                loading.setVisibility(View.VISIBLE);
+                loading.playAnimation();
+            LoginManager.getInstance().logInWithReadPermissions(SignUp.this, Arrays.asList("email","public_profile"));
+            LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+                @Override
+                public void onSuccess(LoginResult loginResult) {
+                    Toast.makeText(SignUp.this,"Logged In Successfully, Please wait!",Toast.LENGTH_SHORT).show();
+                    handleFacebookAccessToken(loginResult.getAccessToken());
+                }
 
-                    @Override
-                    public void onCancel() {
-                        loginButton.setVisibility(View.VISIBLE);
-                        signInButton.setVisibility(View.VISIBLE);
-                        loading.setVisibility(View.INVISIBLE);
-                        Toast.makeText(SignUp.this,"User cancelled the Login",Toast.LENGTH_SHORT).show();
-                    }
+                @Override
+                public void onCancel() {
+                    loginButton.setVisibility(View.VISIBLE);
+                    signInButton.setVisibility(View.VISIBLE);
+                    loading.setVisibility(View.INVISIBLE);
+                    Toast.makeText(SignUp.this,"User cancelled the Login",Toast.LENGTH_SHORT).show();
+                }
 
-                    @Override
-                    public void onError(FacebookException error) {
-                        loginButton.setVisibility(View.VISIBLE);
-                        signInButton.setVisibility(View.VISIBLE);
-                        loading.setVisibility(View.INVISIBLE);
-                        Toast.makeText(SignUp.this,"Oops something went wrong",Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
+                @Override
+                public void onError(FacebookException error) {
+                    loginButton.setVisibility(View.VISIBLE);
+                    signInButton.setVisibility(View.VISIBLE);
+                    loading.setVisibility(View.INVISIBLE);
+                    Toast.makeText(SignUp.this,"Oops something went wrong",Toast.LENGTH_SHORT).show();
+                }
+            });
         });
         signInButton = findViewById(R.id.sign_in_button);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

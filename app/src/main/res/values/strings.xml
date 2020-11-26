@@ -37,7 +37,7 @@
     <!--Intro-->
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
-    <string name="start">START</string>
+    <string name="start"><b>BEGIN</b></string>
 
     <string name="slide_1_title">Welcome to Take Notes</string>
     <string name="slide_1_desc">The easiest and fastest way to generate handwritten notes</string>
