@@ -54,15 +54,29 @@
         </LinearLayout>
     </ScrollView>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/copy_anim"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="159dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="copy_done.json"
+        app:lottie_loop="false" />
+
     <Button
         android:id="@+id/copy_button"
-        android:layout_width="28dp"
-        android:layout_height="29dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:layout_marginStart="159dp"
         android:layout_marginTop="11dp"
         android:layout_marginEnd="164dp"
         android:layout_marginBottom="9dp"
-        android:background="@drawable/ic_content_copy"
+        android:background="@drawable/copy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

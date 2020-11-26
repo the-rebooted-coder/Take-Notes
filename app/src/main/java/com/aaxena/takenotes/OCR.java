@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.view.View;
 import android.view.WindowManager;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
@@ -26,11 +28,16 @@ import java.io.IOException;
 public class OCR extends AppCompatActivity {
     EditText resultTv;
     Button choose;
+    LottieAnimationView copy_complete;
     Button copy;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_o_c_r);
+
+        final boolean isAnimated=false;
+        copy_complete = findViewById(R.id.copy_anim);
+        copy_complete.setVisibility(View.INVISIBLE);
         resultTv = findViewById(R.id.result);
         choose = findViewById(R.id.button2);
         getWindow().setSoftInputMode(
@@ -48,12 +55,22 @@ public class OCR extends AppCompatActivity {
         copy.setVisibility(View.INVISIBLE);
         copy.setOnClickListener(view -> {
             Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            copy.setVisibility(View.INVISIBLE);
             v2.vibrate(20);
+            copy_complete.setVisibility(View.VISIBLE);
+            copy_complete.playAnimation();
+            int splash_screen_time_out = 3000;
+            new Handler().postDelayed(() -> {
+                Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                v3.vibrate(25);
+                copy_complete.setVisibility(View.INVISIBLE);
+                copy.setVisibility(View.VISIBLE);
+                Toast.makeText(getApplicationContext(), R.string.text_copied_to_clipboard_message,Toast.LENGTH_SHORT).show();
+            }, splash_screen_time_out);
             String copied_value = resultTv.getText().toString();
             ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("Take Notes OCR", copied_value);
             clipboard.setPrimaryClip(clip);
-            Toast.makeText(getApplicationContext(), R.string.text_copied_to_clipboard_message,Toast.LENGTH_SHORT).show();
         });
     }
 
