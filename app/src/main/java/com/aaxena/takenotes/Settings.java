@@ -68,8 +68,8 @@ public class Settings extends AppCompatActivity {
             Toast.makeText(Settings.this,"Tip: Tap on our PFP's to reveal more!",Toast.LENGTH_SHORT).show();
             String url = "https://the-rebooted-coder.github.io/Take-Notes/devs";
             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            builder.setToolbarColor(Color.parseColor("#1A1A1A"));
             CustomTabsIntent customTabsIntent = builder.build();
-            builder.setToolbarColor(Color.BLACK);
             builder.setShowTitle(true);
             customTabsIntent.launchUrl(this, Uri.parse(url));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
