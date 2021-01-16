@@ -15,6 +15,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaScannerConnection;
 import android.net.ConnectivityManager;
@@ -68,6 +69,9 @@ import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import static com.aaxena.takenotes.MyName.SHARED_PREFS;
+import static com.aaxena.takenotes.MyName.TEXT;
+
 
 public class Landing extends AppCompatActivity {
     private WebView webview;
@@ -78,11 +82,16 @@ public class Landing extends AppCompatActivity {
     private AppUpdateManager mAppUpdateManager;
     private static final int RC_APP_UPDATE = 11;
     FirebaseAuth mAuth;
+    private String hello;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
+
+        //Load Data
+        loadData();
+
         //Checking Network
         checkNetwork();
 
@@ -91,6 +100,10 @@ public class Landing extends AppCompatActivity {
 
         //Runtime External storage permission for saving download files
         checkPerms();
+    }
+    public void loadData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        hello = sharedPreferences.getString(TEXT,"");
     }
     void askRatings() {
         ReviewManager manager = ReviewManagerFactory.create(this);
@@ -143,7 +156,7 @@ public class Landing extends AppCompatActivity {
                         }
 
                     } else {
-                        //App Is Fully Updated Nothing To Do Continuing Normal WorkFlow but do not erase the else func
+                        //App Is Fully Updated Nothing To Do, Continuing Normal WorkFlow but do not erase the else func
                     }
                 }
             };
@@ -319,7 +332,14 @@ public class Landing extends AppCompatActivity {
     public String createAndSaveFileFromBase64Url(String url) {
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS+"/TakeNotes");
         String filetype = url.substring(url.indexOf("/") + 1, url.indexOf(";"));
-        String filename ="Take Notes "+System.currentTimeMillis() + "." + filetype;
+        if (hello.isEmpty()){
+            Toast.makeText(this,"Provide a Default File Beginning Name",Toast.LENGTH_SHORT).show();
+            Intent i=new Intent(Landing.this,MyName.class);
+            startActivity(i);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            finish();
+        }
+        String filename =hello+" Notes"+System.currentTimeMillis() + "." + filetype;
         Toast.makeText(this, R.string.success_toast,Toast.LENGTH_SHORT).show();
         File file = new File(path, filename);
         try {
