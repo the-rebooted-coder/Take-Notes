@@ -22,11 +22,18 @@ import android.widget.Button;
             Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             v2.vibrate(25);
             new AlertDialog.Builder(this)
-                    .setTitle("When you enter your name...")
-                    .setMessage("TakeNotes saves your name in your device's internal storage, so everytime you save assignments it adds up this name to the file to save your time in renaming.\n\nNO Data is SENT ANYWHERE!\n\nPretty Great Right?")
+                    .setTitle(R.string.more_info_title)
+                    .setMessage(R.string.more_info_text)
                     // A null listener allows the button to dismiss the dialog and take no further action.
-                    .setNegativeButton("Great!", null)
+                    .setNegativeButton("Yes!", null)
                     .show();
+        });
+
+        Button saveMyName = findViewById(R.id.save_name);
+        saveMyName.setOnClickListener(v -> {
+            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v2.vibrate(26);
+            
         });
     }
      @Override
