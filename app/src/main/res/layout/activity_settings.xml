@@ -7,84 +7,89 @@
     android:background="@drawable/settings"
     tools:context=".Settings">
 
-    <Button
-        android:id="@+id/request"
-        android:layout_width="198dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/card_background"
-        android:elevation="30dp"
-        android:fontFamily="@font/productsans"
-        android:text="@string/request_a_feature"
-        android:textColor="@color/ic_launcher_background"
+    <ScrollView
+        android:layout_width="227dp"
+        android:layout_height="357dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintVertical_bias="0.664">
 
-    <Button
-        android:id="@+id/devs"
-        android:layout_width="198dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/card_background"
-        android:elevation="30dp"
-        android:fontFamily="@font/productsans"
-        android:text="@string/developers"
-        android:textColor="@color/ic_launcher_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.21"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/myacc"
-        android:layout_width="198dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/card_background"
-        android:elevation="30dp"
-        android:fontFamily="@font/productsans"
-        android:text="@string/my_account"
-        android:textColor="@color/ic_launcher_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.21"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.64" />
+            <Button
+                android:id="@+id/request"
+                android:layout_width="198dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_background"
+                android:elevation="30dp"
+                android:fontFamily="@font/productsans"
+                android:text="@string/request_a_feature"
+                android:textColor="@color/ic_launcher_background" />
 
-    <Button
-        android:id="@+id/privacy"
-        android:layout_width="198dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/card_background"
-        android:elevation="30dp"
-        android:fontFamily="@font/productsans"
-        android:text="@string/privacy_info"
-        android:textColor="@color/ic_launcher_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.21"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79" />
+            <Button
+                android:id="@+id/devs"
+                android:layout_width="198dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/card_background"
+                android:elevation="30dp"
+                android:fontFamily="@font/productsans"
+                android:text="@string/developers"
+                android:textColor="@color/ic_launcher_background" />
 
-    <Button
-        android:id="@+id/take_notes_journey"
-        android:layout_width="198dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/card_background"
-        android:elevation="30dp"
-        android:fontFamily="@font/productsans"
-        android:text="@string/take_notes_journey"
-        android:textColor="@color/ic_launcher_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.21"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93" />
+            <Button
+                android:id="@+id/myacc"
+                android:layout_width="198dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/card_background"
+                android:elevation="30dp"
+                android:fontFamily="@font/productsans"
+                android:text="@string/my_account"
+                android:textColor="@color/ic_launcher_background" />
+
+            <Button
+                android:id="@+id/privacy"
+                android:layout_width="198dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/card_background"
+                android:elevation="30dp"
+                android:fontFamily="@font/productsans"
+                android:text="@string/privacy_info"
+                android:textColor="@color/ic_launcher_background" />
+
+            <Button
+                android:id="@+id/my_name"
+                android:layout_width="198dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/card_background"
+                android:elevation="30dp"
+                android:fontFamily="@font/productsans"
+                android:text="@string/saved_file_name"
+                android:textColor="@color/ic_launcher_background" />
+
+            <Button
+                android:id="@+id/take_notes_journey"
+                android:layout_width="198dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/card_background"
+                android:elevation="30dp"
+                android:fontFamily="@font/productsans"
+                android:text="@string/take_notes_journey"
+                android:textColor="@color/ic_launcher_background" />
+
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/share"
@@ -92,11 +97,11 @@
         android:layout_height="68dp"
         android:layout_marginStart="72dp"
         android:layout_marginTop="536dp"
-        android:layout_marginEnd="26dp"
         android:layout_marginBottom="75dp"
         android:background="@drawable/share"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/privacy"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
