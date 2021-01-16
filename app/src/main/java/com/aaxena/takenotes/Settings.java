@@ -63,6 +63,16 @@ public class Settings extends AppCompatActivity {
             finish();
         });
 
+        Button my_name = findViewById(R.id.my_name);
+        my_name.setOnClickListener(v -> {
+            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v2.vibrate(25);
+            Intent i=new Intent(Settings.this,MyName.class);
+            startActivity(i);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            finish();
+        });
+
         Button request = findViewById(R.id.request);
         request.setOnClickListener(v -> {
             Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);

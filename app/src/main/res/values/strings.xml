@@ -75,4 +75,7 @@
     <string name="text_copied_to_clipboard_message">Text copied to the clipboard</string>
     <string name="take_notes_journey">Take Notes Journey</string>
     <string name="saved_file_name">Saved file name</string>
+    <string name="type_your_name_here">Name you enter here will reflect around all the files you save from Take Notes </string>
+    <string name="your_name">Your Name</string>
+    <string name="more_info"><u>More info</u></string>
 </resources>
