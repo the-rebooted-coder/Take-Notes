@@ -22,9 +22,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OCR"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
+        <activity android:name=".MyName"></activity>
+        <activity
+            android:name=".OCR"
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".PdfProcessed" />
         <activity android:name=".PrivacyPolicy" />
