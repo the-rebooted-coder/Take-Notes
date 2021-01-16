@@ -78,4 +78,5 @@
     <string name="type_your_name_here">Name you enter here will reflect around all the files you save from Take Notes </string>
     <string name="your_name">Your Name</string>
     <string name="more_info"><u>More info</u></string>
+    <string name="save">save</string>
 </resources>
