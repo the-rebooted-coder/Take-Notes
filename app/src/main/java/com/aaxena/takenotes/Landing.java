@@ -82,6 +82,7 @@ public class Landing extends AppCompatActivity {
     private AppUpdateManager mAppUpdateManager;
     private static final int RC_APP_UPDATE = 11;
     FirebaseAuth mAuth;
+    private long pressedTime;
     private String hello;
 
     @Override
@@ -552,5 +553,15 @@ public class Landing extends AppCompatActivity {
             progressDialog.dismiss();
             finish();
         }
+    }
+    @Override
+    public void onBackPressed() {
+        if (pressedTime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed();
+            finish();
+        } else {
+            Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+        }
+        pressedTime = System.currentTimeMillis();
     }
 }
