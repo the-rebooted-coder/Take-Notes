@@ -1,18 +1,16 @@
  package com.aaxena.takenotes;
 
-import androidx.appcompat.app.AppCompatActivity;
+ import android.app.AlertDialog;
+ import android.content.Context;
+ import android.content.Intent;
+ import android.content.SharedPreferences;
+ import android.os.Bundle;
+ import android.os.Vibrator;
+ import android.widget.Button;
+ import android.widget.EditText;
+ import android.widget.Toast;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.os.Vibrator;
-import android.text.TextUtils;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+ import androidx.appcompat.app.AppCompatActivity;
 
  public class MyName extends AppCompatActivity {
      public static final String SHARED_PREFS = "sharedPrefs";
