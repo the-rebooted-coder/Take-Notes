@@ -1,9 +1,13 @@
 package com.aaxena.takenotes;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +60,9 @@ public class WelcomeActivity extends AppCompatActivity {
                 R.layout.welcome_side7,
                 R.layout.welcome_side9,
                 R.layout.welcome_side10,
-                R.layout.welcome_side8};
+                R.layout.welcome_all_set,
+                R.layout.welcome_side8,
+                };
 
         // making notification bar transparent
         changeStatusBarColor();
@@ -84,9 +90,18 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-        prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(WelcomeActivity.this, SignUp.class));
-        finish();
+        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_DENIED) {
+            Log.d("permission", "permission denied to WRITE_EXTERNAL_STORAGE - requesting it");
+            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            requestPermissions(permissions, 1);
+        }
+        else{
+            prefManager.setFirstTimeLaunch(false);
+            startActivity(new Intent(WelcomeActivity.this, SignUp.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            finish();
+        }
     }
 
     // viewpager change listener
@@ -116,6 +131,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         }
     };
+
 
     /**
      * Making notification bar transparent

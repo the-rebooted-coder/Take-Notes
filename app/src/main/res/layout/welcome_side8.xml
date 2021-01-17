@@ -17,14 +17,14 @@
             android:layout_width="280dp"
             android:layout_height="280dp"
             app:lottie_autoPlay="true"
-            app:lottie_fileName="final_go.json"
+            app:lottie_fileName="permissions.json"
             app:lottie_loop="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/productsansbold"
-            android:text="Oh! One More Thing!"
+            android:text="@string/oh_one_more_thing"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="@dimen/slide_title"
@@ -37,7 +37,7 @@
             android:fontFamily="@font/productsans"
             android:paddingLeft="@dimen/desc_padding"
             android:paddingRight="@dimen/desc_padding"
-            android:text="Please provide the storage permissions or else where will the saved documents Go?"
+            android:text="@string/asking_storage_perm"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="18sp" />

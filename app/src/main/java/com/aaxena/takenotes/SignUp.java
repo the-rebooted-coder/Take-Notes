@@ -174,6 +174,7 @@ public class SignUp extends AppCompatActivity {
             if (account !=null){
                 Intent i=new Intent(SignUp.this,Landing.class);
                 startActivity(i);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
             }
             FirebaseGoogleAuth(acc);

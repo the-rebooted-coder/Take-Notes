@@ -17,7 +17,7 @@
             android:layout_width="280dp"
             android:layout_height="280dp"
             app:lottie_autoPlay="true"
-            app:lottie_fileName="permissions.json"
+            app:lottie_fileName="final_go.json"
             app:lottie_loop="true" />
 
         <TextView
