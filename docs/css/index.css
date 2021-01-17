@@ -39,13 +39,6 @@ body.dark {
 
 @font-face {
 
-  font-family: 'Horcrux';
-  src: url(../fonts/horcrux.ttf);
-
-}
-
-@font-face {
-
   font-family: 'Paneer';
   src: url(../fonts/Paneer.ttf);
 
@@ -68,6 +61,57 @@ body.dark {
 
   font-family: 'Backbencher Best Pal';
   src: url(../fonts/Backbencher\ Best\ Pal.ttf);
+}
+
+/* New Fonts*/
+
+@font-face {
+
+  font-family: 'Bleh';
+  src: url(../fonts/Bleh.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'Breathtaking';
+  src: url(../fonts/Breathtaking.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'Expelliarmus';
+  src: url(../fonts/Expelliarmus.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'One Nice Handwriting';
+  src: url(../fonts/One\ Nice\ Handwriting.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'Populaire';
+  src: url(../fonts/Populaire.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'Riddikulus';
+  src: url(../fonts/Riddikulus.ttf);
+
+}
+
+@font-face {
+
+  font-family: 'Mine';
+  src: url(../fonts/mine.ttf);
+
 }
 
 /* Default CSS Changes */
