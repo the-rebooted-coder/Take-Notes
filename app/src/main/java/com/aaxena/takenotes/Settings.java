@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +31,11 @@ public class Settings extends AppCompatActivity {
     }
 
     private void init() {
+
+        String product = Build.PRODUCT;
+        String model = Build.MODEL;
+        TextView model_display = findViewById(R.id.unique_id_model);
+        model_display.setText(getString(R.string.device_id)+ product+"-TN-"+ model);
         Button share=findViewById(R.id.share);
         share.setOnClickListener(v -> {
             Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);

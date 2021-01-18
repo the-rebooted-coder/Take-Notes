@@ -87,7 +87,16 @@
                 android:text="@string/take_notes_journey"
                 android:textColor="@color/ic_launcher_background" />
 
-
+            <TextView
+                android:id="@+id/unique_id_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/productsans"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp" />
         </LinearLayout>
     </ScrollView>
 
