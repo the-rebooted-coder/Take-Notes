@@ -325,8 +325,6 @@ public class Landing extends AppCompatActivity {
         }
     }
 
-
-
     public String createAndSaveFileFromBase64Url(String url) {
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS+"/TakeNotes");
         String filetype = url.substring(url.indexOf("/") + 1, url.indexOf(";"));
@@ -551,5 +549,4 @@ public class Landing extends AppCompatActivity {
             finish();
         }
     }
-
 }
