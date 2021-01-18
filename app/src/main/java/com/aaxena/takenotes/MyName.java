@@ -46,6 +46,15 @@
                 saveName();
             }
         });
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        String saving_as = sharedPreferences.getString(TEXT, "");
+        if (saving_as.isEmpty()){
+            saveMyName.setText(R.string.save_name);
+        }
+        else {
+            saveMyName.setText(R.string.rename_file_name);
+        }
     }
 
      private void saveName() {

@@ -84,4 +84,6 @@
     <string name="oh_one_more_thing">Oh! One More Thing!</string>
     <string name="asking_storage_perm">Please provide the storage permissions otherwise where will the saved assignments go?</string>
     <string name="tap_to_save_name">Tap here to save your default file name</string>
+    <string name="rename_file_name">Rename File Name</string>
+    <string name="save_name">Save</string>
 </resources>
