@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
@@ -13,12 +14,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 public class Settings extends AppCompatActivity {
+    LottieAnimationView loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        loading = findViewById(R.id.sign_up_anim);
+        loading.setVisibility(View.INVISIBLE);
         init();
     }
 
@@ -28,6 +34,13 @@ public class Settings extends AppCompatActivity {
             Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             v2.vibrate(22);
             share.setVisibility(View.INVISIBLE);
+            loading.setVisibility(View.VISIBLE);
+            loading.playAnimation();
+                int splash_screen_time_out = 2000;
+                new Handler().postDelayed(() -> {
+                    loading.setVisibility(View.GONE);
+                    share.setVisibility(View.VISIBLE);
+                }, splash_screen_time_out);
             /*Create an ACTION_SEND Intent*/
             Intent intent = new Intent(Intent.ACTION_SEND);
             /*This will be the actual content you wish you share.*/
