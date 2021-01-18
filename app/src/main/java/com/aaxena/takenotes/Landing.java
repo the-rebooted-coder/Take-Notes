@@ -51,7 +51,6 @@ import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.android.play.core.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -81,7 +80,6 @@ public class Landing extends AppCompatActivity {
     public ValueCallback<Uri[]> mUMA;
     private AppUpdateManager mAppUpdateManager;
     private static final int RC_APP_UPDATE = 11;
-    FirebaseAuth mAuth;
     private String hello;
 
     @Override
