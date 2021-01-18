@@ -37,7 +37,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username"
-        app:layout_constraintVertical_bias="0.909" />
+        app:layout_constraintVertical_bias="0.48000002" />
+
+    <TextView
+        android:id="@+id/saving_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/productsansitalic"
+        android:text="@string/your_name"
+        android:textAlignment="center"
+        android:textColor="#004aad"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintVertical_bias="0.39" />
 
     <Button
         android:id="@+id/sign_out"
@@ -82,5 +97,16 @@
         app:layout_constraintEnd_toStartOf="@+id/accphoto"
         app:layout_constraintStart_toEndOf="@+id/accphoto"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/chng_name"
+        android:layout_width="302dp"
+        android:layout_height="33dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.78" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,10 +3,15 @@ package com.aaxena.takenotes;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +25,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
+import static com.aaxena.takenotes.MyName.SHARED_PREFS;
+import static com.aaxena.takenotes.MyName.TEXT;
+
 public class UserInfo extends AppCompatActivity {
    CircularImageView photo;
    TextView username;
@@ -31,6 +39,31 @@ public class UserInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
+
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(Color.parseColor("#1389cd"));
+
+        Button change_name = findViewById(R.id.chng_name);
+        TextView user_save_name =  findViewById(R.id.saving_name);
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        String saving_as = sharedPreferences.getString(TEXT, "");
+        if(saving_as.isEmpty()){
+            user_save_name.setText(R.string.tap_to_save_name);
+            change_name.setOnClickListener(view -> {
+                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                v2.vibrate(20);
+                Intent toName = new Intent(UserInfo.this,MyName.class);
+                startActivity(toName);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+            });
+        }
+        else {
+            user_save_name.setText(saving_as);
+            change_name.setVisibility(View.INVISIBLE);
+        }
+
 
         Button abt_dev = findViewById(R.id.abt_dev);
         abt_dev.setOnClickListener(v -> {
