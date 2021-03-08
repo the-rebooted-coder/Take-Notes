@@ -58,4 +58,4 @@ The project was developed using the following technologies:
 
 ## License
 
-This project is under the MIT license. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more details.
