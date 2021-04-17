@@ -12,10 +12,12 @@
 
  import androidx.appcompat.app.AppCompatActivity;
 
+ import com.google.android.material.textfield.TextInputEditText;
+
  public class MyName extends AppCompatActivity {
      public static final String SHARED_PREFS = "sharedPrefs";
      public static final String TEXT = "text";
-     EditText name;
+     TextInputEditText name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
