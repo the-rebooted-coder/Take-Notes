@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,80 +7,83 @@
     android:background="@drawable/settings"
     tools:context=".Settings">
 
-    <ScrollView
-        android:layout_width="227dp"
-        android:layout_height="357dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.664">
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="209dp"
+        android:layout_height="57dp"
+        android:fontFamily="@font/productsansbold"
+        android:text="@string/settings_amp_more"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textSize="24sp"/>
 
+    <ScrollView
+        android:id="@+id/scrollViewHere"
+        android:layout_below="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_marginTop="110dp"
+        android:layout_centerInParent="true">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/request"
-                android:layout_width="198dp"
-                android:layout_height="wrap_content"
-                app:backgroundTint="@color/fb_blue"
-                android:elevation="30dp"
-                android:fontFamily="@font/productsans"
-                android:text="@string/request_a_feature" />
-
-            <Button
                 android:id="@+id/devs"
                 android:layout_width="198dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:backgroundTint="@color/fb_blue"
+                android:layout_height="60dp"
                 android:elevation="30dp"
                 android:fontFamily="@font/productsans"
-                android:text="@string/developers" />
+                android:text="@string/developers"
+                android:textColor="@color/black"
+                app:backgroundTint="@color/green" />
 
             <Button
                 android:id="@+id/myacc"
                 android:layout_width="198dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                app:backgroundTint="@color/fb_blue"
                 android:elevation="30dp"
                 android:fontFamily="@font/productsans"
-                android:text="@string/my_account" />
+                android:text="@string/my_account"
+                android:textColor="@color/black"
+                app:backgroundTint="@color/green" />
 
             <Button
                 android:id="@+id/privacy"
                 android:layout_width="198dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                app:backgroundTint="@color/fb_blue"
                 android:elevation="30dp"
                 android:fontFamily="@font/productsans"
-                android:text="@string/privacy_info" />
+                android:text="@string/privacy_info"
+                android:textColor="@color/black"
+                app:backgroundTint="@color/green" />
 
             <Button
                 android:id="@+id/my_name"
                 android:layout_width="198dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                app:backgroundTint="@color/fb_blue"
                 android:elevation="30dp"
                 android:fontFamily="@font/productsans"
                 android:text="@string/saved_file_name"
-                />
+                android:textColor="@color/black"
+                app:backgroundTint="@color/green" />
 
             <Button
-                android:id="@+id/take_notes_journey"
+                android:id="@+id/theme"
                 android:layout_width="198dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                app:backgroundTint="@color/fb_blue"
                 android:elevation="30dp"
                 android:fontFamily="@font/productsans"
-                android:text="@string/take_notes_journey" />
+                android:text="@string/theme"
+                android:textColor="@color/black"
+                app:backgroundTint="@color/green" />
 
             <TextView
                 android:id="@+id/unique_id_model"
@@ -89,8 +92,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/productsans"
+                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:textColor="@color/colorAccent"
                 android:textSize="15sp" />
         </LinearLayout>
     </ScrollView>
@@ -113,13 +116,8 @@
         android:id="@+id/share"
         android:layout_width="70dp"
         android:layout_height="68dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="536dp"
-        android:layout_marginBottom="75dp"
-        android:background="@drawable/share"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.82"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_below="@+id/scrollViewHere"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/share"/>
+</RelativeLayout>

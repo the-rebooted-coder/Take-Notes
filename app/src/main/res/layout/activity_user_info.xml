@@ -56,13 +56,12 @@
 
     <Button
         android:id="@+id/sign_out"
-        android:layout_width="171dp"
-        android:layout_height="43dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
-        android:background="@drawable/card_background"
+        app:backgroundTint="@color/fb_blue"
         android:fontFamily="@font/productsans"
         android:text="@string/sign_out"
-        android:textColor="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

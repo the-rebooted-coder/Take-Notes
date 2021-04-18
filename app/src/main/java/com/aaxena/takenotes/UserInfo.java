@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
 import android.view.Window;
@@ -24,6 +26,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.mrshamshir.a2dhelicoptergame.Game;
 
 import static com.aaxena.takenotes.MyName.SHARED_PREFS;
 import static com.aaxena.takenotes.MyName.TEXT;
@@ -51,8 +54,7 @@ public class UserInfo extends AppCompatActivity {
         if(saving_as.isEmpty()){
             user_save_name.setText(R.string.tap_to_save_name);
             change_name.setOnClickListener(view -> {
-                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                v2.vibrate(20);
+                vibrateDevice();
                 Intent toName = new Intent(UserInfo.this,MyName.class);
                 startActivity(toName);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -67,8 +69,9 @@ public class UserInfo extends AppCompatActivity {
 
         Button abt_dev = findViewById(R.id.abt_dev);
         abt_dev.setOnClickListener(v -> {
-            Vibrator dev_vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            dev_vibe.vibrate(30);
+            vibrateDevice();
+            Intent toGame = new Intent(UserInfo.this, Game.class);
+            startActivity(toGame);
             Toast.makeText(UserInfo.this, R.string.developer,Toast.LENGTH_LONG).show();
         });
 
@@ -88,8 +91,7 @@ public class UserInfo extends AppCompatActivity {
             email.setText(personEmail);
             Uri photoUrl = account.getPhotoUrl(); Glide.with(this).load(photoUrl).into(photo);
             signOut.setOnClickListener(v -> {
-                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                v2.vibrate(30);
+                vibrateDevice();
                 Toast.makeText(this, R.string.sign_out_greeting,Toast.LENGTH_SHORT).show();
                 Toast.makeText(this,"Goodbye "+personName,Toast.LENGTH_SHORT).show();
                 int death_text = 2800;
@@ -108,8 +110,7 @@ public class UserInfo extends AppCompatActivity {
             username.setText(name);
             email.setText(fbmail);
             signOut.setOnClickListener(v -> {
-                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                v2.vibrate(30);
+                vibrateDevice();
                 Toast.makeText(this, R.string.sign_out_greeting,Toast.LENGTH_SHORT).show();
                 Toast.makeText(this,"Goodbye "+name,Toast.LENGTH_SHORT).show();
                 int death_text = 2800;
@@ -118,6 +119,16 @@ public class UserInfo extends AppCompatActivity {
                             .clearApplicationUserData();
                 }, death_text);
             });
+        }
+    }
+
+    private void vibrateDevice() {
+        Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v3.vibrate(VibrationEffect.createOneShot(32, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            v3.vibrate(30);
         }
     }
 

@@ -5,8 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,6 +86,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 // move to next screen
                 viewPager.setCurrentItem(current);
             } else {
+                vibrateDevice();
                 launchHomeScreen();
             }
         });
@@ -182,6 +186,15 @@ public class WelcomeActivity extends AppCompatActivity {
         public void destroyItem(ViewGroup container, int position, Object object) {
             View view = (View) object;
             container.removeView(view);
+        }
+    }
+    private void vibrateDevice() {
+        Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v3.vibrate(VibrationEffect.createOneShot(28, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            v3.vibrate(25);
         }
     }
     @Override

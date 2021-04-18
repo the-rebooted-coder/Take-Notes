@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/my_name_bg_night"
+    tools:context=".MyName">
+
+    <TextView
+        android:id="@+id/name_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/productsans"
+        android:text="@string/type_your_name_here"
+        android:textAlignment="center"
+        android:textSize="19sp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
+        android:layout_below="@+id/more_info_on_name"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:elevation="30dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/my_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/productsans"
+            android:hint="@string/your_name" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/more_info_on_name"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/name_placeholder"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/light"
+        android:text="@string/more_info"
+        android:textColor="@color/colorAccent"/>
+
+
+    <Button
+        android:id="@+id/save_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputLayout"
+        app:backgroundTint="@color/browser_actions_bg_grey"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/productsansbold"
+        android:text="@string/save"
+        android:textColor="@color/black"/>
+</RelativeLayout>

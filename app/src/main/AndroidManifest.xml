@@ -32,6 +32,10 @@
         <activity android:name=".PrivacyPolicy" />
         <activity android:name=".feature" />
         <activity android:name=".Settings" />
+		 <activity android:name="com.mrshamshir.a2dhelicoptergame.Game"
+            android:screenOrientation="landscape"
+             tools:ignore="LockedOrientationActivity">
+        </activity>
         <activity
             android:name=".UserInfo"
             android:screenOrientation="portrait"

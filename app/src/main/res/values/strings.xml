@@ -88,4 +88,6 @@
     <string name="save_name">Save</string>
     <string name="device_id">Device ID: </string>
     <string name="mobile_data">Mobile Data</string>
+    <string name="settings_amp_more"><![CDATA[Settings & More]]></string>
+    <string name="theme">Theme</string>
 </resources>

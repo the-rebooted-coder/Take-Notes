@@ -4,7 +4,9 @@
  import android.content.Context;
  import android.content.Intent;
  import android.content.SharedPreferences;
+ import android.os.Build;
  import android.os.Bundle;
+ import android.os.VibrationEffect;
  import android.os.Vibrator;
  import android.widget.Button;
  import android.widget.EditText;
@@ -26,8 +28,6 @@
 
         Button myName = findViewById(R.id.more_info_on_name);
         myName.setOnClickListener(v -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(25);
             new AlertDialog.Builder(this)
                     .setTitle(R.string.more_info_title)
                     .setMessage(R.string.more_info_text)
@@ -38,8 +38,7 @@
 
         Button saveMyName = findViewById(R.id.save_name);
         saveMyName.setOnClickListener(v -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(26);
+            vibrateDevice();
             EditText s = findViewById(R.id.my_name_input);
             if (s.getText().toString().isEmpty()){
                 Toast.makeText(this,"Please enter a name",Toast.LENGTH_SHORT).show();
@@ -58,6 +57,15 @@
             saveMyName.setText(R.string.rename_file_name);
         }
     }
+     private void vibrateDevice() {
+         Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+             v3.vibrate(VibrationEffect.createOneShot(28, VibrationEffect.DEFAULT_AMPLITUDE));
+         } else {
+             //deprecated in API 26
+             v3.vibrate(25);
+         }
+     }
 
      private void saveName() {
          SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);

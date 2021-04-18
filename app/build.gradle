@@ -15,7 +15,7 @@ android {
         minSdkVersion 24
         targetSdkVersion 30
         versionCode 40
-        versionName "Snow Leopard"
+        versionName "Clouded Leopard"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

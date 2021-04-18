@@ -1,12 +1,17 @@
 package com.aaxena.takenotes;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
@@ -14,12 +19,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.browser.customtabs.CustomTabsIntent;
 
 import com.airbnb.lottie.LottieAnimationView;
 
 public class Settings extends AppCompatActivity {
     LottieAnimationView loading;
+    public static final String UI_MODE = "uiMode";
+    AlertDialog alertDialog1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +46,7 @@ public class Settings extends AppCompatActivity {
         model_display.setText(getString(R.string.device_id)+ product+"-TN-"+ model);
         Button share=findViewById(R.id.share);
         share.setOnClickListener(v -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(22);
+            vibrateDevice();
             share.setVisibility(View.INVISIBLE);
             loading.setVisibility(View.VISIBLE);
             loading.playAnimation();
@@ -61,23 +68,9 @@ public class Settings extends AppCompatActivity {
             startActivity(Intent.createChooser(intent, getString(R.string.share_using)));
         });
 
-        Button tn_journey = findViewById(R.id.take_notes_journey);
-        tn_journey.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                v2.vibrate(25);
-                Uri uri = Uri.parse("https://the-rebooted-coder.github.io/Take-Notes/take_notes_journey");
-                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
-                startActivity(intent);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            }
-        });
-
         Button profile = findViewById(R.id.myacc);
         profile.setOnClickListener(v -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(25);
+            vibrateDevice();
             Intent i=new Intent(Settings.this,UserInfo.class);
             startActivity(i);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -86,19 +79,8 @@ public class Settings extends AppCompatActivity {
 
         Button my_name = findViewById(R.id.my_name);
         my_name.setOnClickListener(v -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(25);
+            vibrateDevice();
             Intent i=new Intent(Settings.this,MyName.class);
-            startActivity(i);
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();
-        });
-
-        Button request = findViewById(R.id.request);
-        request.setOnClickListener(v -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(25);
-            Intent i=new Intent(Settings.this,feature.class);
             startActivity(i);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
@@ -106,8 +88,7 @@ public class Settings extends AppCompatActivity {
 
         Button devs = findViewById(R.id.devs);
         devs.setOnClickListener(v -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(25);
+            vibrateDevice();
             Toast.makeText(Settings.this,"Tip: Tap on our PFP's to reveal more!",Toast.LENGTH_SHORT).show();
             String url = "https://the-rebooted-coder.github.io/Take-Notes/devs";
             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
@@ -120,13 +101,84 @@ public class Settings extends AppCompatActivity {
 
         Button privacy = findViewById(R.id.privacy);
         privacy.setOnClickListener(v -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(25);
+            vibrateDevice();
             Intent i=new Intent(Settings.this,PrivacyPolicy.class);
             startActivity(i);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         });
+
+        Button theme = findViewById(R.id.theme);
+        theme.setOnClickListener(view -> CreateAlertDialogWithRadioButtonGroup());
+    }
+    private void vibrateDevice() {
+        Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v3.vibrate(VibrationEffect.createOneShot(28, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            v3.vibrate(25);
+        }
+    }
+
+    public void CreateAlertDialogWithRadioButtonGroup() {
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        AlertDialog.Builder builder = new AlertDialog.Builder(Settings.this);
+        builder.setTitle("Choose Overall Theme for Take Notes");
+        builder.setMessage("There would still be a toggle on the home, to easily switch!");
+        builder.setPositiveButton("Light", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (nightModeFlags) {
+                    case Configuration.UI_MODE_NIGHT_YES:
+                        vibrateDevice();
+                        alertDialog1.dismiss();
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        SharedPreferences.Editor editor = getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                        editor.putString("uiMode","Light");
+                        editor.apply();
+                        break;
+                    case Configuration.UI_MODE_NIGHT_NO:
+                        Toast.makeText(getApplicationContext(),"Already in Light Mode ☀️",Toast.LENGTH_SHORT).show();
+                        alertDialog1.dismiss();
+                        break;
+                    default:
+                        Toast.makeText(getApplicationContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("Dark", (dialog, which) -> {
+            switch (nightModeFlags) {
+                case Configuration.UI_MODE_NIGHT_YES:
+                    Toast.makeText(getApplicationContext(),"Already in Dark Mode \uD83C\uDF19",Toast.LENGTH_SHORT).show();
+                    alertDialog1.dismiss();
+                    break;
+                case Configuration.UI_MODE_NIGHT_NO:
+                    vibrateDevice();
+                    alertDialog1.dismiss();
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    SharedPreferences.Editor editor = getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                    editor.putString("uiMode","Dark");
+                    editor.apply();
+                    break;
+                default:
+                    Toast.makeText(getApplicationContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
+            }
+        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            builder.setNeutralButton("System Default", (dialog, which) -> {
+                vibrateDevice();
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                SharedPreferences.Editor editor = getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                editor.putString("uiMode","System");
+                editor.apply();
+                alertDialog1.dismiss();
+            });
+        }
+        alertDialog1 = builder.create();
+        alertDialog1.show();
     }
 
     @Override

@@ -4,8 +4,10 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
 import android.view.WindowManager;
@@ -34,8 +36,6 @@ public class OCR extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_o_c_r);
-
-        final boolean isAnimated=false;
         copy_complete = findViewById(R.id.copy_anim);
         copy_complete.setVisibility(View.INVISIBLE);
         resultTv = findViewById(R.id.result);
@@ -44,8 +44,7 @@ public class OCR extends AppCompatActivity {
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         choose.setOnClickListener(view -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(26);
+            vibrateDevice();
             Intent i = new Intent();
             i.setType("image/*");
             i.setAction(Intent.ACTION_GET_CONTENT);
@@ -54,9 +53,8 @@ public class OCR extends AppCompatActivity {
         copy = findViewById(R.id.copy_button);
         copy.setVisibility(View.INVISIBLE);
         copy.setOnClickListener(view -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             copy.setVisibility(View.INVISIBLE);
-            v2.vibrate(20);
+            vibrateDevice();
             copy_complete.setVisibility(View.VISIBLE);
             copy_complete.playAnimation();
             int splash_screen_time_out = 3000;
@@ -72,6 +70,16 @@ public class OCR extends AppCompatActivity {
             ClipData clip = ClipData.newPlainText("Take Notes OCR", copied_value);
             clipboard.setPrimaryClip(clip);
         });
+    }
+
+    private void vibrateDevice() {
+        Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v3.vibrate(VibrationEffect.createOneShot(28, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            v3.vibrate(25);
+        }
     }
 
     @Override

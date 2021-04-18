@@ -26,6 +26,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Base64;
 import android.util.Log;
@@ -242,16 +243,14 @@ public class Landing extends AppCompatActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (url.matches(getString(R.string.take_notes_image_to_be_displayed))) {
-                    Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                    v2.vibrate(28);
+                    vibrateDevice();
                     Intent i=new Intent(Landing.this,Settings.class);
                     startActivity(i);
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     finish();
                 }
                 else if (url.matches(getString(R.string.print))) {
-                    Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                    v2.vibrate(25);
+                    vibrateDevice();
                     try {
                         File folderPath = new File(Environment.getExternalStorageDirectory() + "/Documents/TakeNotes");
                         File[] imageList = folderPath.listFiles();
@@ -279,8 +278,7 @@ public class Landing extends AppCompatActivity {
                     }
                 }
                 else if (url.matches("https://the-rebooted-coder.github.io/Take-Notes/ocr_handler.png")) {
-                    Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                    v2.vibrate(25);
+                    vibrateDevice();
                     Intent i=new Intent(Landing.this,OCR.class);
                     startActivity(i);
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -547,6 +545,15 @@ public class Landing extends AppCompatActivity {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             progressDialog.dismiss();
             finish();
+        }
+    }
+    private void vibrateDevice() {
+        Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v3.vibrate(VibrationEffect.createOneShot(28, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            v3.vibrate(25);
         }
     }
 }
