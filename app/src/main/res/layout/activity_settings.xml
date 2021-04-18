@@ -26,66 +26,61 @@
                 android:id="@+id/request"
                 android:layout_width="198dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/card_background"
+                app:backgroundTint="@color/fb_blue"
                 android:elevation="30dp"
                 android:fontFamily="@font/productsans"
-                android:text="@string/request_a_feature"
-                android:textColor="@color/ic_launcher_background" />
+                android:text="@string/request_a_feature" />
 
             <Button
                 android:id="@+id/devs"
                 android:layout_width="198dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/card_background"
+                app:backgroundTint="@color/fb_blue"
                 android:elevation="30dp"
                 android:fontFamily="@font/productsans"
-                android:text="@string/developers"
-                android:textColor="@color/ic_launcher_background" />
+                android:text="@string/developers" />
 
             <Button
                 android:id="@+id/myacc"
                 android:layout_width="198dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/card_background"
+                app:backgroundTint="@color/fb_blue"
                 android:elevation="30dp"
                 android:fontFamily="@font/productsans"
-                android:text="@string/my_account"
-                android:textColor="@color/ic_launcher_background" />
+                android:text="@string/my_account" />
 
             <Button
                 android:id="@+id/privacy"
                 android:layout_width="198dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/card_background"
+                app:backgroundTint="@color/fb_blue"
                 android:elevation="30dp"
                 android:fontFamily="@font/productsans"
-                android:text="@string/privacy_info"
-                android:textColor="@color/ic_launcher_background" />
+                android:text="@string/privacy_info" />
 
             <Button
                 android:id="@+id/my_name"
                 android:layout_width="198dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/card_background"
+                app:backgroundTint="@color/fb_blue"
                 android:elevation="30dp"
                 android:fontFamily="@font/productsans"
                 android:text="@string/saved_file_name"
-                android:textColor="@color/ic_launcher_background" />
+                />
 
             <Button
                 android:id="@+id/take_notes_journey"
                 android:layout_width="198dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/card_background"
+                app:backgroundTint="@color/fb_blue"
                 android:elevation="30dp"
                 android:fontFamily="@font/productsans"
-                android:text="@string/take_notes_journey"
-                android:textColor="@color/ic_launcher_background" />
+                android:text="@string/take_notes_journey" />
 
             <TextView
                 android:id="@+id/unique_id_model"
@@ -114,7 +109,7 @@
         app:lottie_fileName="sign_up_loader.json"
         app:lottie_loop="true" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/share"
         android:layout_width="70dp"
         android:layout_height="68dp"

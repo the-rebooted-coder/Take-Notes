@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/my_name_bg"
     tools:context=".MyName">
 
@@ -54,10 +55,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputLayout"
+        app:backgroundTint="@color/bg_screen1"
         android:layout_centerHorizontal="true"
-        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/productsansbold"
         android:text="@string/save"
-        android:textColor="@color/ic_launcher_background"/>
+        android:textColor="@color/colorAccent"/>
 </RelativeLayout>

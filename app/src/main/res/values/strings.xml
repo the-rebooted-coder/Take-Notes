@@ -87,4 +87,5 @@
     <string name="rename_file_name">Rename File Name</string>
     <string name="save_name">Save</string>
     <string name="device_id">Device ID: </string>
+    <string name="mobile_data">Mobile Data</string>
 </resources>

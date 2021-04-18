@@ -37,8 +37,6 @@ public class NoInternet extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setAction(android.provider.Settings.ACTION_DATA_ROAMING_SETTINGS);
                 startActivity(intent);
-                //Intent intent = new Intent(android.provider.Settings.ACTION_DATA_ROAMING_SETTINGS);
-                //startActivity(intent);
             }
         });
 
@@ -52,7 +50,6 @@ public class NoInternet extends AppCompatActivity {
 
            else {
                 wifiManager.setWifiEnabled(isChecked);
-
                 int vibrate_like_actual_switch = 100;
                 new Handler().postDelayed(new Runnable() {
                     @Override
