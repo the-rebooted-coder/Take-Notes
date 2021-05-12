@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -13,10 +14,13 @@ import androidx.appcompat.app.AppCompatDelegate;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
+import static com.aaxena.takenotes.SignUp.STATUS;
+
 public class SplashScreen extends AppCompatActivity {
     protected AlphaAnimation fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;
     String name;
     public static final String UI_MODE = "uiMode";
+    String acc_status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +29,19 @@ public class SplashScreen extends AppCompatActivity {
         applyUI();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
-        fireSplashScreen();
-        TextView appName = findViewById(R.id.title);
-        appName.setText(R.string.app_name);
-        appName.startAnimation(fadeIn);
-        fadeIn.setDuration(1200);
+        SharedPreferences prefsmanager = getSharedPreferences(STATUS, MODE_PRIVATE);
+        acc_status = prefsmanager.getString("acc_status", "okay");
+        if (acc_status.equals("suspended")) {
+            Toast.makeText(SplashScreen.this,"Your account is temporarily suspended due to proactive use, contact the developer",Toast.LENGTH_LONG).show();
+            finish();
+        }
+        else {
+            fireSplashScreen();
+            TextView appName = findViewById(R.id.title);
+            appName.setText(R.string.app_name);
+            appName.startAnimation(fadeIn);
+            fadeIn.setDuration(1200);
+        }
     }
     private void applyUI() {
         if (name.equals("Dark")){

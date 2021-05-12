@@ -31,7 +31,7 @@
         android:alpha=".5"
         android:background="@android:color/white" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
         android:text="@string/next"
         android:textColor="@android:color/holo_green_dark" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

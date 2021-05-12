@@ -2,6 +2,7 @@ package com.aaxena.takenotes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
@@ -43,7 +44,9 @@ public class SignUp extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private String TAG = "Login";
     private FirebaseAuth mAuth;
+    public static final String STATUS = "acc_status";
     private int RC_SIGN_IN =1;
+    String acc_status;
     CallbackManager mCallbackManager;
     Button loginButton;
 
@@ -51,6 +54,8 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        SharedPreferences prefs = getSharedPreferences(STATUS, MODE_PRIVATE);
+        acc_status = prefs.getString("acc_status", "okay");
 
         //Lottie
         final boolean isAnimated=false;
@@ -105,13 +110,18 @@ public class SignUp extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginButton.setVisibility(View.INVISIBLE);
-                signInButton.setVisibility(View.INVISIBLE);
-                loading.setVisibility(View.VISIBLE);
-                loading.playAnimation();
-                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                v2.vibrate(30);
-                signIn();
+                if (acc_status.equals("okay")) {
+                    loginButton.setVisibility(View.INVISIBLE);
+                    signInButton.setVisibility(View.INVISIBLE);
+                    loading.setVisibility(View.VISIBLE);
+                    loading.playAnimation();
+                    Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    v2.vibrate(30);
+                    signIn();
+                }
+                else {
+                    Toast.makeText(SignUp.this,"Your account is temporarily suspended due to proactive use, contact the developer",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -195,10 +205,13 @@ public class SignUp extends AppCompatActivity {
                     FirebaseUser user = mAuth.getCurrentUser();
                 }
                 else {
-                    Toast.makeText(SignUp.this,"Failed",Toast.LENGTH_LONG).show();
+                    recreate();
+                    SharedPreferences.Editor editor = getSharedPreferences(STATUS, MODE_PRIVATE).edit();
+                    editor.putString("acc_status","suspended");
+                    editor.apply();
+                    Toast.makeText(SignUp.this,"Your account is temporarily suspended due to proactive use, contact the developer",Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
-
 }

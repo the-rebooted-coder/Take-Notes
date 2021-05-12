@@ -14,7 +14,7 @@ android {
         applicationId "com.aaxena.takenotes"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 40
+        versionCode 45
         versionName "Clouded Leopard"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
