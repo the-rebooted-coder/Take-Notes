@@ -59,3 +59,4 @@ The project was developed using the following technologies:
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more details.
+Featured as the Top Note Taking App of 2021 By LeapDroid.
