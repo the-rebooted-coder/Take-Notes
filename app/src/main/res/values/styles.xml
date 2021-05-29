@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/fb_blue</item>
+        <item name="android:fontFamily">@font/productsans</item>
     </style>
 
     <style name="ButtonStyle" parent="android:style/Widget.Button">

@@ -285,7 +285,7 @@ public class Landing extends AppCompatActivity {
                 }
                 else if (url.matches("https://the-rebooted-coder.github.io/Take-Notes/ocr_handler.png")) {
                     vibrateDevice();
-                    Intent i=new Intent(Landing.this,OCR.class);
+                    Intent i=new Intent(Landing.this,OCR_Bottom.class);
                     startActivity(i);
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     finish();

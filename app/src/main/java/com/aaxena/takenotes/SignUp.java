@@ -157,7 +157,7 @@ public class SignUp extends AppCompatActivity {
     }
     private void updateUI(FirebaseUser user) {
         if (user!= null){
-            Intent intent = new Intent(SignUp.this,Landing.class);
+            Intent intent = new Intent(SignUp.this,BottomHandler.class);
             startActivity(intent);
             finish();
         }
@@ -182,7 +182,7 @@ public class SignUp extends AppCompatActivity {
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
             if (account !=null){
-                Intent i=new Intent(SignUp.this,Landing.class);
+                Intent i=new Intent(SignUp.this,BottomHandler.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();

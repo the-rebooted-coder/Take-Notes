@@ -70,8 +70,7 @@
     <string name="slide_10_desc">Tap <b>OCR!</b>\nConvert all to text, just a tap.</string>
 
     <string name="ocr_image_preview">OCR Image Preview</string>
-    <string name="choose_image">Choose Image</string>
-    <string name="pre_scan_text_holder">Extracted text would be displayed here.\n\n\nText will be auto copied to your clipboard.</string>
+    <string name="choose_image">Tap To Begin.</string>
     <string name="text_copied_to_clipboard_message">Text copied to the clipboard</string>
     <string name="take_notes_journey">Take Notes Journey</string>
     <string name="saved_file_name">Saved file name</string>
@@ -79,7 +78,7 @@
     <string name="your_name">Your Name</string>
     <string name="more_info"><u>More info</u></string>
     <string name="save">save</string>
-    <string name="more_info_text">TakeNotes saves your name in your device\'s internal storage, so everytime you save assignments it adds up this name to the file to save your time in renaming.\n\nNO Data is SENT ANYWHERE!\n\nPretty Great Right?</string>
+    <string name="more_info_text">TakeNotes saves your name in your device\'s internal storage, so every time you save assignments it adds up this name to the file to save your time in renaming.\n\nNO Data is SENT ANYWHERE!\n\nPretty Great Right?</string>
     <string name="more_info_title">When you enter your name...</string>
     <string name="oh_one_more_thing">Oh! One More Thing!</string>
     <string name="asking_storage_perm">Please provide the storage permissions otherwise where will the saved assignments go?</string>
@@ -90,4 +89,6 @@
     <string name="mobile_data">Mobile Data</string>
     <string name="settings_amp_more"><![CDATA[Settings & More]]></string>
     <string name="theme">Theme</string>
+    <string name="ocr">OCR</string>
+    <string name="more">More</string>
 </resources>

@@ -65,7 +65,7 @@ public class SplashScreen extends AppCompatActivity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if (account !=null){
             //User Signed In, Proceeding to Landing
-            Intent i=new Intent(SplashScreen.this,Landing.class);
+            Intent i=new Intent(SplashScreen.this,BottomHandler.class);
             startActivity(i);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }

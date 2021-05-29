@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/takenotes"
+        android:title="@string/app_name"
+        android:icon="@drawable/ic_title_black_24dp"/>
+    <item
+        android:id="@+id/ocr"
+        android:title="@string/ocr"
+        android:icon="@drawable/ocr"/>
+    <item
+        android:id="@+id/more"
+        android:title="@string/more"
+        android:icon="@drawable/more_24dp"/>
+</menu>
