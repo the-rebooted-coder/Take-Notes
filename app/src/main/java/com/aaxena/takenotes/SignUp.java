@@ -3,11 +3,14 @@ package com.aaxena.takenotes;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -49,6 +52,7 @@ public class SignUp extends AppCompatActivity {
     String acc_status;
     CallbackManager mCallbackManager;
     Button loginButton;
+    TextView skip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +61,19 @@ public class SignUp extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(STATUS, MODE_PRIVATE);
         acc_status = prefs.getString("acc_status", "okay");
 
-        //Lottie
-        final boolean isAnimated=false;
+        skip = findViewById(R.id.skipSign);
+        skip.setOnClickListener(view -> {
+            vibrateDevice();
+            SharedPreferences settings = getSharedPreferences("hasSignedIn", 0);
+            SharedPreferences.Editor edit = settings.edit();
+            edit.putBoolean("hasSignedIn", false);
+            edit.apply();
+            Intent toLanding = new Intent(SignUp.this,BottomHandler.class);
+            startActivity(toLanding);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            finish();
+        });
+
         loading = findViewById(R.id.sign_up_anim);
         loading.setVisibility(View.INVISIBLE);
         //Facebook SDK Init
@@ -69,8 +84,8 @@ public class SignUp extends AppCompatActivity {
         mCallbackManager = CallbackManager.Factory.create();
         loginButton = findViewById(R.id.login_button);
         loginButton.setOnClickListener(v -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(30);
+                vibrateDevice();
+                skip.setVisibility(View.INVISIBLE);
                 loginButton.setVisibility(View.INVISIBLE);
                 signInButton.setVisibility(View.INVISIBLE);
                 loading.setVisibility(View.VISIBLE);
@@ -85,6 +100,7 @@ public class SignUp extends AppCompatActivity {
 
                 @Override
                 public void onCancel() {
+                    skip.setVisibility(View.VISIBLE);
                     loginButton.setVisibility(View.VISIBLE);
                     signInButton.setVisibility(View.VISIBLE);
                     loading.setVisibility(View.INVISIBLE);
@@ -93,6 +109,7 @@ public class SignUp extends AppCompatActivity {
 
                 @Override
                 public void onError(FacebookException error) {
+                    skip.setVisibility(View.VISIBLE);
                     loginButton.setVisibility(View.VISIBLE);
                     signInButton.setVisibility(View.VISIBLE);
                     loading.setVisibility(View.INVISIBLE);
@@ -111,12 +128,12 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (acc_status.equals("okay")) {
+                    skip.setVisibility(View.INVISIBLE);
                     loginButton.setVisibility(View.INVISIBLE);
                     signInButton.setVisibility(View.INVISIBLE);
                     loading.setVisibility(View.VISIBLE);
                     loading.playAnimation();
-                    Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                    v2.vibrate(30);
+                    vibrateDevice();
                     signIn();
                 }
                 else {
@@ -157,6 +174,10 @@ public class SignUp extends AppCompatActivity {
     }
     private void updateUI(FirebaseUser user) {
         if (user!= null){
+            SharedPreferences settings = getSharedPreferences("hasSignedIn", 0);
+            SharedPreferences.Editor edit = settings.edit();
+            edit.putBoolean("hasSignedIn", true);
+            edit.apply();
             Intent intent = new Intent(SignUp.this,BottomHandler.class);
             startActivity(intent);
             finish();
@@ -177,11 +198,24 @@ public class SignUp extends AppCompatActivity {
             handleSignInResult(task);
         }
     }
+    private void vibrateDevice() {
+        Vibrator v3 = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v3.vibrate(VibrationEffect.createOneShot(28, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            v3.vibrate(25);
+        }
+    }
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
         try {
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
             if (account !=null){
+                SharedPreferences settings = getSharedPreferences("hasSignedIn", 0);
+                SharedPreferences.Editor edit = settings.edit();
+                edit.putBoolean("hasSignedIn", true);
+                edit.apply();
                 Intent i=new Intent(SignUp.this,BottomHandler.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -190,6 +224,7 @@ public class SignUp extends AppCompatActivity {
             FirebaseGoogleAuth(acc);
         }
         catch (ApiException e){
+            skip.setVisibility(View.VISIBLE);
             loginButton.setVisibility(View.VISIBLE);
             signInButton.setVisibility(View.VISIBLE);
             loading.setVisibility(View.INVISIBLE);

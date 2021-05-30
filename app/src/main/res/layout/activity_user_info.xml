@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="@drawable/user_info_bg"
     tools:context=".UserInfo">
 
@@ -17,11 +18,9 @@
         android:textAlignment="center"
         android:textColor="@color/ic_launcher_background"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accphoto"
-        app:layout_constraintVertical_bias="0.35000002" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:layout_below="@+id/accphoto"/>
 
     <TextView
         android:id="@+id/email"
@@ -33,11 +32,9 @@
         android:textAlignment="center"
         android:textColor="#004aad"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/sign_out"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username"
-        app:layout_constraintVertical_bias="0.48000002" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/username"/>
 
     <TextView
         android:id="@+id/saving_name"
@@ -48,11 +45,8 @@
         android:textAlignment="center"
         android:textColor="#004aad"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username"
-        app:layout_constraintVertical_bias="0.39" />
+        android:layout_below="@+id/email"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/sign_out"
@@ -62,12 +56,9 @@
         app:backgroundTint="@color/fb_blue"
         android:fontFamily="@font/productsans"
         android:text="@string/sign_out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username"
-        app:layout_constraintVertical_bias="0.919" />
+        android:layout_below="@+id/saving_name"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"/>
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/accphoto"
@@ -76,36 +67,15 @@
         android:src="@drawable/profile"
         app:civ_border_color="#FFFFFF"
         app:civ_border_width="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.248" />
-
-    <Button
-        android:id="@+id/abt_dev"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="162dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="161dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toTopOf="@+id/username"
-        app:layout_constraintEnd_toStartOf="@+id/accphoto"
-        app:layout_constraintStart_toEndOf="@+id/accphoto"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="140dp"/>
 
     <Button
         android:id="@+id/chng_name"
         android:layout_width="302dp"
         android:layout_height="33dp"
         android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/email"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

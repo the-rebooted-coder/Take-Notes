@@ -74,18 +74,12 @@
          editor.putString(TEXT,name.getText().toString());
          editor.commit();
          Toast.makeText(this,"Name saved, will be added to upcoming files",Toast.LENGTH_SHORT).show();
-         Intent i2=new Intent(MyName.this,Settings.class);
-         startActivity(i2);
-         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-         finish();
+         onBackPressed();
      }
 
      @Override
      public void onBackPressed() {
          super.onBackPressed();
-         Intent i=new Intent(MyName.this,Settings.class);
-         startActivity(i);
          overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-         finish();
      }
 }

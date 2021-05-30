@@ -15,7 +15,7 @@ public class PdfProcessed extends AppCompatActivity {
 
         int time_out = 1850;
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(PdfProcessed.this,Landing.class);
+            Intent intent = new Intent(PdfProcessed.this,BottomHandler.class);
             startActivity(intent);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
@@ -25,7 +25,7 @@ public class PdfProcessed extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(PdfProcessed.this,Landing.class);
+        Intent intent = new Intent(PdfProcessed.this,BottomHandler.class);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();

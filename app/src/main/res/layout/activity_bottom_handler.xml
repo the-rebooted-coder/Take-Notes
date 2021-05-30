@@ -16,7 +16,7 @@
     <nl.joery.animatedbottombar.AnimatedBottomBar
         android:id="@+id/bottomNavigation"
         android:hapticFeedbackEnabled="true"
-        android:background="@color/offwhite"
+        android:background="#FD40484C"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

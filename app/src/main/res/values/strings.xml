@@ -70,7 +70,7 @@
     <string name="slide_10_desc">Tap <b>OCR!</b>\nConvert all to text, just a tap.</string>
 
     <string name="ocr_image_preview">OCR Image Preview</string>
-    <string name="choose_image">Tap To Begin.</string>
+    <string name="choose_image">Tap To Begin OCR.</string>
     <string name="text_copied_to_clipboard_message">Text copied to the clipboard</string>
     <string name="take_notes_journey">Take Notes Journey</string>
     <string name="saved_file_name">Saved file name</string>
@@ -91,4 +91,6 @@
     <string name="theme">Theme</string>
     <string name="ocr">OCR</string>
     <string name="more">More</string>
+    <string name="file_name">File Name</string>
+    <string name="skip_for_now">Skip for now</string>
 </resources>
