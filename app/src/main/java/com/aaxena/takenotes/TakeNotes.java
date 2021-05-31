@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.media.MediaScannerConnection;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -106,88 +107,90 @@ public class TakeNotes extends Fragment {
 
         //Checking Network
         if(haveNetwork()){
-            //Setting Web View Couch for User
-            webview = v.findViewById(R.id.takenotes_plugin);
-            webview.getSettings().setJavaScriptEnabled(true);
-            webview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-            webview.getSettings().setDomStorageEnabled(true);
-            webview.getSettings().setDatabaseEnabled(true);
-            webview.setWebViewClient(new WebViewClient());
-            registerForContextMenu(webview);
-            webview.getSettings().setUseWideViewPort(true);
-            webview.setInitialScale((int) 1.0);
-            //TODO Change it
-            webview.loadUrl("https://shrish-sharma-codes.github.io/tn-native-v4");
-            webview.setWebChromeClient(new WebChromeClient() {
-                //File Chooser
-                public boolean onShowFileChooser(
-                        WebView webView, ValueCallback<Uri[]> filePathCallback,
-                        WebChromeClient.FileChooserParams fileChooserParams) {
+            int orientation = getResources().getConfiguration().orientation;
+            if (orientation != Configuration.ORIENTATION_LANDSCAPE) {
+                //Setting Web View Couch for User
+                webview = v.findViewById(R.id.takenotes_plugin);
+                webview.getSettings().setJavaScriptEnabled(true);
+                webview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+                webview.getSettings().setDomStorageEnabled(true);
+                webview.getSettings().setDatabaseEnabled(true);
+                webview.setWebViewClient(new WebViewClient());
+                registerForContextMenu(webview);
+                webview.getSettings().setUseWideViewPort(true);
+                webview.setInitialScale((int) 1.0);
+                //TODO Change it
+                webview.loadUrl("https://shrish-sharma-codes.github.io/tn-native-v4");
+                webview.setWebChromeClient(new WebChromeClient() {
+                    //File Chooser
+                    public boolean onShowFileChooser(
+                            WebView webView, ValueCallback<Uri[]> filePathCallback,
+                            FileChooserParams fileChooserParams) {
 
-                    if (mUMA != null) {
-                        mUMA.onReceiveValue(null);
-                        mUMA = null;
-                    }
-                    mUMA = filePathCallback;
-
-                    Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                    contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
-                    contentSelectionIntent.setType("*/*");
-                    Intent chooserIntent = new Intent(Intent.ACTION_CHOOSER);
-                    chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
-                    try {
-                        startActivityForResult(chooserIntent, REQUEST_SELECT_FILE);
-                        Toast.makeText(getContext(),"Pick a suitable file",Toast.LENGTH_LONG).show();
-                    } catch (ActivityNotFoundException e) {
-                        mUMA = null;
-                        Toast.makeText(getContext(), "Cannot Open File Picker", Toast.LENGTH_LONG).show();
-                        return false;
-                    }
-                    return true;
-                }
-            });
-            webview.setWebViewClient(new WebViewClient() {
-                @Override
-                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    if (url.matches(getString(R.string.take_notes_image_to_be_displayed))) {
-                        vibrateDevice();
-                        Intent i=new Intent(getContext(),More.class);
-                        startActivity(i);
-                        getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                        getActivity().finish();
-                    }
-                    else if (url.matches(getString(R.string.print))) {
-                        vibrateDevice();
-                        try {
-                            File folderPath = new File(Environment.getExternalStorageDirectory() + "/Documents/TakeNotes");
-                            File[] imageList = folderPath.listFiles();
-                            ArrayList<File> imagesArrayList = new ArrayList<>();
-                            for (File absolutePath : imageList) {
-                                imagesArrayList.add(absolutePath);
-                            }
-                            new CreatePdfTask(getContext(), imagesArrayList).execute();
-                        } catch (Exception e) {
-                            new AlertDialog.Builder(getActivity())
-                                    .setTitle("No Images Found")
-                                    .setMessage(R.string.no_img)
-                                    .setCancelable(false)
-                                    // A null listener allows the button to dismiss the dialog and take no further action.
-                                    .setPositiveButton("I Know", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            Intent i=new Intent(getActivity(),BottomHandler.class);
-                                            startActivity(i);
-                                            getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                                            getActivity().finish();
-                                        }
-                                    })
-                                    .create().show();
+                        if (mUMA != null) {
+                            mUMA.onReceiveValue(null);
+                            mUMA = null;
                         }
+                        mUMA = filePathCallback;
+
+                        Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                        contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
+                        contentSelectionIntent.setType("*/*");
+                        Intent chooserIntent = new Intent(Intent.ACTION_CHOOSER);
+                        chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
+                        try {
+                            startActivityForResult(chooserIntent, REQUEST_SELECT_FILE);
+                            Toast.makeText(getContext(),"Pick a suitable file",Toast.LENGTH_LONG).show();
+                        } catch (ActivityNotFoundException e) {
+                            mUMA = null;
+                            Toast.makeText(getContext(), "Cannot Open File Picker", Toast.LENGTH_LONG).show();
+                            return false;
+                        }
+                        return true;
                     }
-                    return super.shouldOverrideUrlLoading(view, url);
-                }
-            });
-            //Handles Downloading
+                });
+                webview.setWebViewClient(new WebViewClient() {
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                        if (url.matches(getString(R.string.take_notes_image_to_be_displayed))) {
+                            vibrateDevice();
+                            Intent i=new Intent(getContext(),More.class);
+                            startActivity(i);
+                            getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                            getActivity().finish();
+                        }
+                        else if (url.matches(getString(R.string.print))) {
+                            vibrateDevice();
+                            try {
+                                File folderPath = new File(Environment.getExternalStorageDirectory() + "/Documents/TakeNotes");
+                                File[] imageList = folderPath.listFiles();
+                                ArrayList<File> imagesArrayList = new ArrayList<>();
+                                for (File absolutePath : imageList) {
+                                    imagesArrayList.add(absolutePath);
+                                }
+                                new CreatePdfTask(getContext(), imagesArrayList).execute();
+                            } catch (Exception e) {
+                                new AlertDialog.Builder(getActivity())
+                                        .setTitle("No Images Found")
+                                        .setMessage(R.string.no_img)
+                                        .setCancelable(false)
+                                        // A null listener allows the button to dismiss the dialog and take no further action.
+                                        .setPositiveButton("I Know", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                Intent i=new Intent(getActivity(),BottomHandler.class);
+                                                startActivity(i);
+                                                getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                                                getActivity().finish();
+                                            }
+                                        })
+                                        .create().show();
+                            }
+                        }
+                        return super.shouldOverrideUrlLoading(view, url);
+                    }
+                });
+                //Handles Downloading
                 webview.setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {
                     if(Build.VERSION.SDK_INT>=24){
                         try{
@@ -213,6 +216,8 @@ public class TakeNotes extends Fragment {
                         }
                     }
                 });
+            } else {
+            }
         } else if(!haveNetwork())
         {
             Intent intent = new Intent(getActivity(), NoInternet.class);
