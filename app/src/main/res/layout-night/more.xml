@@ -78,7 +78,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/developers"
                 android:layout_width="110dp"
-                android:layout_height="320dp"
+                android:layout_height="330dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="20dp"
@@ -163,6 +163,8 @@
                         android:id="@+id/dynamicText"
                         android:layout_width="wrap_content"
                         android:scrollbars="vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
                         android:linksClickable="true"
                         android:autoLink="web"
                         android:layout_height="wrap_content"
