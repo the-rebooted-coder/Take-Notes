@@ -109,7 +109,7 @@ public class TakeNotes extends Fragment {
             //Setting Web View Couch for User
             webview = v.findViewById(R.id.takenotes_plugin);
             webview.getSettings().setJavaScriptEnabled(true);
-            webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+            webview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
             webview.getSettings().setDomStorageEnabled(true);
             webview.getSettings().setDatabaseEnabled(true);
             webview.setWebViewClient(new WebViewClient());
@@ -220,10 +220,6 @@ public class TakeNotes extends Fragment {
             getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             getActivity().finish();
         }
-
-        //Ask for a Review Randomly
-        askRatings();
-
         //Runtime External storage permission for saving download files
         checkPerms();
 
@@ -247,21 +243,6 @@ public class TakeNotes extends Fragment {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         hello = sharedPreferences.getString(TEXT, "");
     }
-    private void askRatings() {
-        ReviewManager manager = ReviewManagerFactory.create(getContext());
-        Task<ReviewInfo> request = manager.requestReviewFlow();
-        request.addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                // We can get the ReviewInfo object
-                ReviewInfo reviewInfo = task.getResult();
-                Task<Void> flow = manager.launchReviewFlow(getActivity(), reviewInfo);
-                flow.addOnCompleteListener(task2 -> {
-                });
-            } else {
-                // There was some problem, continue regardless of the result.
-            }
-        });
-    }
     @Override
     public void onStart() {
         super.onStart();
@@ -283,9 +264,6 @@ public class TakeNotes extends Fragment {
             else {
             }
         });
-    }
-    private void checkNetwork() {
-
     }
     @SuppressLint("SetJavaScriptEnabled")
     private String createAndSaveFileFromBase64Url(String url) {

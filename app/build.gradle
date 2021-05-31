@@ -77,4 +77,7 @@ dependencies {
 
     //Bottom Nav
     implementation 'nl.joery.animatedbottombar:library:1.0.9'
+
+    // Material Dialog Library
+    implementation 'dev.shreyaspatil.MaterialDialog:MaterialDialog:2.2.2'
 }

@@ -31,6 +31,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
+
 import static android.content.Context.MODE_PRIVATE;
 import static com.aaxena.takenotes.MyName.SHARED_PREFS;
 import static com.aaxena.takenotes.MyName.TEXT;
@@ -65,6 +67,18 @@ public class More extends Fragment {
         } else {
             loggedInName.setText("Sign in");
         }
+
+        Button tnWeb = v3.findViewById(R.id.tnWeb);
+        tnWeb.setOnClickListener(view -> {
+            vibrateDevice();
+            BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(getActivity())
+                    .setTitle("To use TakeNotes Desktop Visit")
+                    .setMessage("bit.ly/TakeNotesDesktop")
+                    .setAnimation("linked.json")
+                    .setCancelable(true)
+                    .build();
+            mDialog.show();
+        });
 
         Button share = v3.findViewById(R.id.shareApp);
         share.setOnClickListener(v -> {

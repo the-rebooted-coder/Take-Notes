@@ -6,10 +6,12 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.provider.Settings;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,9 +26,8 @@ public class NoInternet extends AppCompatActivity {
 
         Button mdata = this.findViewById(R.id.mdata);
         mdata.setOnClickListener(v -> {
-            Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            assert v3 != null;
-            v3.vibrate(30);
+           vibrateDevice();
+           try{
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
             {
                 Intent intent = new Intent(Settings.ACTION_DATA_USAGE_SETTINGS);
@@ -38,7 +39,12 @@ public class NoInternet extends AppCompatActivity {
                 intent.setAction(android.provider.Settings.ACTION_DATA_ROAMING_SETTINGS);
                 startActivity(intent);
             }
+            }
+           catch (Exception e){
+               Toast.makeText(this,"Turn on Mobile Data",Toast.LENGTH_SHORT).show();
+           }
         });
+
 
         Switch btn = findViewById(R.id.switcher);
         btn.setChecked(wifiManager.isWifiEnabled());
@@ -63,5 +69,14 @@ public class NoInternet extends AppCompatActivity {
            }
         });
 
+    }
+    private void vibrateDevice() {
+        Vibrator v3 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v3.vibrate(VibrationEffect.createOneShot(28, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            v3.vibrate(25);
+        }
     }
 }

@@ -99,6 +99,16 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/tnWeb"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/computer"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_toEndOf="@+id/theme"
+                android:elevation="30dp"
+                android:layout_below="@+id/privacyPolicy" />
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/theme"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
