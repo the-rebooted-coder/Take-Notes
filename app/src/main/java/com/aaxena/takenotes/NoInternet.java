@@ -23,29 +23,6 @@ public class NoInternet extends AppCompatActivity {
         setContentView(R.layout.activity_no_internet);
 
         wifiManager = (WifiManager)this.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-
-        Button mdata = this.findViewById(R.id.mdata);
-        mdata.setOnClickListener(v -> {
-           vibrateDevice();
-           try{
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
-            {
-                Intent intent = new Intent(Settings.ACTION_DATA_USAGE_SETTINGS);
-                startActivity(intent);
-            }
-            else {
-                Intent intent = new Intent();
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setAction(android.provider.Settings.ACTION_DATA_ROAMING_SETTINGS);
-                startActivity(intent);
-            }
-            }
-           catch (Exception e){
-               Toast.makeText(this,"Turn on Mobile Data",Toast.LENGTH_SHORT).show();
-           }
-        });
-
-
         Switch btn = findViewById(R.id.switcher);
         btn.setChecked(wifiManager.isWifiEnabled());
         btn.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -64,8 +41,7 @@ public class NoInternet extends AppCompatActivity {
                         v.vibrate(30);
                     }
                 }, vibrate_like_actual_switch);
-                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                v2.vibrate(25);
+               vibrateDevice();
            }
         });
 

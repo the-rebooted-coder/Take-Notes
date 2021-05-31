@@ -104,7 +104,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@drawable/ic_radio_button_unchecked_black_24dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="30dp"
                 android:elevation="30dp"
                 android:layout_below="@+id/savedName" />
@@ -133,10 +133,48 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@drawable/ic_share_black_24dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="30dp"
                 android:elevation="30dp"
                 android:layout_below="@+id/theme"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dynamicHolder"
+                android:layout_width="310dp"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/shareApp"
+                android:backgroundTint="#F8DCDC"
+                app:cardCornerRadius="20dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/BulletinHolder"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_new_releases_black_24dp"/>
+                    <TextView
+                        android:id="@+id/dynamicText"
+                        android:layout_width="wrap_content"
+                        android:scrollbars="vertical"
+                        android:autoLink="web"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/BulletinHolder"
+                        android:textAlignment="center"
+                        android:text="@string/app_name"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="30dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="10dp"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

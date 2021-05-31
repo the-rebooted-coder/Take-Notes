@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+
 import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -49,6 +56,40 @@ public class More extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View v3 = inflater.inflate(R.layout.more, container, false);
+        CardView dynamicHolder =  v3.findViewById(R.id.dynamicHolder);
+        TextView dynamicText = v3.findViewById(R.id.dynamicText);
+
+        new Thread(() -> {
+            ArrayList<String> urls= new ArrayList<>();
+            try {
+                // Create a URL for the desired page
+                URL url = new URL("https://the-rebooted-coder.github.io/Take-Notes/dynamicText.txt"); //My text file location
+                //First open the connection
+                HttpURLConnection conn=(HttpURLConnection) url.openConnection();
+                conn.setConnectTimeout(60000); // timing out in a minute
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String str;
+                while ((str = in.readLine()) != null) {
+                    urls.add(str);
+                }
+                in.close();
+            } catch (Exception e) {
+                Log.d("MyTag",e.toString());
+            }
+            try {
+                getActivity().runOnUiThread(() -> {
+                    if (!urls.isEmpty()) {
+                        dynamicHolder.setVisibility(View.VISIBLE);
+                        dynamicText.setText(urls.get(0));
+                    }
+                });
+            }
+            catch (NullPointerException e){
+               //Very Important
+                //DO NOTE REMOVE THIS
+            }
+
+        }).start();
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         String saving_as = sharedPreferences.getString(TEXT, "");

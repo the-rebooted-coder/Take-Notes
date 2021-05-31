@@ -206,7 +206,7 @@ public class TakeNotes extends Fragment {
                                     Intent toSignUp = new Intent(getActivity(),SignUp.class);
                                     startActivity(toSignUp);
                                     vibrateDevice();
-                                    Toast.makeText(getContext(),"Sign Up To Fully Experience TakeNotes",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(),"Sign In To Fully Experience TakeNotes",Toast.LENGTH_SHORT).show();
                                     getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                     getActivity().finish();
                                 }

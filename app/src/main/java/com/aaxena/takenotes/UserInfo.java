@@ -108,7 +108,7 @@ public class UserInfo extends AppCompatActivity {
             Intent toSignUp = new Intent(UserInfo.this,SignUp.class);
             startActivity(toSignUp);
             vibrateDevice();
-            Toast.makeText(this,"Sign Up To Fully Experience TakeNotes",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Sign In To Fully Experience TakeNotes",Toast.LENGTH_SHORT).show();
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         }
