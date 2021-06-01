@@ -95,4 +95,5 @@
     <string name="skip_for_now">Skip for now</string>
     <string name="switchLand">Switch Device to Portrait Mode to use TakeNotes.</string>
     <string name="my_notes">My Notes</string>
+    <string name="notes_history">Notes History</string>
 </resources>

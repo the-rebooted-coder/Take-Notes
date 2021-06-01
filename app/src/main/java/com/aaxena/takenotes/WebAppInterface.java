@@ -2,6 +2,7 @@ package com.aaxena.takenotes;
 
 import android.content.Context;
 import android.webkit.JavascriptInterface;
+import android.widget.Toast;
 
 public class WebAppInterface {
     private Context context;
@@ -14,7 +15,12 @@ public class WebAppInterface {
     @JavascriptInterface
     public void showToast(String message)
     {
-        dbHandler = new DBHandler(context);
-        dbHandler.addNewCourse(message.trim());
+        if (!message.isEmpty()) {
+            dbHandler = new DBHandler(context);
+            dbHandler.addNewCourse(message.trim());
+        }
+        else {
+            Toast.makeText(context,"Add Something to the Page",Toast.LENGTH_SHORT).show();
+        }
     }
 }

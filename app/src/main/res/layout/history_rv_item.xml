@@ -2,24 +2,31 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="330dp"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="10dp"
     android:elevation="8dp"
-    app:cardCornerRadius="4dp">
-    <LinearLayout
+    app:cardBackgroundColor="#F8FFFF"
+    app:cardCornerRadius="8dp">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
         <TextView
             android:id="@+id/idTVCourseName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:text="Course Name"
-            android:textColor="@color/black" />
-
-    </LinearLayout>
-
+            android:layout_height="60dp"
+            android:paddingTop="5dp"
+            android:paddingStart="10dp"
+            android:text="@string/notes_history"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:ignore="RtlSymmetry" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.cardview.widget.CardView>
