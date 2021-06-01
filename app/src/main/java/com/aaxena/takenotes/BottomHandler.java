@@ -88,6 +88,10 @@ public class BottomHandler extends AppCompatActivity {
                         vibrateDevice();
                         fragment = new More();
                         break;
+                    case R.id.history:
+                        vibrateDevice();
+                        fragment = new History();
+                        break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
             }

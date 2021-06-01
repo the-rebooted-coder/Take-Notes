@@ -6,6 +6,8 @@ import android.widget.Toast;
 
 public class WebAppInterface {
     private Context context;
+    private DBHandler dbHandler;
+
     public WebAppInterface(Context context)
     {
      this.context = context;
@@ -13,6 +15,8 @@ public class WebAppInterface {
     @JavascriptInterface
     public void showToast(String message)
     {
-        Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
+        dbHandler = new DBHandler(context);
+        dbHandler.addNewCourse(message.trim());
+        Toast.makeText(context, "History has been created!.", Toast.LENGTH_SHORT).show();
     }
 }

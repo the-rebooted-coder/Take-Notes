@@ -19,7 +19,7 @@
             android:layout_height="150dp"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
-            android:backgroundTint="#F6EDD1"
+            android:backgroundTint="#FDBFBF"
             app:cardCornerRadius="20dp">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -85,7 +85,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_toEndOf="@+id/profile"
-            android:backgroundTint="#6A6A6A"
+            android:backgroundTint="#C3C3C3"
             app:cardCornerRadius="20dp">
             <RelativeLayout
                 android:layout_width="match_parent"
