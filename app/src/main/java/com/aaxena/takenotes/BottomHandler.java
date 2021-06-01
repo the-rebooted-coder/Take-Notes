@@ -84,13 +84,13 @@ public class BottomHandler extends AppCompatActivity {
                         vibrateDevice();
                         fragment = new OCR_Bottom();
                         break;
-                    case R.id.more:
-                        vibrateDevice();
-                        fragment = new More();
-                        break;
                     case R.id.history:
                         vibrateDevice();
                         fragment = new History();
+                        break;
+                    case R.id.more:
+                        vibrateDevice();
+                        fragment = new More();
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).commit();

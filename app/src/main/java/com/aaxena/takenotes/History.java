@@ -12,8 +12,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class History extends Fragment {
+    private ArrayList<HistoryModal> courseModalArrayList;
+    private DBHandler dbHandler;
+    private NotesRVAdapter courseRVAdapter;
+    private RecyclerView coursesRV;
     @Nullable
     @Override
 
@@ -21,6 +29,23 @@ public class History extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View v4 =  inflater.inflate(R.layout.history,container,false);
 
+        courseModalArrayList = new ArrayList<>();
+        dbHandler = new DBHandler(getContext());
+
+        // getting our course array
+        // list from db handler class.
+        courseModalArrayList = dbHandler.readCourses();
+
+        // on below line passing our array lost to our adapter class.
+        courseRVAdapter = new NotesRVAdapter(courseModalArrayList, getActivity());
+        coursesRV = v4.findViewById(R.id.idRVCourses);
+
+        // setting layout manager for our recycler view.
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        coursesRV.setLayoutManager(linearLayoutManager);
+
+        // setting our adapter to recycler view.
+        coursesRV.setAdapter(courseRVAdapter);
         return v4;
     }
     private void vibrateDevice() {

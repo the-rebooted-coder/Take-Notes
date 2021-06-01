@@ -9,11 +9,11 @@
         android:title="@string/ocr"
         android:icon="@drawable/ocr"/>
     <item
-        android:id="@+id/more"
-        android:title="@string/more"
-        android:icon="@drawable/more_24dp"/>
-    <item
         android:id="@+id/history"
         android:title="@string/my_notes"
         android:icon="@drawable/ic_history_24dp"/>
+    <item
+        android:id="@+id/more"
+        android:title="@string/more"
+        android:icon="@drawable/more_24dp"/>
 </menu>
