@@ -160,7 +160,7 @@ public class More extends Fragment {
             Toast.makeText(getContext(),"Tip: Tap on our PFP's to reveal more!",Toast.LENGTH_SHORT).show();
             String url = "https://the-rebooted-coder.github.io/Take-Notes/devs";
             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-            builder.setToolbarColor(Color.parseColor("#A2C994"));
+            builder.setToolbarColor(Color.parseColor("#19112E"));
             CustomTabsIntent customTabsIntent = builder.build();
             builder.setShowTitle(true);
             customTabsIntent.launchUrl(getContext(), Uri.parse(url));

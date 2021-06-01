@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/settings_night"
+    android:background="#19112E"
     android:animateLayoutChanges="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ScrollView
@@ -18,7 +18,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
-                android:backgroundTint="#A4514625"
+                android:backgroundTint="#A4262551"
                 app:cardCornerRadius="20dp">
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -146,7 +146,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="10dp"
                 android:layout_below="@+id/shareApp"
-                android:backgroundTint="#C3472F2F"
+                android:backgroundTint="#C31B2651"
                 app:cardCornerRadius="20dp">
                 <RelativeLayout
                     android:layout_width="match_parent"

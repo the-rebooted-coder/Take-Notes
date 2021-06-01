@@ -4,7 +4,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
-import android.app.DownloadManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -34,6 +33,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -53,10 +53,6 @@ import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
-import com.google.android.play.core.review.ReviewInfo;
-import com.google.android.play.core.review.ReviewManager;
-import com.google.android.play.core.review.ReviewManagerFactory;
-import com.google.android.play.core.tasks.Task;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -77,7 +73,6 @@ import java.util.ArrayList;
 import static android.app.Activity.RESULT_OK;
 import static android.content.Context.ACTIVITY_SERVICE;
 import static android.content.Context.CONNECTIVITY_SERVICE;
-import static android.content.Context.DOWNLOAD_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 import static com.aaxena.takenotes.MyName.SHARED_PREFS;
 import static com.aaxena.takenotes.MyName.TEXT;
@@ -93,6 +88,7 @@ public class TakeNotes extends Fragment {
     private String hello;
     SharedPreferences hasSignedIn = null;
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -106,19 +102,20 @@ public class TakeNotes extends Fragment {
         loadData();
 
         //Checking Network
-        if(haveNetwork()){
+        if(haveNetwork()) {
             int orientation = getResources().getConfiguration().orientation;
             if (orientation != Configuration.ORIENTATION_LANDSCAPE) {
                 //Setting Web View Couch for User
                 webview = v.findViewById(R.id.takenotes_plugin);
                 webview.getSettings().setJavaScriptEnabled(true);
-                webview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+                webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
                 webview.getSettings().setDomStorageEnabled(true);
                 webview.getSettings().setDatabaseEnabled(true);
                 webview.setWebViewClient(new WebViewClient());
                 registerForContextMenu(webview);
                 webview.getSettings().setUseWideViewPort(true);
                 webview.setInitialScale((int) 1.0);
+                webview.addJavascriptInterface(new WebAppInterface(getActivity()),"Android");
                 //TODO Change it
                 webview.loadUrl("https://shrish-sharma-codes.github.io/tn-native-v4");
                 webview.setWebChromeClient(new WebChromeClient() {
@@ -216,7 +213,6 @@ public class TakeNotes extends Fragment {
                         }
                     }
                 });
-            } else {
             }
         } else if(!haveNetwork())
         {
