@@ -6,12 +6,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +51,7 @@ public class More extends Fragment {
     public static final String UI_MODE = "uiMode";
     AlertDialog alertDialog1;
     private TextView loggedInName,savedName;
+    private DBHandler dbHandler;
     GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
 
     @Nullable
@@ -108,13 +111,20 @@ public class More extends Fragment {
         } else {
             loggedInName.setText("Sign in");
         }
-
+        CardView deleteHistory = v3.findViewById(R.id.idBtnDelete);
+        deleteHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               vibrateDevice();
+               Toast.makeText(getApplicationContext(),"To be Implemented",Toast.LENGTH_SHORT).show();
+            }
+        });
         Button tnWeb = v3.findViewById(R.id.tnWeb);
         tnWeb.setOnClickListener(view -> {
             vibrateDevice();
             BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(getActivity())
                     .setTitle("To use TakeNotes Desktop Visit")
-                    .setMessage("bit.ly/TakeNotesDesktop")
+                    .setMessage(Html.fromHtml("<a href=\"bit.ly/TakeNotesDesktop\">bit.ly/TakeNotesDesktop</a>"))
                     .setAnimation("linked.json")
                     .setCancelable(true)
                     .build();

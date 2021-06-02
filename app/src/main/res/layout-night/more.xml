@@ -177,6 +177,29 @@
                         android:layout_marginTop="10dp"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/idBtnDelete"
+                android:layout_width="110dp"
+                android:layout_height="140dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="50dp"
+                android:layout_below="@+id/developers"
+                android:backgroundTint="#03234A"
+                android:layout_toEndOf="@+id/tnWeb"
+                app:cardCornerRadius="20dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/ic_filter_vintage_black_24dp"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
