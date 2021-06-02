@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <!--recycler view for displaying our courses-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idRVCourses"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/noHistory"
+        android:layout_width="310dp"
+        app:lottie_autoPlay="false"
+        android:layout_height="290dp"
+        android:visibility="gone"
+        app:lottie_fileName="astronaut_light.json"
+        app:lottie_loop="true"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/historyAdvisory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingStart="10dp"
+        android:visibility="gone"
+        android:paddingEnd="10dp"
+        android:textSize="18sp"
+        android:layout_below="@+id/noHistory"
+        android:text="@string/history_advise"
+        android:textAlignment="center"
+        android:fontFamily="@font/productsansbold"/>
 </RelativeLayout>

@@ -42,15 +42,12 @@ public class NotesRVAdapter extends RecyclerView.Adapter<NotesRVAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         HistoryModal modal = courseModalArrayList.get(position);
         holder.courseNameTV.setText(modal.getCourseName());
-        holder.courseNameTV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("TakeNotesHistory", modal.getCourseName());
-                clipboard.setPrimaryClip(clip);
-                vibrateDevice();
-                Toast.makeText(context,"History Item Copied to Clipboard!",Toast.LENGTH_SHORT).show();
-            }
+        holder.courseNameTV.setOnClickListener(view -> {
+            ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("TakeNotesHistory", modal.getCourseName());
+            clipboard.setPrimaryClip(clip);
+            vibrateDevice();
+            Toast.makeText(context,"History Item Copied to Clipboard!",Toast.LENGTH_SHORT).show();
         });
     }
     private void vibrateDevice() {
