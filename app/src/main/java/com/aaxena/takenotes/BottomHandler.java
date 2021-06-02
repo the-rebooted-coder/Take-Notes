@@ -114,6 +114,5 @@ public class BottomHandler extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         moveTaskToBack(true);
-        Toast.makeText(this,"Note Saved as Draft",Toast.LENGTH_SHORT).show();
     }
 }
