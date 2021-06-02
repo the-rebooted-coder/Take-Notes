@@ -22,8 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".TakeNotes"></activity>
-        <activity android:name=".BottomHandler" />
+        <activity android:name=".TakeNotes"/>
+        <activity android:name=".BottomHandler"/>
         <activity android:name=".MyName" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".PdfProcessed" />

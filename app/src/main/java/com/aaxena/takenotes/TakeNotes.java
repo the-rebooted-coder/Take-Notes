@@ -118,6 +118,7 @@ public class TakeNotes extends Fragment {
                 webview.addJavascriptInterface(new WebAppInterface(getActivity()),"Android");
                 //TODO Change it
                 webview.loadUrl("https://shrish-sharma-codes.github.io/tn-native-v4");
+                webview.setLayerType(View.LAYER_TYPE_HARDWARE, null);
                 webview.setWebChromeClient(new WebChromeClient() {
                     //File Chooser
                     public boolean onShowFileChooser(
