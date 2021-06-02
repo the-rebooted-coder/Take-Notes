@@ -2,16 +2,12 @@ package com.aaxena.takenotes;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.ActivityManager;
-import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
@@ -21,7 +17,6 @@ import android.media.MediaScannerConnection;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -54,15 +49,12 @@ import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 
 import static android.app.Activity.RESULT_OK;
-import static android.content.Context.ACTIVITY_SERVICE;
 import static android.content.Context.CONNECTIVITY_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 import static com.aaxena.takenotes.MyName.SHARED_PREFS;
@@ -87,11 +79,9 @@ public class TakeNotes extends Fragment {
         View v = inflater.inflate(R.layout.activity_take_notes, container, false);
 
         hasSignedIn = getActivity().getSharedPreferences("hasSignedIn", 0);
-        Boolean hasSigned = hasSignedIn.getBoolean("hasSignedIn", false);
-
+        boolean hasSigned = hasSignedIn.getBoolean("hasSignedIn", false);
         //Load Data
         loadData();
-
         //Checking Network
         if(haveNetwork()) {
             int orientation = getResources().getConfiguration().orientation;
@@ -140,7 +130,7 @@ public class TakeNotes extends Fragment {
                         return true;
                     }
                 });
-                //Handles Downloading
+                        //Handles Downloading
                 webview.setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {
                     if(Build.VERSION.SDK_INT>=24){
                         try{

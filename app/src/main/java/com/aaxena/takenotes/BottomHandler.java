@@ -110,4 +110,10 @@ public class BottomHandler extends AppCompatActivity {
             v3.vibrate(20);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+        Toast.makeText(this,"Note Saved as Draft",Toast.LENGTH_SHORT).show();
+    }
 }
