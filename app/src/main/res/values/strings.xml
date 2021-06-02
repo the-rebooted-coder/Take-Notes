@@ -79,7 +79,7 @@
     <string name="more_info"><u>More info</u></string>
     <string name="save">save</string>
     <string name="more_info_text">TakeNotes saves your name in your device\'s internal storage, so every time you save assignments it adds up this name to the file to save your time in renaming.\n\nNO Data is SENT ANYWHERE!\n\nPretty Great Right?</string>
-    <string name="more_info_title">When you enter your name...</string>
+    <string name="more_info_title">When you enter your name…</string>
     <string name="oh_one_more_thing">Oh! One More Thing!</string>
     <string name="asking_storage_perm">Please provide the storage permissions otherwise where will the saved assignments go?</string>
     <string name="tap_to_save_name">Tap here to save your default file name</string>
@@ -96,5 +96,5 @@
     <string name="switchLand">Switch Device to Portrait Mode to use TakeNotes.</string>
     <string name="my_notes">My Notes</string>
     <string name="notes_history">Notes History</string>
-    <string name="history_advise">History will start showing up as soon as you create it!</string>
+    <string name="history_advise">History will start showing up as soon as you create notes!</string>
 </resources>
