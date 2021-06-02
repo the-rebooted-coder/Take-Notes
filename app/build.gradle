@@ -45,9 +45,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
-    //PDF
-    implementation 'com.itextpdf:itextg:5.5.10'
-
     //Lottie Anims
     implementation "com.airbnb.android:lottie:3.4.0"
 

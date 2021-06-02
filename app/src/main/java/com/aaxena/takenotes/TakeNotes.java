@@ -33,7 +33,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -53,14 +52,6 @@ import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
-import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.ExceptionConverter;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -147,47 +138,6 @@ public class TakeNotes extends Fragment {
                             return false;
                         }
                         return true;
-                    }
-                });
-                webview.setWebViewClient(new WebViewClient() {
-                    @Override
-                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                        if (url.matches(getString(R.string.take_notes_image_to_be_displayed))) {
-                            vibrateDevice();
-                            Intent i=new Intent(getContext(),More.class);
-                            startActivity(i);
-                            getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                            getActivity().finish();
-                        }
-                        else if (url.matches(getString(R.string.print))) {
-                            vibrateDevice();
-                            try {
-                                File folderPath = new File(Environment.getExternalStorageDirectory() + "/Documents/TakeNotes");
-                                File[] imageList = folderPath.listFiles();
-                                ArrayList<File> imagesArrayList = new ArrayList<>();
-                                for (File absolutePath : imageList) {
-                                    imagesArrayList.add(absolutePath);
-                                }
-                                new CreatePdfTask(getContext(), imagesArrayList).execute();
-                            } catch (Exception e) {
-                                new AlertDialog.Builder(getActivity())
-                                        .setTitle("No Images Found")
-                                        .setMessage(R.string.no_img)
-                                        .setCancelable(false)
-                                        // A null listener allows the button to dismiss the dialog and take no further action.
-                                        .setPositiveButton("I Know", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                Intent i=new Intent(getActivity(),BottomHandler.class);
-                                                startActivity(i);
-                                                getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                                                getActivity().finish();
-                                            }
-                                        })
-                                        .create().show();
-                            }
-                        }
-                        return super.shouldOverrideUrlLoading(view, url);
                     }
                 });
                 //Handles Downloading
@@ -415,92 +365,6 @@ public class TakeNotes extends Fragment {
             mUM = null;
         } else
             Toast.makeText(getContext(), R.string.failed_to_load_fnt, Toast.LENGTH_LONG).show();
-    }
-    public class CreatePdfTask extends AsyncTask<String, Integer, File> {
-        Context context;
-        ArrayList<File> files;
-        ProgressDialog progressDialog;
-        CreatePdfTask(Context context2, ArrayList<File> arrayList) {
-            context = context2;
-            files = arrayList;
-        }
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog = new ProgressDialog(context);
-            progressDialog.setTitle("Processing...");
-            progressDialog.setMessage(getString(R.string.advice));
-            progressDialog.setIndeterminate(false);
-            progressDialog.setCancelable(false);
-            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "I Know!", (dialog, which) -> ((ActivityManager)context.getSystemService(ACTIVITY_SERVICE))
-                    .clearApplicationUserData());
-            progressDialog.show();
-        }
-        @Override
-        protected File doInBackground(String... strings) {
-            File outputMediaFile = new File(Environment.getExternalStorageDirectory(), Environment.DIRECTORY_DOCUMENTS + "/" + "Take Notes" + System.currentTimeMillis() + ".pdf");
-            Document document = new Document(PageSize.A4, 38.0f, 38.0f, 50.0f, 38.0f);
-            try {
-                PdfWriter.getInstance(document, new FileOutputStream(outputMediaFile));
-            } catch (DocumentException | ExceptionConverter e) {
-                e.printStackTrace();
-                progressDialog.dismiss();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                progressDialog.dismiss();
-                return null;
-            }
-            document.open();
-            try {
-                document.add(new Chunk(""));
-            } catch (DocumentException e) {
-                e.printStackTrace();
-            }
-
-            int i = 0;
-            while (true) {
-                if (i < this.files.size()) {
-                    try {
-                        Image image = Image.getInstance(files.get(i).getAbsolutePath());
-
-                        float scaler = ((document.getPageSize().getWidth() - document.leftMargin()
-                                - document.rightMargin() - 0) / image.getWidth()) * 100; // 0 means you have no indentation. If you have any, change it.
-                        image.scalePercent(scaler);
-                        image.setAlignment(Image.ALIGN_CENTER | Image.ALIGN_TOP);
-                        image.setAbsolutePosition((document.getPageSize().getWidth() - image.getScaledWidth()) / 2.0f,
-                                (document.getPageSize().getHeight() - image.getScaledHeight()) / 2.0f);
-
-                        document.add(image);
-                        document.newPage();
-                        publishProgress(i);
-                        i++;
-                    } catch (BadElementException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (DocumentException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    document.close();
-                    return outputMediaFile;
-                }
-            }
-        }
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            super.onProgressUpdate(values);
-            progressDialog.dismiss();
-        }
-        @Override
-        protected void onPostExecute(File file) {
-            super.onPostExecute(file);
-            Intent intent = new Intent(getContext(),PdfProcessed.class);
-            startActivity(intent);
-            getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            progressDialog.dismiss();
-            getActivity().finish();
-        }
     }
     private void vibrateDevice() {
         Vibrator v3 = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
