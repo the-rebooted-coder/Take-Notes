@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.text.Html;
@@ -29,6 +30,7 @@ import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
@@ -112,12 +114,16 @@ public class More extends Fragment {
             loggedInName.setText("Sign in");
         }
         CardView deleteHistory = v3.findViewById(R.id.idBtnDelete);
-        deleteHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               vibrateDevice();
-               Toast.makeText(getApplicationContext(),"To be Implemented",Toast.LENGTH_SHORT).show();
-            }
+        LottieAnimationView deleteAnimation = v3.findViewById(R.id.lottieFileDelete);
+        deleteHistory.setOnClickListener(v -> {
+           vibrateDevice();
+           reset();
+           deleteAnimation.playAnimation();
+            int deleteAnimTimeout = 2000;
+            new Handler().postDelayed(() -> {
+              deleteAnimation.cancelAnimation();
+              Toast.makeText(getApplicationContext(),"My Notes Cleared",Toast.LENGTH_SHORT).show();
+            }, deleteAnimTimeout);
         });
         Button tnWeb = v3.findViewById(R.id.tnWeb);
         tnWeb.setOnClickListener(view -> {
@@ -254,6 +260,16 @@ public class More extends Fragment {
         } else {
             //deprecated in API 26
             v3.vibrate(25);
+        }
+    }
+    public void reset(){
+        DBHandler database = new DBHandler(getContext());
+        try {
+            database.delete();
+        }
+        catch (NullPointerException e){
+            Log.d("DATABASE", "ERROR!");
+            e.printStackTrace();
         }
     }
 }
