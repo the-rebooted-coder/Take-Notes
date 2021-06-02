@@ -16,7 +16,6 @@
     <nl.joery.animatedbottombar.AnimatedBottomBar
         android:id="@+id/bottomNavigation"
         android:hapticFeedbackEnabled="true"
-        android:background="#FD40484C"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,6 +24,8 @@
         app:abb_indicatorLocation="bottom"
         app:abb_tabAnimation="fade"
         app:abb_rippleEnabled="true"
+        app:abb_tabColorSelected="@color/black"
+        app:abb_tabColor="@color/browser_actions_title_color"
         app:abb_indicatorAppearance="round"
         app:abb_indicatorMargin="16dp"
         app:abb_indicatorHeight="4dp"

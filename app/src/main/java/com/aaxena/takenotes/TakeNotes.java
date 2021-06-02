@@ -114,6 +114,8 @@ public class TakeNotes extends Fragment {
                 webview.setWebViewClient(new WebViewClient());
                 registerForContextMenu(webview);
                 webview.getSettings().setUseWideViewPort(true);
+                webview.setOnLongClickListener(v1 -> true);
+                webview.setLongClickable(false);
                 webview.setInitialScale((int) 1.0);
                 webview.addJavascriptInterface(new WebAppInterface(getActivity()),"Android");
                 //TODO Change it

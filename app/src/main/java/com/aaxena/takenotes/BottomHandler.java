@@ -34,7 +34,6 @@ public class BottomHandler extends AppCompatActivity {
         SharedPreferences.Editor editor = opening.edit();
         editor.putInt("OPENING_TIME",opening_time);
         editor.apply();
-
         if(opening_time == 5){
            //User Opened TakeNotes 5 Time, Review Can be Asked
             BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(this)

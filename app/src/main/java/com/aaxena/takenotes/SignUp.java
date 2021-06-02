@@ -53,7 +53,6 @@ public class SignUp extends AppCompatActivity {
     CallbackManager mCallbackManager;
     Button loginButton;
     TextView skip;
-    View linePlace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +60,6 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         SharedPreferences prefs = getSharedPreferences(STATUS, MODE_PRIVATE);
         acc_status = prefs.getString("acc_status", "okay");
-        linePlace.findViewById(R.id.linePlace);
         skip = findViewById(R.id.skipSign);
         skip.setOnClickListener(view -> {
             vibrateDevice();
@@ -85,7 +83,6 @@ public class SignUp extends AppCompatActivity {
         loginButton = findViewById(R.id.login_button);
         loginButton.setOnClickListener(v -> {
                 vibrateDevice();
-                linePlace.setVisibility(View.INVISIBLE);
                 skip.setVisibility(View.INVISIBLE);
                 loginButton.setVisibility(View.INVISIBLE);
                 signInButton.setVisibility(View.INVISIBLE);
@@ -101,7 +98,6 @@ public class SignUp extends AppCompatActivity {
 
                 @Override
                 public void onCancel() {
-                    linePlace.setVisibility(View.VISIBLE);
                     skip.setVisibility(View.VISIBLE);
                     loginButton.setVisibility(View.VISIBLE);
                     signInButton.setVisibility(View.VISIBLE);
@@ -111,7 +107,6 @@ public class SignUp extends AppCompatActivity {
 
                 @Override
                 public void onError(FacebookException error) {
-                    linePlace.setVisibility(View.VISIBLE);
                     skip.setVisibility(View.VISIBLE);
                     loginButton.setVisibility(View.VISIBLE);
                     signInButton.setVisibility(View.VISIBLE);
@@ -131,7 +126,6 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (acc_status.equals("okay")) {
-                    linePlace.setVisibility(View.INVISIBLE);
                     skip.setVisibility(View.INVISIBLE);
                     loginButton.setVisibility(View.INVISIBLE);
                     signInButton.setVisibility(View.INVISIBLE);
@@ -158,7 +152,6 @@ public class SignUp extends AppCompatActivity {
                         updateUI(user);
                         finish();
                     } else {
-                        linePlace.setVisibility(View.VISIBLE);
                         loginButton.setVisibility(View.VISIBLE);
                         signInButton.setVisibility(View.VISIBLE);
                         loading.setVisibility(View.INVISIBLE);
@@ -229,7 +222,6 @@ public class SignUp extends AppCompatActivity {
             FirebaseGoogleAuth(acc);
         }
         catch (ApiException e){
-            linePlace.setVisibility(View.VISIBLE);
             skip.setVisibility(View.VISIBLE);
             loginButton.setVisibility(View.VISIBLE);
             signInButton.setVisibility(View.VISIBLE);
