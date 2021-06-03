@@ -75,7 +75,8 @@ public class More extends Fragment {
         View v3 = inflater.inflate(R.layout.more, container, false);
         CardView dynamicHolder =  v3.findViewById(R.id.dynamicHolder);
         TextView dynamicText = v3.findViewById(R.id.dynamicText);
-
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        String saving_as = sharedPreferences.getString(TEXT, "");
         new Thread(() -> {
             ArrayList<String> urls= new ArrayList<>();
             try {
@@ -108,8 +109,6 @@ public class More extends Fragment {
 
         }).start();
 
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        String saving_as = sharedPreferences.getString(TEXT, "");
         savedName = v3.findViewById(R.id.savingName);
         if (saving_as.isEmpty()){
             savedName.setText("File Name");
@@ -238,7 +237,16 @@ public class More extends Fragment {
 
         @Override
         protected File doInBackground(String... strings) {
-            File outputMediaFile = new File(Environment.getExternalStorageDirectory(), Environment.DIRECTORY_DOCUMENTS + "/" + "Take Notes" + System.currentTimeMillis() + ".pdf");
+            String pdfNomenclature;
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+            String saving_as = sharedPreferences.getString(TEXT, "");
+            if(saving_as.isEmpty()){
+                pdfNomenclature = "";
+            }
+            else{
+                pdfNomenclature=saving_as;
+            }
+            File outputMediaFile = new File(Environment.getExternalStorageDirectory(), Environment.DIRECTORY_DOCUMENTS + "/" + pdfNomenclature.trim() + " TakeNotes" + System.currentTimeMillis() + ".pdf");
             Document document = new Document(PageSize.A4, 38.0f, 38.0f, 50.0f, 38.0f);
             try {
                 PdfWriter.getInstance(document, new FileOutputStream(outputMediaFile));

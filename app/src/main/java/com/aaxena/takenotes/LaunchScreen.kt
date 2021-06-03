@@ -9,7 +9,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.constraintlayout.motion.widget.MotionLayout
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import kotlinx.android.synthetic.main.splash_screen.*
 
 class LaunchScreen : AppCompatActivity() {
     var name: String? = null
@@ -27,7 +29,24 @@ class LaunchScreen : AppCompatActivity() {
             Toast.makeText(this@LaunchScreen, "Your account is temporarily suspended due to proactive use, contact the developer", Toast.LENGTH_LONG).show()
             finish()
         } else {
-            fireSplashScreen()
+            Handler().postDelayed({
+                check()
+            }, 690)
+/*
+
+            motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
+                override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
+                   check()
+                }
+                override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) { }
+
+                override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) { }
+
+                override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) { }
+
+            })
+
+ */
         }
     }
     private fun applyUI() {
@@ -61,19 +80,18 @@ class LaunchScreen : AppCompatActivity() {
             hideSystemUIAndNavigation(this)
         }
     }
-    private fun fireSplashScreen() {
-           // check()
-    }
     private fun check() {
         val account = GoogleSignIn.getLastSignedInAccount(applicationContext)
         if (account != null) { //User Signed In, Proceeding to Landing
             val i = Intent(this@LaunchScreen, BottomHandler::class.java)
             startActivity(i)
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            overridePendingTransition(0,0)
+            finish()
         } else { //Newbie
             val i = Intent(this@LaunchScreen, WelcomeActivity::class.java)
             startActivity(i)
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            overridePendingTransition(0,0)
+            finish()
         }
     }
 }

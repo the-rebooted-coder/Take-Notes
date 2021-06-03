@@ -3,6 +3,8 @@
     <item
         android:drawable="@color/notReallyBlue"/>
     <item
-        android:drawable="@drawable/ic_splash"
+        android:height="150dp"
+        android:width="150dp"
+        android:drawable="@drawable/splash"
         android:gravity="center"/>
 </layer-list>
