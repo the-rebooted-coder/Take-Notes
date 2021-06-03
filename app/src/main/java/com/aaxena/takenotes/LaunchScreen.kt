@@ -62,11 +62,7 @@ class LaunchScreen : AppCompatActivity() {
         }
     }
     private fun fireSplashScreen() {
-        val splash = 100
-        Handler().postDelayed({
-            check()
-            finish()
-        }, splash.toLong())
+           // check()
     }
     private fun check() {
         val account = GoogleSignIn.getLastSignedInAccount(applicationContext)
