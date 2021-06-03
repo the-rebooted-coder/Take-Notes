@@ -104,7 +104,8 @@ public class OCR_Bottom extends Fragment {
             }
         }
         else {
-            //Do not remove this function, prevents the app from crashing when user back-presses the chooser without choosing
+            tap.setVisibility(View.VISIBLE);
+            choose.setVisibility(View.VISIBLE);
         }
     }
 }

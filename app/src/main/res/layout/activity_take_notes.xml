@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WebView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/takenotes_plugin"
-    android:overScrollMode="never">
+    android:background="@drawable/page"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/page"
+        android:id="@+id/takenotes_plugin"
+        android:overScrollMode="never">
     </WebView>
+    <ImageView
+        android:id="@+id/pagePaper"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/page"/>
+</RelativeLayout>

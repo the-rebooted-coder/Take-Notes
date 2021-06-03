@@ -13,6 +13,7 @@ import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -33,6 +34,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,6 +42,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
 import com.google.android.play.core.install.InstallState;
@@ -77,9 +80,9 @@ public class TakeNotes extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.activity_take_notes, container, false);
-
         hasSignedIn = getActivity().getSharedPreferences("hasSignedIn", 0);
         boolean hasSigned = hasSignedIn.getBoolean("hasSignedIn", false);
+        ImageView paper = v.findViewById(R.id.pagePaper);
         //Load Data
         loadData();
         //Checking Network
@@ -92,7 +95,19 @@ public class TakeNotes extends Fragment {
                 webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
                 webview.getSettings().setDomStorageEnabled(true);
                 webview.getSettings().setDatabaseEnabled(true);
-                webview.setWebViewClient(new WebViewClient());
+                webview.setWebViewClient(new WebViewClient(){
+                    @Override
+                    public void onPageFinished(WebView view, String url) {
+                        super.onPageFinished(view, url);
+                        paper.setVisibility(View.GONE);
+                        webview.setVisibility(View.VISIBLE);
+                    }
+                    @Override
+                    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                        paper.setVisibility(View.VISIBLE);
+                        webview.setVisibility(View.INVISIBLE);
+                    }
+                });
                 registerForContextMenu(webview);
                 webview.getSettings().setUseWideViewPort(true);
                 webview.setOnLongClickListener(v1 -> true);

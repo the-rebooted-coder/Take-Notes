@@ -90,7 +90,7 @@
     <string name="settings_amp_more"><![CDATA[Settings & More]]></string>
     <string name="theme">Theme</string>
     <string name="ocr">OCR</string>
-    <string name="more">More</string>
+    <string name="more">Cockpit</string>
     <string name="file_name">File Name</string>
     <string name="skip_for_now">Skip for now</string>
     <string name="switchLand">Switch Device to Portrait Mode to use TakeNotes.</string>

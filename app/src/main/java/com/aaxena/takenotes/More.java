@@ -35,8 +35,6 @@ import androidx.fragment.app.Fragment;
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -68,9 +66,7 @@ public class More extends Fragment {
     AlertDialog alertDialog1;
     private TextView loggedInName,savedName;
     private DBHandler dbHandler;
-    FirebaseAuth mAuth;
     GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-    FirebaseUser mUser = mAuth.getCurrentUser();
 
     @Nullable
     @Override
@@ -126,27 +122,27 @@ public class More extends Fragment {
         if (account != null) {
             //Google
             loggedInName.setText(account.getDisplayName());
-        } else if (mUser!=null){
-            loggedInName.setText(mUser.getDisplayName());
-        }
-        else {
-            loggedInName.setText("Sign In");
+        } else {
+            loggedInName.setText("Sign in");
         }
 
         CardView createPDF = v3.findViewById(R.id.createPDF);
-        createPDF.setOnClickListener(view -> {
-            vibrateDevice();
-            try {
-                File folderPath = new File(Environment.getExternalStorageDirectory() + "/Documents/TakeNotes");
-                File[] imageList = folderPath.listFiles();
-                ArrayList<File> imagesArrayList = new ArrayList<>();
-                for (File absolutePath : imageList) {
-                    imagesArrayList.add(absolutePath);
+        createPDF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vibrateDevice();
+                try {
+                    File folderPath = new File(Environment.getExternalStorageDirectory() + "/Documents/TakeNotes");
+                    File[] imageList = folderPath.listFiles();
+                    ArrayList<File> imagesArrayList = new ArrayList<>();
+                    for (File absolutePath : imageList) {
+                        imagesArrayList.add(absolutePath);
+                    }
+                    new CreatePdfTask(getContext(), imagesArrayList).execute();
+                    Toast.makeText(getContext(),"PDF Created & Saved in Documents.",Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Toast.makeText(getContext(),"No Images In TakeNotes Directory.\nCreate Notes First!",Toast.LENGTH_LONG).show();
                 }
-                new CreatePdfTask(getContext(), imagesArrayList).execute();
-                Toast.makeText(getContext(),"PDF Created & Saved in Documents.",Toast.LENGTH_LONG).show();
-            } catch (Exception e) {
-                Toast.makeText(getContext(),"No Images In TakeNotes Directory.\nCreate Notes First!",Toast.LENGTH_LONG).show();
             }
         });
         CardView deleteHistory = v3.findViewById(R.id.idBtnDelete);
@@ -176,7 +172,6 @@ public class More extends Fragment {
         Button share = v3.findViewById(R.id.shareApp);
         share.setOnClickListener(v -> {
             vibrateDevice();
-            share.setVisibility(View.INVISIBLE);
             /*Create an ACTION_SEND Intent*/
             Intent intent = new Intent(Intent.ACTION_SEND);
             /*This will be the actual content you wish you share.*/

@@ -137,7 +137,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="30dp"
                 android:elevation="30dp"
-                android:layout_below="@+id/savedName" />
+                android:layout_below="@+id/savedName"/>
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/privacyPolicy"
                 android:layout_width="60dp"
