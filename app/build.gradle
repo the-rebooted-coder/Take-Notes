@@ -49,8 +49,8 @@ dependencies {
     implementation "com.airbnb.android:lottie:3.4.0"
 
     //FireBase
-    implementation 'com.google.firebase:firebase-inappmessaging-display:19.1.5'
-    implementation 'com.google.firebase:firebase-auth:20.0.4'
+    implementation 'com.google.firebase:firebase-inappmessaging-display:20.0.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
     //Vision
     implementation 'com.google.android.gms:play-services-vision:20.1.2'
 
