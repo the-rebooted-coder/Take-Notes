@@ -1,16 +1,18 @@
 package com.aaxena.takenotes;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -35,8 +37,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.ExceptionConverter;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -54,7 +68,9 @@ public class More extends Fragment {
     AlertDialog alertDialog1;
     private TextView loggedInName,savedName;
     private DBHandler dbHandler;
+    FirebaseAuth mAuth;
     GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+    FirebaseUser mUser = mAuth.getCurrentUser();
 
     @Nullable
     @Override
@@ -110,9 +126,29 @@ public class More extends Fragment {
         if (account != null) {
             //Google
             loggedInName.setText(account.getDisplayName());
-        } else {
-            loggedInName.setText("Sign in");
+        } else if (mUser!=null){
+            loggedInName.setText(mUser.getDisplayName());
         }
+        else {
+            loggedInName.setText("Sign In");
+        }
+
+        CardView createPDF = v3.findViewById(R.id.createPDF);
+        createPDF.setOnClickListener(view -> {
+            vibrateDevice();
+            try {
+                File folderPath = new File(Environment.getExternalStorageDirectory() + "/Documents/TakeNotes");
+                File[] imageList = folderPath.listFiles();
+                ArrayList<File> imagesArrayList = new ArrayList<>();
+                for (File absolutePath : imageList) {
+                    imagesArrayList.add(absolutePath);
+                }
+                new CreatePdfTask(getContext(), imagesArrayList).execute();
+                Toast.makeText(getContext(),"PDF Created & Saved in Documents.",Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                Toast.makeText(getContext(),"No Images In TakeNotes Directory.\nCreate Notes First!",Toast.LENGTH_LONG).show();
+            }
+        });
         CardView deleteHistory = v3.findViewById(R.id.idBtnDelete);
         LottieAnimationView deleteAnimation = v3.findViewById(R.id.lottieFileDelete);
         deleteHistory.setOnClickListener(v -> {
@@ -195,31 +231,90 @@ public class More extends Fragment {
         theme.setOnClickListener(view -> CreateAlertDialogWithRadioButtonGroup());
         return v3;
     }
+    public class CreatePdfTask extends AsyncTask<String, Integer, File> {
+        Context context;
+        ArrayList<File> files;
+        ProgressDialog progressDialog;
+
+        CreatePdfTask(Context context2, ArrayList<File> arrayList) {
+            context = context2;
+            files = arrayList;
+        }
+
+        @Override
+        protected File doInBackground(String... strings) {
+            File outputMediaFile = new File(Environment.getExternalStorageDirectory(), Environment.DIRECTORY_DOCUMENTS + "/" + "Take Notes" + System.currentTimeMillis() + ".pdf");
+            Document document = new Document(PageSize.A4, 38.0f, 38.0f, 50.0f, 38.0f);
+            try {
+                PdfWriter.getInstance(document, new FileOutputStream(outputMediaFile));
+            } catch (DocumentException | ExceptionConverter e) {
+                e.printStackTrace();
+                progressDialog.dismiss();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                progressDialog.dismiss();
+                return null;
+            }
+            document.open();
+            try {
+                document.add(new Chunk("Created by TakeNotes"));
+            } catch (DocumentException e) {
+                e.printStackTrace();
+            }
+
+            int i = 0;
+            while (true) {
+                if (i < this.files.size()) {
+                    try {
+                        Image image = Image.getInstance(files.get(i).getAbsolutePath());
+
+                        float scaler = ((document.getPageSize().getWidth() - document.leftMargin()
+                                - document.rightMargin() - 0) / image.getWidth()) * 100; // 0 means you have no indentation. If you have any, change it.
+                        image.scalePercent(scaler);
+                        image.setAlignment(Image.ALIGN_CENTER | Image.ALIGN_TOP);
+                        image.setAbsolutePosition((document.getPageSize().getWidth() - image.getScaledWidth()) / 2.0f,
+                                (document.getPageSize().getHeight() - image.getScaledHeight()) / 2.0f);
+
+                        document.add(image);
+                        document.newPage();
+                        publishProgress(i);
+                        i++;
+                    } catch (BadElementException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (DocumentException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    document.close();
+                    return outputMediaFile;
+                }
+            }
+        }
+    }
     public void CreateAlertDialogWithRadioButtonGroup() {
         int nightModeFlags =
                 this.getResources().getConfiguration().uiMode &
                         Configuration.UI_MODE_NIGHT_MASK;
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Choose Theme for Take Notes");
-        builder.setPositiveButton("Light", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (nightModeFlags) {
-                    case Configuration.UI_MODE_NIGHT_YES:
-                        vibrateDevice();
-                        alertDialog1.dismiss();
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                        SharedPreferences.Editor editor = getActivity().getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
-                        editor.putString("uiMode","Light");
-                        editor.apply();
-                        break;
-                    case Configuration.UI_MODE_NIGHT_NO:
-                        Toast.makeText(getApplicationContext(),"Already in Light Mode ☀️",Toast.LENGTH_SHORT).show();
-                        alertDialog1.dismiss();
-                        break;
-                    default:
-                        Toast.makeText(getApplicationContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
-                }
+        builder.setPositiveButton("Light", (dialog, which) -> {
+            switch (nightModeFlags) {
+                case Configuration.UI_MODE_NIGHT_YES:
+                    vibrateDevice();
+                    alertDialog1.dismiss();
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    SharedPreferences.Editor editor = getActivity().getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                    editor.putString("uiMode","Light");
+                    editor.apply();
+                    break;
+                case Configuration.UI_MODE_NIGHT_NO:
+                    Toast.makeText(getApplicationContext(),"Already in Light Mode ☀️",Toast.LENGTH_SHORT).show();
+                    alertDialog1.dismiss();
+                    break;
+                default:
+                    Toast.makeText(getApplicationContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton("Dark", (dialog, which) -> {

@@ -38,7 +38,6 @@ public class OCR_Bottom extends Fragment {
     Button choose;
     @Nullable
     @Override
-
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View v2 =  inflater.inflate(R.layout.ocr_handler,container,false);
@@ -52,7 +51,6 @@ public class OCR_Bottom extends Fragment {
         tap.setOnClickListener(view -> chooseImage());
         return v2;
     }
-
     private void chooseImage() {
         tap.setVisibility(View.GONE);
         choose.setVisibility(View.GONE);
@@ -62,7 +60,6 @@ public class OCR_Bottom extends Fragment {
         i.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(i,"Select an Image to get text from"),121);
     }
-
     private void vibrateDevice() {
         Vibrator v3 = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -98,7 +95,6 @@ public class OCR_Bottom extends Fragment {
                             })
                             .addOnFailureListener(
                                     e -> {
-
                                         // Task failed with an exception
                                         Toast.makeText(getApplicationContext(),"Oops, we ran into trouble",Toast.LENGTH_SHORT).show();
                                     });
@@ -108,7 +104,7 @@ public class OCR_Bottom extends Fragment {
             }
         }
         else {
-            //Do not remove this function, prevents the app from  crashing when user back-presses the chooser without choosing
+            //Do not remove this function, prevents the app from crashing when user back-presses the chooser without choosing
         }
     }
 }

@@ -44,6 +44,27 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+                android:id="@+id/createPDF"
+                android:layout_width="110dp"
+                android:layout_height="140dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="210dp"
+                android:layout_marginEnd="20dp"
+                android:layout_toEndOf="@+id/profile"
+                android:backgroundTint="#490202"
+                app:cardCornerRadius="20dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                  <ImageView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:src="@drawable/ic_pdf"
+                      android:layout_centerInParent="true"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
                 android:id="@+id/savedName"
                 android:layout_width="200dp"
                 android:layout_height="150dp"
@@ -78,7 +99,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/developers"
                 android:layout_width="110dp"
-                android:layout_height="330dp"
+                android:layout_height="165dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="20dp"
@@ -185,7 +206,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="50dp"
-                android:layout_below="@+id/developers"
+                android:layout_below="@+id/createPDF"
                 android:backgroundTint="#03234A"
                 android:layout_toEndOf="@+id/tnWeb"
                 app:cardCornerRadius="20dp">
