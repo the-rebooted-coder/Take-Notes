@@ -97,4 +97,5 @@
     <string name="my_notes">My Notes</string>
     <string name="notes_history">Notes History</string>
     <string name="history_advise">History will start showing up as soon as you create notes!</string>
+    <string name="splash_screen_logo">Splash Screen Logo</string>
 </resources>
