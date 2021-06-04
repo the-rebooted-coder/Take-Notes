@@ -23,6 +23,7 @@
             android:id="@+id/lock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:transitionName="imageTransition"
             android:layout_gravity="center_horizontal"
             android:layout_centerHorizontal="true"
             android:src="@drawable/privacy_lock_white"/>

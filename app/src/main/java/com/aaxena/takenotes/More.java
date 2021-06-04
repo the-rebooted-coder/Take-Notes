@@ -1,5 +1,6 @@
 package com.aaxena.takenotes;
 
+import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,6 +18,7 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.text.Html;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -242,7 +244,10 @@ public class More extends Fragment {
         privacy.setOnClickListener(v -> {
             vibrateDevice();
             Intent i=new Intent(getContext(),PrivacyPolicy.class);
-            startActivity(i);
+            Pair [] pairs = new Pair[1];
+            pairs[0] = new Pair<View, String>(privacy,"imageTransition");
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(),pairs);
+            startActivity(i,options.toBundle());
             getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
 

@@ -141,6 +141,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/privacyPolicy"
                 android:layout_width="60dp"
+                android:transitionName="imageTransition"
                 android:layout_height="60dp"
                 android:background="@drawable/privacy_lock"
                 android:layout_marginStart="50dp"
