@@ -51,9 +51,6 @@ public class WelcomeActivity extends AppCompatActivity {
         dotsLayout = findViewById(R.id.layoutDots);
         btnSkip = findViewById(R.id.btn_skip);
         btnNext = findViewById(R.id.btn_next);
-
-        // layouts of all welcome sliders
-        // add few more layouts if you want
         layouts = new int[]{
                 R.layout.welcome_side1,
                 R.layout.welcome_side2,
@@ -61,7 +58,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 R.layout.welcome_side5,
                 R.layout.welcome_side6,
                 R.layout.welcome_side7,
-                R.layout.welcome_side9,
                 R.layout.welcome_side10,
                 R.layout.welcome_all_set,
                 R.layout.welcome_side8,
