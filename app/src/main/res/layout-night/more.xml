@@ -82,7 +82,7 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="15dp"
-                        android:src="@drawable/vintage_24dp"/>
+                        android:src="@drawable/ic_filename_ico"/>
                     <TextView
                         android:id="@+id/savingName"
                         android:layout_width="wrap_content"
