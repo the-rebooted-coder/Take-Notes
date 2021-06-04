@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PrivacyPolicy">
-
     <androidx.cardview.widget.CardView
         android:layout_width="300dp"
         android:layout_height="400dp"
@@ -19,21 +18,21 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:src="@drawable/privacy_lock_white"/>
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center">
-        <TextView
-            android:id="@+id/privacy"
-            android:layout_width="match_parent"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+        <ScrollView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/offwhite"
-            android:fontFamily="@font/productsans"
-            android:text="@string/privacy_policy"
-            android:textAlignment="center"/>
-    </ScrollView>
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/privacy"
+                android:layout_width="match_parent"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/offwhite"
+                android:fontFamily="@font/productsans"
+                android:text="@string/privacy_policy"
+                android:textAlignment="center"/>
+        </ScrollView>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
