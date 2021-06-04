@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PrivacyPolicy">
-
     <androidx.cardview.widget.CardView
         android:layout_width="300dp"
         android:layout_height="400dp"
@@ -13,27 +12,33 @@
         android:elevation="30dp"
         app:cardBackgroundColor="@color/notReallyBlue"
         app:cardCornerRadius="12dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/lock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
             android:src="@drawable/privacy_lock_white"/>
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center">
         <TextView
             android:id="@+id/privacy"
             android:layout_width="match_parent"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
+            android:layout_below="@id/lock"
+            android:layout_marginTop="20dp"
             android:layout_height="wrap_content"
             android:textColor="@color/offwhite"
             android:fontFamily="@font/productsans"
             android:text="@string/privacy_policy"
             android:textAlignment="center"/>
+        </RelativeLayout>
     </ScrollView>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
