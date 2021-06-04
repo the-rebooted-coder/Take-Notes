@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
 import dev.shreyaspatil.MaterialDialog.MaterialDialog;
 import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
+import dev.shreyaspatil.MaterialDialog.interfaces.OnDismissListener;
 import nl.joery.animatedbottombar.AnimatedBottomBar;
 
 public class BottomHandler extends AppCompatActivity {
@@ -34,7 +36,18 @@ public class BottomHandler extends AppCompatActivity {
         editor.putInt("OPENING_TIME",opening_time);
         editor.apply();
         if(opening_time == 5){
-           //User Opened TakeNotes 5 Time, Review Can be Asked
+            //User Opened TakeNotes 5 Times, Easter Can be Show
+            BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(this)
+                    .setTitle("You like Games Right?")
+                    .setMessage("There's one hidden somewhere in TakeNotes ;)")
+                    .setAnimation("easteregg.json")
+                    .setCancelable(true)
+                    .build();
+            mDialog.show();
+            mDialog.setOnDismissListener(dialogInterface -> Toast.makeText(getApplicationContext(),"Hint: Somewhere inside the 'Cockpit' buttons",Toast.LENGTH_LONG).show());
+        }
+        else if(opening_time == 10){
+            //User Opened TakeNotes 10 Times, Review Can be Asked
             BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(this)
                     .setTitle("We Hope You Like TakeNotes")
                     .setMessage("Show your joy by reviewing or rating it on the Play Store.")
@@ -53,15 +66,12 @@ public class BottomHandler extends AppCompatActivity {
                             }
                         }
                     })
-                    .setNegativeButton("Nope", new MaterialDialog.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int which) {
-                            dialogInterface.dismiss();
-                            vibrateDevice();
-                            SharedPreferences.Editor editor = opening.edit();
-                            editor.putInt("OPENING_TIME",0);
-                            editor.apply();
-                        }
+                    .setNegativeButton("Nope", (dialogInterface, which) -> {
+                        dialogInterface.dismiss();
+                        vibrateDevice();
+                        SharedPreferences.Editor editor1 = opening.edit();
+                        editor1.putInt("OPENING_TIME",6);
+                        editor1.apply();
                     })
                     .setCancelable(false)
                     .build();
