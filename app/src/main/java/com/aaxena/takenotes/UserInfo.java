@@ -47,7 +47,7 @@ public class UserInfo extends AppCompatActivity {
         setContentView(R.layout.activity_user_info);
 
         hasSignedIn = getSharedPreferences("hasSignedIn", 0);
-        Boolean hasSigned = hasSignedIn.getBoolean("hasSignedIn", false);
+        boolean hasSigned = hasSignedIn.getBoolean("hasSignedIn", false);
 
         if (hasSigned) {
             ImageView accphoto = findViewById(R.id.accphoto);

@@ -3,7 +3,6 @@ package com.aaxena.takenotes;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -55,6 +54,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
+import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
+import dev.shreyaspatil.MaterialDialog.interfaces.OnDismissListener;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.aaxena.takenotes.MyName.SHARED_PREFS;
@@ -65,9 +66,7 @@ public class More extends Fragment {
     public static final String UI_MODE = "uiMode";
     AlertDialog alertDialog1;
     private TextView loggedInName,savedName;
-    private DBHandler dbHandler;
     GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -75,6 +74,8 @@ public class More extends Fragment {
         View v3 = inflater.inflate(R.layout.more, container, false);
         CardView dynamicHolder =  v3.findViewById(R.id.dynamicHolder);
         TextView dynamicText = v3.findViewById(R.id.dynamicText);
+        SharedPreferences seenPDFCheck = getActivity().getSharedPreferences("seenPDF", 0);
+        boolean seenPDF = seenPDFCheck.getBoolean("seenPDF", false);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         String saving_as = sharedPreferences.getString(TEXT, "");
         new Thread(() -> {
@@ -126,10 +127,9 @@ public class More extends Fragment {
         }
 
         CardView createPDF = v3.findViewById(R.id.createPDF);
-        createPDF.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                vibrateDevice();
+        createPDF.setOnClickListener(view -> {
+            vibrateDevice();
+            if (seenPDF){
                 try {
                     File folderPath = new File(Environment.getExternalStorageDirectory() + "/Documents/TakeNotes");
                     File[] imageList = folderPath.listFiles();
@@ -142,6 +142,31 @@ public class More extends Fragment {
                 } catch (Exception e) {
                     Toast.makeText(getContext(),"No Images In TakeNotes Directory.\nCreate Notes First!",Toast.LENGTH_LONG).show();
                 }
+            }
+            else {
+            BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(getActivity())
+                    .setTitle("Tip")
+                    .setMessage("Using this you can convert all the Images in your TakeNotes Folder into a Single PDF.")
+                    .setCancelable(true)
+                    .build();
+            mDialog.show();
+            mDialog.setOnDismissListener(dialogInterface -> {
+                SharedPreferences.Editor editPDF = seenPDFCheck.edit();
+                editPDF.putBoolean("seenPDF", true);
+                editPDF.apply();
+                try {
+                    File folderPath = new File(Environment.getExternalStorageDirectory() + "/Documents/TakeNotes");
+                    File[] imageList = folderPath.listFiles();
+                    ArrayList<File> imagesArrayList = new ArrayList<>();
+                    for (File absolutePath : imageList) {
+                        imagesArrayList.add(absolutePath);
+                    }
+                    new CreatePdfTask(getContext(), imagesArrayList).execute();
+                    Toast.makeText(getContext(),"PDF Created & Saved in Documents.",Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Toast.makeText(getContext(),"No Images In TakeNotes Directory.\nCreate Notes First!",Toast.LENGTH_LONG).show();
+                }
+            });
             }
         });
         CardView deleteHistory = v3.findViewById(R.id.idBtnDelete);

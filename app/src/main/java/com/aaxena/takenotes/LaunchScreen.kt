@@ -32,21 +32,6 @@ class LaunchScreen : AppCompatActivity() {
             Handler().postDelayed({
                 check()
             }, 690)
-/*
-
-            motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
-                override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-                   check()
-                }
-                override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) { }
-
-                override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) { }
-
-                override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) { }
-
-            })
-
- */
         }
     }
     private fun applyUI() {
