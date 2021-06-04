@@ -1,7 +1,6 @@
 package com.mrshamshir.a2dhelicoptergame;
 
 import android.graphics.Canvas;
-import android.provider.Settings;
 import android.view.SurfaceHolder;
 
 
