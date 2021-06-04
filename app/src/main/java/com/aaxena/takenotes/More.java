@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,8 +57,6 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
-import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
-import dev.shreyaspatil.MaterialDialog.interfaces.OnDismissListener;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.aaxena.takenotes.MyName.SHARED_PREFS;
@@ -114,7 +113,7 @@ public class More extends Fragment {
 
         savedName = v3.findViewById(R.id.savingName);
         if (saving_as.isEmpty()){
-            savedName.setText("File Name");
+            savedName.setText(getString(R.string.file_name));
         }
         else {
             savedName.setText(saving_as);
@@ -220,10 +219,14 @@ public class More extends Fragment {
         });
 
         CardView my_name = v3.findViewById(R.id.savedName);
+        ImageView transitionImage = v3.findViewById(R.id.savedNameHolder);
         my_name.setOnClickListener(v -> {
             vibrateDevice();
             Intent i=new Intent(getContext(),MyName.class);
-            startActivity(i);
+            Pair [] pairs = new Pair[1];
+            pairs[0] = new Pair<View, String>(transitionImage,"fileTransition");
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(),pairs);
+            startActivity(i,options.toBundle());
             getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
 

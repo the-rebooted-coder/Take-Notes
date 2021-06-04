@@ -75,7 +75,7 @@
     <string name="take_notes_journey">Take Notes Journey</string>
     <string name="saved_file_name">Saved file name</string>
     <string name="type_your_name_here">Name you enter here will reflect around all the files you save from Take Notes </string>
-    <string name="your_name">Your Name</string>
+    <string name="your_name">Default Name</string>
     <string name="more_info"><u>More info</u></string>
     <string name="save">save</string>
     <string name="more_info_text">TakeNotes saves your name in your device\'s internal storage, so every time you save assignments it adds up this name to the file to save your time in renaming.\n\nNO Data is SENT ANYWHERE!\n\nPretty Great Right?</string>
@@ -91,11 +91,13 @@
     <string name="theme">Theme</string>
     <string name="ocr">OCR</string>
     <string name="more">Cockpit</string>
-    <string name="file_name">File Name</string>
+    <string name="file_name">Default File Name</string>
     <string name="skip_for_now">Skip for now</string>
     <string name="switchLand">Switch Device to Portrait Mode to use TakeNotes.</string>
     <string name="my_notes">My Notes</string>
     <string name="notes_history">Notes History</string>
     <string name="history_advise">History will start showing up as soon as you create notes!</string>
     <string name="splash_screen_logo">Splash Screen Logo</string>
+    <string name="default_file_name">File Name</string>
+    <string name="tooltip_fileName">This name will be added to all the files saved from TakeNotes.</string>
 </resources>

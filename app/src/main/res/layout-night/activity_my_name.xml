@@ -2,62 +2,108 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:animateLayoutChanges="true"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/my_name_bg_night"
     tools:context=".MyName">
-
     <TextView
-        android:id="@+id/name_placeholder"
+        android:id="@+id/fileNameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:fontFamily="@font/productsans"
-        android:text="@string/type_your_name_here"
-        android:textAlignment="center"
-        android:textSize="19sp"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="300dp"
-        android:layout_below="@+id/more_info_on_name"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:elevation="30dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/my_name_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/productsans"
-            android:hint="@string/your_name" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/more_info_on_name"
-        android:layout_width="wrap_content"
-        android:layout_below="@+id/name_placeholder"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:fontFamily="@font/light"
-        android:text="@string/more_info"
-        android:textColor="@color/colorAccent"/>
-
-
-    <Button
-        android:id="@+id/save_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/inputLayout"
-        app:backgroundTint="@color/browser_actions_bg_grey"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
+        android:textSize="24sp"
         android:fontFamily="@font/productsansbold"
-        android:text="@string/save"
-        android:textColor="@color/black"/>
+        android:text="@string/file_name" />
+    <ImageView
+        android:id="@+id/accPhoto"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:transitionName="fileTransition"
+        android:layout_below="@+id/fileNameTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:elevation="30dp"
+        android:src="@drawable/ic_filename_ico"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/choose_image"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/nameHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:elevation="12dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/notReallyBlue"
+        android:layout_below="@+id/accPhoto"
+        app:cardCornerRadius="25dp"
+        android:layout_centerHorizontal="true"
+        android:innerRadius="0dp"
+        android:shape="rectangle"
+        android:thicknessRatio="1.9">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/accName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textAlignment="center"
+                    android:layout_marginTop="30dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/productsansbold"
+                    android:text="@string/default_file_name" />
+                <TextView
+                    android:id="@+id/accEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/accName"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textAlignment="center"
+                    android:layout_marginTop="30dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/offwhite"
+                    android:text="@string/tooltip_fileName" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="300dp"
+                    android:layout_below="@+id/accEmail"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
+                    android:elevation="30dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/my_name_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/productsans"
+                        android:hint="@string/your_name" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <Button
+                    android:id="@+id/save_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/inputLayout"
+                    android:layout_centerHorizontal="true"
+                    android:elevation="30dp"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="@font/productsansbold"
+                    android:text="@string/save"/>
+            </RelativeLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+    <View
+        android:layout_below="@+id/nameHolder"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="-40dp"
+        android:background="@color/notReallyBlue"/>
 </RelativeLayout>

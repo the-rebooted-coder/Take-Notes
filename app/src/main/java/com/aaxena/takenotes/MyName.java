@@ -1,13 +1,12 @@
  package com.aaxena.takenotes;
 
- import android.app.AlertDialog;
  import android.content.Context;
- import android.content.Intent;
  import android.content.SharedPreferences;
  import android.os.Build;
  import android.os.Bundle;
  import android.os.VibrationEffect;
  import android.os.Vibrator;
+ import android.view.WindowManager;
  import android.widget.Button;
  import android.widget.EditText;
  import android.widget.Toast;
@@ -25,17 +24,7 @@
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_name);
-
-        Button myName = findViewById(R.id.more_info_on_name);
-        myName.setOnClickListener(v -> {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.more_info_title)
-                    .setMessage(R.string.more_info_text)
-                    // A null listener allows the button to dismiss the dialog and take no further action.
-                    .setNegativeButton("Yes!", null)
-                    .show();
-        });
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         Button saveMyName = findViewById(R.id.save_name);
         saveMyName.setOnClickListener(v -> {
             vibrateDevice();
@@ -73,7 +62,7 @@
          name = findViewById(R.id.my_name_input);
          editor.putString(TEXT,name.getText().toString());
          editor.commit();
-         Toast.makeText(this,"Name saved, will be added to upcoming files",Toast.LENGTH_SHORT).show();
+         Toast.makeText(this,"Default File Name Saved.",Toast.LENGTH_SHORT).show();
          onBackPressed();
      }
 

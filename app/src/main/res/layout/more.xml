@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/personHolder"
                     android:textAlignment="center"
-                    android:text="@string/your_name"
+                    android:text="@string/sign_in"
                     android:textSize="18sp"
                     android:layout_marginBottom="10dp"
                     android:layout_centerHorizontal="true"
@@ -60,6 +60,7 @@
                     android:id="@+id/savedNameHolder"
                     android:layout_centerHorizontal="true"
                     android:layout_width="50dp"
+                    android:transitionName="fileTransition"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
                     android:src="@drawable/ic_filename_ico"/>
@@ -68,6 +69,7 @@
                     android:layout_width="wrap_content"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
+                    android:transitionName="fileNameTitleAnim"
                     android:layout_below="@+id/savedNameHolder"
                     android:text="@string/file_name"
                     android:textSize="18sp"
@@ -162,7 +164,6 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/dynamicHolder"
                 android:layout_width="310dp"
-                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_centerHorizontal="true"
