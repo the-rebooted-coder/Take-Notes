@@ -47,7 +47,7 @@ public class NotesRVAdapter extends RecyclerView.Adapter<NotesRVAdapter.ViewHold
             ClipData clip = ClipData.newPlainText("TakeNotesHistory", modal.getCourseName());
             clipboard.setPrimaryClip(clip);
             vibrateDevice();
-            Toast.makeText(context,"History Item Copied to Clipboard!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"Note Copied to Clipboard!",Toast.LENGTH_SHORT).show();
         });
     }
     private void vibrateDevice() {

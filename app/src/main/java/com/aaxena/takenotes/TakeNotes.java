@@ -133,7 +133,7 @@ public class TakeNotes extends Fragment {
                         chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
                         try {
                             startActivityForResult(chooserIntent, REQUEST_SELECT_FILE);
-                            Toast.makeText(getContext(),"Pick a suitable file",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(),"Pick a .ttf font file",Toast.LENGTH_LONG).show();
                         } catch (ActivityNotFoundException e) {
                             mUMA = null;
                             Toast.makeText(getContext(), "Cannot Open File Picker", Toast.LENGTH_LONG).show();

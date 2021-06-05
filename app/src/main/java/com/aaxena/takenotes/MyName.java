@@ -9,6 +9,7 @@
  import android.view.WindowManager;
  import android.widget.Button;
  import android.widget.EditText;
+ import android.widget.TextView;
  import android.widget.Toast;
 
  import androidx.appcompat.app.AppCompatActivity;
@@ -39,11 +40,15 @@
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         String saving_as = sharedPreferences.getString(TEXT, "");
-        if (saving_as.isEmpty()){
-            saveMyName.setText(R.string.save_name);
-        }
-        else {
-            saveMyName.setText(R.string.rename_file_name);
+        if (saving_as != null) {
+            if (saving_as.isEmpty()){
+                saveMyName.setText(R.string.save_name);
+            }
+            else {
+                TextView savedName = findViewById(R.id.accName);
+                savedName.setText(saving_as);
+                saveMyName.setText(R.string.rename_file_name);
+            }
         }
     }
      private void vibrateDevice() {

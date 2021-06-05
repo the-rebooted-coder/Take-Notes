@@ -1,5 +1,6 @@
 package com.aaxena.takenotes;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,10 @@ import com.airbnb.lottie.LottieAnimationView;
 
 import java.util.ArrayList;
 
+import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
+import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
+import dev.shreyaspatil.MaterialDialog.interfaces.OnDismissListener;
+
 public class History extends Fragment {
     private ArrayList<HistoryModal> courseModalArrayList;
     private DBHandler dbHandler;
@@ -23,6 +28,7 @@ public class History extends Fragment {
     private RecyclerView coursesRV;
     LottieAnimationView noHistoryAnim;
     TextView noHistoryText;
+    SharedPreferences hasCopied = null;
     @Nullable
     @Override
 
@@ -33,6 +39,8 @@ public class History extends Fragment {
         noHistoryText = v4.findViewById(R.id.historyAdvisory);
         courseModalArrayList = new ArrayList<>();
         dbHandler = new DBHandler(getContext());
+        hasCopied = getActivity().getSharedPreferences("hasCopied", 0);
+        boolean hasCopiedFirst = hasCopied.getBoolean("hasCopied", false);
 
         // getting our course array
         // list from db handler class.
@@ -48,10 +56,23 @@ public class History extends Fragment {
 
         // setting our adapter to recycler view.
         coursesRV.setAdapter(courseRVAdapter);
-        if (courseRVAdapter.getItemCount() <= 0) {
+        if (courseRVAdapter.getItemCount() == 0) {
             noHistoryAnim.setVisibility(View.VISIBLE);
             noHistoryAnim.playAnimation();
             noHistoryText.setVisibility(View.VISIBLE);
+        }
+        else if (courseRVAdapter.getItemCount()>=1 &&!hasCopiedFirst){
+            BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(getActivity())
+                    .setTitle("Tip")
+                    .setMessage("Tap any card to copy it's content.")
+                    .setCancelable(true)
+                    .build();
+            mDialog.show();
+            mDialog.setOnDismissListener(dialogInterface -> {
+                SharedPreferences.Editor editHistory = hasCopied.edit();
+                editHistory.putBoolean("hasCopied", true);
+                editHistory.apply();
+            });
         }
         return v4;
     }
