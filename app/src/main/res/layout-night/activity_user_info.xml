@@ -5,6 +5,7 @@
     android:animateLayoutChanges="true"
     android:layout_height="match_parent"
     android:focusable="true"
+    android:background="@color/notReallyBlue"
     android:focusableInTouchMode="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UserInfo">
@@ -12,7 +13,7 @@
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/scratch_cover_day"/>
+        android:src="@drawable/scratch_cover"   />
     <TextView
         android:id="@+id/profileHandler"
         android:layout_width="wrap_content"
@@ -29,37 +30,39 @@
         android:elevation="30dp"
         app:civ_border_width="4dp"
         android:src="@drawable/profile"
-        app:civ_border_color="@color/notReallyBlue"
+        app:civ_border_color="#505050"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"/>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/nameHolder"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/nameHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:elevation="12dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/black"
+        android:layout_below="@+id/accphoto"
+        app:cardCornerRadius="25dp"
+        android:layout_centerHorizontal="true"
+        android:innerRadius="0dp"
+        android:shape="rectangle"
+        android:thicknessRatio="1.9">
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:elevation="12dp"
-            android:layout_marginTop="30dp"
-            android:layout_below="@+id/accphoto"
-            app:cardCornerRadius="25dp"
-            android:layout_centerHorizontal="true"
-            android:innerRadius="0dp"
-            android:shape="rectangle"
-            android:thicknessRatio="1.9">
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            android:background="@color/black"
+            android:layout_height="match_parent">
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:background="@color/black"
                 android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/productsans"
+                    android:textColor="#FFFFFF"
                     android:text="@string/def_name_on_userInfo"
                     android:textAlignment="center"
-                    android:textColor="@color/black"
                     android:textSize="25sp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="50dp"/>
@@ -99,12 +102,12 @@
                     android:layout_marginTop="30dp"
                     android:layout_centerHorizontal="true"/>
             </RelativeLayout>
-            </ScrollView>
-        </androidx.cardview.widget.CardView>
-        <View
-            android:layout_below="@+id/nameHolder"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="-40dp"
-            android:background="#717171"/>
-    </RelativeLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+    <View
+        android:layout_below="@+id/nameHolder"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="-40dp"
+        android:background="@color/black"/>
+</RelativeLayout>

@@ -100,4 +100,5 @@
     <string name="splash_screen_logo">Splash Screen Logo</string>
     <string name="default_file_name">File Name</string>
     <string name="tooltip_fileName">This name will be added to all the files saved from TakeNotes.</string>
+    <string name="profile">Profile</string>
 </resources>

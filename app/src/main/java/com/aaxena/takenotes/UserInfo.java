@@ -112,27 +112,16 @@ public class UserInfo extends AppCompatActivity {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         }
-
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(Color.parseColor("#1389cd"));
+        window.setStatusBarColor(Color.parseColor("#19112E"));
 
-        Button change_name = findViewById(R.id.chng_name);
         TextView user_save_name = findViewById(R.id.saving_name);
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         String saving_as = sharedPreferences.getString(TEXT, "");
-        if (saving_as.isEmpty()) {
-            user_save_name.setText(R.string.tap_to_save_name);
-            change_name.setOnClickListener(view -> {
-                vibrateDevice();
-                Intent toName = new Intent(UserInfo.this, MyName.class);
-                startActivity(toName);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                finish();
-            });
-        } else {
+        if (!saving_as.isEmpty()) {
+            user_save_name.setVisibility(View.VISIBLE);
             user_save_name.setText(saving_as);
-            change_name.setVisibility(View.INVISIBLE);
         }
     }
 

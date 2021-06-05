@@ -38,10 +38,11 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta6'
     implementation 'androidx.browser:browser:1.3.0'
-    implementation 'com.google.android.play:core:1.9.0'
+    implementation 'com.google.android.play:core:1.10.0'
 
     //Circular Image View
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
+
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
@@ -82,4 +83,7 @@ dependencies {
 
     //PDF
     implementation 'com.itextpdf:itextg:5.5.10'
+
+    //KenBurns
+    implementation 'com.flaviofaria:kenburnsview:1.0.7'
 }
