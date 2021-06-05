@@ -23,17 +23,20 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="q">
-        <activity android:name=".LaunchScreen"
+        <activity android:name=".AboutDevs"></activity>
+        <activity
+            android:name=".LaunchScreen"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreen"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TakeNotes"/>
-        <activity android:name=".BottomHandler"/>
+        <activity android:name=".TakeNotes" />
+        <activity android:name=".BottomHandler" />
         <activity android:name=".MyName" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".PrivacyPolicy" />
@@ -68,8 +71,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SplashScreen"/>
+        <activity android:name=".SplashScreen" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
