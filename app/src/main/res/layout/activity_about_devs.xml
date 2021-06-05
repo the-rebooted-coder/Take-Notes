@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutDevs">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        android:elevation="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content">
+        <ImageView
+            android:id="@+id/devOne"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:background="@drawable/gradient_one"
+            android:src="@drawable/anshu"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="260dp"
+        android:fontFamily="@font/productsansbold"
+        android:textSize="22sp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/dev_one"/>
+    </androidx.cardview.widget.CardView>
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/code"
+        android:transitionName="devTransition"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        android:elevation="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content">
+        <ImageView
+            android:id="@+id/devTwo"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:background="@drawable/gradient_two"
+            android:src="@drawable/shrish"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="260dp"
+            android:fontFamily="@font/productsansbold"
+            android:textSize="22sp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/dev_two"/>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+</ScrollView>

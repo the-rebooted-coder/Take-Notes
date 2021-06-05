@@ -232,9 +232,13 @@ public class More extends Fragment {
 
         CardView devs = v3.findViewById(R.id.developers);
         devs.setOnClickListener(v -> {
+            ImageView developerHolder = v3.findViewById(R.id.developerHolder);
             vibrateDevice();
             Intent toDevs = new Intent(getApplicationContext(),AboutDevs.class);
-            startActivity(toDevs);
+            Pair [] pairs = new Pair[1];
+            pairs[0] = new Pair<View, String>(developerHolder,"devTransition");
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(),pairs);
+            startActivity(toDevs,options.toBundle());
             getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
 

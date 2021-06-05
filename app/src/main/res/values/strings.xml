@@ -101,4 +101,6 @@
     <string name="default_file_name">File Name</string>
     <string name="tooltip_fileName">This name will be added to all the files saved from TakeNotes.</string>
     <string name="profile">Profile</string>
+    <string name="dev_one">Spandan Saxena</string>
+    <string name="dev_two">Shrish Sharma</string>
 </resources>

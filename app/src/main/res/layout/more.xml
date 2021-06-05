@@ -96,6 +96,7 @@
                     android:id="@+id/developerHolder"
                     android:layout_centerInParent="true"
                     android:layout_width="50dp"
+                    android:transitionName="devTransition"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
                     android:src="@drawable/code"/>
