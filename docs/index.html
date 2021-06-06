@@ -3,14 +3,18 @@
   <head>
     <script>
       window.dataLayer = window.dataLayer || [];
+
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag('js', new Date());
+
       gtag('config', 'UA-125454191-4');
     </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <meta name="theme-color" content="#535353" />
     <meta
       name="description"
@@ -58,10 +62,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Homemade+Apple|Roboto|Caveat|Liu+Jian+Mao+Cao&display=swap"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
     <link rel="stylesheet" href="./css/index.css" />
-    <link rel="stylesheet" href="./css/glassui.css">
     <link rel="stylesheet" href="./css/features.css" />
   </head>
 
@@ -74,29 +75,32 @@
         onclick="toggleTheme(this)"
         class="dark-mode-toggle"
       >
-      <span class="sun">
-        <img
-          alt="sun icon that represents light mode"
-          width="75px"
-          src="images/Light.png"
-      /></span>
-      <span class="moon"
-        ><img
-          alt="moon icon to represent dark mode "
-          width="75px"
-          src="images/Dark.png"
-      /></span>
+        <span class="sun">
+          <img
+            alt="sun icon that represents light mode"
+            width="75px"
+            src="images/Light.png"
+        /></span>
+        <span class="moon"
+          ><img
+            alt="moon icon to represent dark mode "
+            width="75px"
+            src="images/Dark.png"
+        /></span>
       </button>
-      <h1 class="land-head">Take Notes</h1>
+      <h1>Take<br>Notes</h1>
+     <section>
+<p><strong>An Open Letter 💌:</strong><br /><br /><strong><em>Immense pleasure, telling you all that Take Notes has hit the 1K+ Installs Mark on the Google Play Store! </em>🥳</strong><br /><br />We thank you all from the bottom of our hearts for this grand reception :)<br /><strong>Enjoy Take Notes! 🥂</strong></p>
+</section>
       <section class="generate-image-section">
         <form id="generate-image-form">
           <!-- Generate Image Section -->
           <div class="display-flex output-grid responsive-flex">
             <div class="flex-1 page-container-super">
-              <!-- <div>
-                <h4>Your Text Goes Here</h4>
+              <div>
+                <h2 style="margin-top: 0px;">Your Text Goes Here</h2>
                 <label class="block" for="note">Type or Paste text here and see changes in real-time!</label>
-              </div> -->
+              </div>
 
               <div class="flex-1 page-container">
                 <div class="page-a margined lines">
@@ -104,18 +108,19 @@
                   <div class="display-flex left-margin-and-content">
                     <div contenteditable="true" class="left-margin"></div>
                     <div class="paper-content" id="note" contenteditable="true">
-                       Welcome to Take Notes Cheetah.
+                      No Pressures, No Diamonds.
                     </div>
                   </div>
                   <div class="overlay"></div>
                 </div>
                 <br />
               </div>
+
               <div>
                 <button
                   id="draw-diagram-button"
                   type="button"
-                  style="font-size: 0.9rem; margin-top: 5px; display: none;"
+                  style="font-size: 0.9rem; margin-top: 5px;"
                   class="draw-button"
                 >
                   Add Drawing <small>(Under β)</small>
@@ -126,16 +131,48 @@
             <div class="customization-col">
               <!-- Handwriting Font -->
               <div style="padding: 5px 0px 5px 0px;">
-                <b>Page Settings</b>
+                <b>Details</b> <small>(Optional)</small>
+                <p style="font-size: 0.8rem;">
+                  <em
+                    >Note: 'Effects' applied will be only visible when you tap 'Create Assignment'</em
+                  >
+                </p>
               </div>
-              <fieldset class="glass-ui">
+              <fieldset>
                 <legend>Handwriting</legend>
 
                 <div class="category-grid">
                   <div>
-                    <label class="block" for="handwriting-font">
-                      Handwriting Font</label>
+                    <label class="block" for="handwriting-font"
+                      >Handwriting Font</label
+                    >
                     <select id="handwriting-font">
+                      <option value="Duh">
+                        Duh! ¯\_(ツ)_/¯
+                      </option>
+                      <!--New Fonts Here-->
+                      <option value="Bleh">
+                        Bleh
+                      </option>
+                      <option value="Breathtaking">
+                        Breathtaking
+                      </option>
+                      <option value="Expelliarmus">
+                        Expelliarmus
+                      </option>
+                      <option value="One Nice Handwriting">
+                        One Nice Handwriting
+                      </option>
+                      <option value="Populaire">
+                        Populaire
+                      </option>
+                      <option value="Riddikulus">
+                        Riddikulus
+                      </option>
+                      <option value="Mine">
+                        This is For You!
+                      </option>
+                      <!--New Fonts Here-->
                       <option
                         selected
                         style="font-family: 'Homemade Apple';"
@@ -167,70 +204,33 @@
                       <option value="Paneer">
                         Paneer
                       </option>
-                      <option value="Duh">
-                        Duh! ¯\_(ツ)_/¯
-                      </option>
                       <option value="The Assignment-Inator">
                         The Assignment-Inator
                       </option>
                       <option value="Backbencher Best Pal">
                         Backbencher's Best Pal
                       </option>
-                      <!--New Fonts Here-->
-                      <option value="Bleh">
-                        Bleh
-                      </option>
-                      <option value="Breathtaking">
-                        Breathtaking
-                      </option>
-                      <option value="Expelliarmus">
-                        Expelliarmus
-                      </option>
-                      <option value="One Nice Handwriting">
-                        One Nice Handwriting
-                      </option>
-                      <option value="Populaire">
-                        Populaire
-                      </option>
-                      <option value="Riddikulus">
-                        Riddikulus
-                      </option>
-                      <option value="Mine">
-                        This is For You!
-                      </option>
-                      <option value="Blue Meth">
-                        Blue Meth
-                      </option>
-                      <option value="Trinity Knot">
-                        Trinity Knot
-                      </option>
-                      <option value="Frostbite">
-                        FrostByte
-                      </option>
-                      <!--New Fonts Here-->
                     </select>
                   </div>
                   <div class="upload-handwriting-container">
                     <label class="block" for="font-file"
-                      >Upload your handwriting
+                      >Upload your handwriting<small>(Under β)</small>&nbsp;
+                      <a
+                        style="font-size: 1.1rem;"
+                        title="How to add your own handwriting"
+                        href="#how-to-add-handwriting"
+                      >
+                        &#9432;
+                      </a>
                     </label>
                     <input accept=".ttf, .otf" type="file" id="font-file" />
                   </div>
                 </div>
               </fieldset>
 
-              <!-- Letter spacing, Paper Margin, Paper Lines, Paper Curvature -->
-              <!-- <fieldset class="glass-ui">
-                <legend>Margin & Line Options</legend>
-
-                <div class="category-grid">
-                  
-                </div>
-              </fieldset> -->
-
               <!-- Pen ink color, Font size, Vertical position text, Word Spacing -->
-              <fieldset class="glass-ui">
-                <legend>Page & Margin Settings</legend>
+              <fieldset>
+                <legend>Page & Text Options</legend>
 
                 <div class="category-grid">
                   <div class="postfix-input" data-postfix="pt">
@@ -246,12 +246,12 @@
                   <div>
                     <label class="block" for="ink-color">Ink Color</label>
                     <select id="ink-color">
-                      <option default value="#000f55">Really Blue</option>
-                      <option value="black">Pitch Black</option>
-                      <option value="#ba3807">Just Red</option>
+                      <option default value="#000f55">Blue</option>
+                      <option value="black">Black</option>
+                      <option value="#ba3807">Red</option>
                     </select>
                   </div>
-                  <div style="display: none;">
+                  <div>
                     <label class="block" for="page-size">Page Size</label>
                     <select id="page-size">
                       <option default value="a4">A4 &nbsp;</option>
@@ -268,13 +268,40 @@
                   <div>
                     <label class="block" for="resolution">Resolution</label>
                     <select id="resolution">
-                      <option value="0.8">HD</option>
-                      <option value="1">HD+</option>
-                      <option selected value="2">FHD</option>
-                      <option value="3">Quad HD</option>
-                      <option value="4">4K</option>
+                      <option value="0.8">Very Low</option>
+                      <option value="1">Low</option>
+                      <option selected value="2">Normal</option>
+                      <option value="3">High</option>
+                      <option value="4">Very High</option>
                     </select>
                   </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Spacing Options</legend>
+
+                <div class="category-grid">
+                  <div class="postfix-input" data-postfix="px">
+                    <label for="top-padding">Vertical Position</label>
+                    <input id="top-padding" min="0" value="5" type="number" />
+                  </div>
+                  <div class="postfix-input" data-postfix="px">
+                    <label for="word-spacing">Word Spacing</label>
+                    <input id="word-spacing" min="0" value="0" type="number" />
+                  </div>
+                  <div class="postfix-input" data-postfix="pt">
+                    <label for="letter-spacing">Letter Spacing</label>
+                    <input id="letter-spacing" value="0" type="number" />
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Letter spacing, Paper Margin, Paper Lines, Paper Curvature -->
+              <fieldset>
+                <legend>Margin & Line Options</legend>
+
+                <div class="category-grid">
                   <div>
                     <label for="paper-margin-toggle"
                       >Paper Margin:
@@ -312,7 +339,7 @@
                       <div></div>
                     </label>
                   </div>
-                  <div class="experimental" style="display: none;">
+                  <div class="experimental">
                     <label for="paper-curve-toggle"
                       >Paper Curve:
                       <span aria-label="paper curve status" class="status"
@@ -322,45 +349,34 @@
                     <label
                       title="Paper Curve (Yet to be implemented)"
                       class="switch-toggle outer"
-                      style="cursor: not-allowed !important;">
+                      style="cursor: not-allowed !important;"
+                    >
                       <input
                         aria-checked="false"
                         aria-label="Paper Curve Button"
                         id="paper-curve-toggle"
-                        type="checkbox"/>
+                        type="checkbox"
+                      />
                       <div></div>
                     </label>
                   </div>
                 </div>
               </fieldset>
 
-              <fieldset class="glass-ui" style="display: none;">
-                <legend>Spacing Options</legend>
-
-                <div class="category-grid">
-                  <div class="postfix-input" data-postfix="px">
-                    <label for="top-padding">Vertical Position</label>
-                    <input id="top-padding" min="0" value="5" type="number" />
-                  </div>
-                  <div class="postfix-input" data-postfix="px">
-                    <label for="word-spacing">Word Spacing</label>
-                    <input id="word-spacing" min="0" value="0" type="number" />
-                  </div>
-                  <div class="postfix-input" data-postfix="pt">
-                    <label for="letter-spacing">Letter Spacing</label>
-                    <input id="letter-spacing" value="0" type="number" />
-                  </div>
-                </div>
-              </fieldset>
-
               <!-- GENERATE IMAGE BUTTONS -->
+              <hr
+                style="
+                  border: 0.3px solid var(--elevation-background);
+                  width: 80%;
+                "
+              />
               <div style="text-align: center; padding: 30px 0px;">
                 <button
                   type="submit"
                   data-testid="generate-image-button"
                   class="button generate-image-button"
-                  onclick="showHistory()">
-                Create Notes
+                >
+                Create Assignment
                 </button>
               </div>
             </div>
@@ -370,28 +386,66 @@
 
       <!-- OUTPUT -->
       <section>
-        <h4 id="output-header" style="text-align: center;">Results</h4>
-        <div id="output" class="output glass-ui" style="color: #fff; text-align: center; overflow-wrap: break-word;">
-          Click the "Create Notes" Button.
+        <h2 id="output-header">Output</h2>
+        <div id="output" class="output" style="text-align: center;">
+          Click "Create Assignment" Button to generate new image.
         </div>
         <div style="text-align: center; padding: 30px;">
-          <button class="imp-button" id="download-as-pdf-button" style="display: none;">
+          <button class="imp-button" id="download-as-pdf-button">
             <a href='https://the-rebooted-coder.github.io/Take-Notes/loader.png'>Export Folder as PDF</a>
           </button>
         </div>
       </section>
+
+      <!-- <section id="how-to-add-handwriting">
+        <h2>🤘 How to add your own handwriting?</h2>
+        <div>
+          <ul>
+            <li>
+              In order to add your handwriting, you will have to create a .ttf (True Type Font) file of the same
+
+            </li>
+            <li>
+              There are websites like
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.calligraphr.com/en/"
+                >Calligraphr</a
+              >
+              that let you do that.
+            </li>
+            <li>
+              Once you get .ttf file of your handwriting, upload it from 'Upload
+              your handwriting font' button in customizations sections
+            </li>
+          </ul>
+        </div>
+      </section> -->
     </main>
-    <div id="history" style="display: none;">
-      History
-    </div>
-    <script>
-        function showHistory(){
-          let text = document.getElementById('note').textContent;
-          let history = document.getElementById('history');
-          history.innerHTML = text;
-          Android.showToast(text);
-        }
-    </script>
+    <footer style="padding: 40px 0px 10px 0px;">
+      <button class="imp-button">
+        <a href="ocr_handler.png">OCR</a>
+      </button><br><br>
+      <!-- <strong>Want to meet the developers?</strong> <br><br>
+      <button class="imp-button">
+        <a href="https://the-rebooted-coder.github.io/Take-Notes/devs.html">Meet The Devs! &#x1F493;</a> 
+      </button> <br><br> -->
+      <!-- <p>
+        <strong>Request a Feature</strong> &#x1F609; <br><br>
+        <button class="imp-button">
+          <a href="https://key-a-byte.typeform.com/to/gvGml3FW">Drop Your Suggestions! &#x1F4A1;</a>
+        </button><br><br>
+      </p> -->
+       <p>
+        <!-- <strong>Accounts and Other</strong> &#x1F4F1; <br><br> -->
+        <button class="imp-button">
+          <a href="https://the-rebooted-coder.github.io/Take-Notes/ample_time.png">Settings & More &#x2699;</a>
+        </button>
+      <!-- </p><br>
+      Thank you for using <b>Take Notes App</b><br>
+      <b><i>Remember:</i></b> There's no alternative to handwritten notes! -->
+    </footer>
 
     <!-- Fixed Elements -->
     <section class="draw-container popup-container">
@@ -463,6 +517,7 @@
           }
         }
       }
+
       const localPreference = window.localStorage.getItem('prefers-theme');
       if (localPreference) {
         if (localPreference === 'light') document.body.classList.remove('dark');
@@ -471,7 +526,5 @@
         document.body.classList.add('dark');
       }
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   </body>
 </html>

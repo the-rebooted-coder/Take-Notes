@@ -2,10 +2,8 @@
 .dark-mode-toggle {
   cursor: pointer;
   position: absolute;
-  display: none;
-  box-shadow: none;
-  top: 10px;
-  right: 10px;
+  top: 100px;
+  right: 150px;
   border: none;
   background: transparent;
 }
@@ -40,7 +38,7 @@ body.dark .dark-mode-toggle .sun {
   width: 50px;
   height: 25px;
   border-radius: 25px;
-  background-color: var(--toggle-bg);
+  background-color: var(--elevation-background);
 }
 
 .switch-toggle input {
