@@ -7,8 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,7 +28,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -56,11 +53,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import dev.shreyaspatil.MaterialDialog.AbstractDialog;
 import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
-import dev.shreyaspatil.MaterialDialog.MaterialDialog;
-import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
-import dev.shreyaspatil.MaterialDialog.interfaces.OnDismissListener;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.aaxena.takenotes.MyName.SHARED_PREFS;

@@ -56,6 +56,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
 
+import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
+import dev.shreyaspatil.MaterialDialog.MaterialDialog;
+import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
+
 import static android.app.Activity.RESULT_OK;
 import static android.content.Context.CONNECTIVITY_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
@@ -112,8 +116,7 @@ public class TakeNotes extends Fragment {
                 webview.getSettings().setUseWideViewPort(true);
                 webview.setInitialScale((int) 1.0);
                 webview.addJavascriptInterface(new WebAppInterface(getActivity()),"Android");
-                //TODO Change it
-                webview.loadUrl("https://shrish-sharma-codes.github.io/tn-native-v4");
+                webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/");
                 webview.setLayerType(View.LAYER_TYPE_HARDWARE, null);
                 webview.setWebChromeClient(new WebChromeClient() {
                     //File Chooser
@@ -159,6 +162,88 @@ public class TakeNotes extends Fragment {
                                     SharedPreferences.Editor editor = usedTakeNotes.edit();
                                     editor.putInt("TimeUsedTakeNotes",takeNotesOpening);
                                     editor.apply();
+                                    if(takeNotesOpening == 10){
+                                        BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(getActivity())
+                                                .setTitle("Wohooooooo!")
+                                                .setMessage("You just used TakeNotes for 10 times, way to go!")
+                                                .setAnimation("confetti.json")
+                                                .setPositiveButton("Share and Feel Proud",R.drawable.share_now, new MaterialDialog.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                                        vibrateDeviceParty();
+                                                        Intent intent = new Intent(Intent.ACTION_SEND);
+                                                        String shareBody = "Just Scored a 10 in TakeNotes. How Many Have You Created?\nCreate Awesome Handwritten Notes now!\n\nDownload here: https://play.google.com/store/apps/details?id=com.aaxena.takenotes";
+                                                        intent.setType("text/plain");
+                                                        intent.putExtra(Intent.EXTRA_SUBJECT,"I Created 10 Notes using TakeNotes");
+                                                        intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                                                        startActivity(Intent.createChooser(intent, "Choose app to share achievement"));
+                                                    }
+                                                })
+                                                .setCancelable(true)
+                                                .build();
+                                        mDialog.show();
+                                    }
+                                    else if(takeNotesOpening == 20){
+                                        BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(getActivity())
+                                                .setTitle("Nice Going!")
+                                                .setMessage("You just used TakeNotes for 20 times, great going!")
+                                                .setAnimation("confetti.json")
+                                                .setPositiveButton("Share and Feel Proud",R.drawable.share_now, new MaterialDialog.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                                        vibrateDeviceParty();
+                                                        Intent intent = new Intent(Intent.ACTION_SEND);
+                                                        String shareBody = "Just Scored a 20 in TakeNotes. How Many Have You Created?\nCreate Awesome Handwritten Notes now!\n\nDownload here: https://play.google.com/store/apps/details?id=com.aaxena.takenotes";
+                                                        intent.setType("text/plain");
+                                                        intent.putExtra(Intent.EXTRA_SUBJECT,"I Created 20 Notes using TakeNotes");
+                                                        intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                                                        startActivity(Intent.createChooser(intent, "Choose app to share achievement"));
+                                                    }
+                                                })
+                                                .setCancelable(true)
+                                                .build();
+                                        mDialog.show();
+                                    }
+                                    else if(takeNotesOpening == 50){
+                                        BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(getActivity())
+                                                .setTitle("You're Unstoppable")
+                                                .setMessage("You just used TakeNotes for the 50th, great creation!")
+                                                .setAnimation("confetti.json")
+                                                .setPositiveButton("Share and Feel Proud",R.drawable.share_now, new MaterialDialog.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                                        vibrateDeviceParty();
+                                                        Intent intent = new Intent(Intent.ACTION_SEND);
+                                                        String shareBody = "Just Scored a 50 in TakeNotes. How Many Have You Created?\nCreate Awesome Handwritten Notes now!\n\nDownload here: https://play.google.com/store/apps/details?id=com.aaxena.takenotes";
+                                                        intent.setType("text/plain");
+                                                        intent.putExtra(Intent.EXTRA_SUBJECT,"I Created 50 Notes using TakeNotes");
+                                                        intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                                                        startActivity(Intent.createChooser(intent, "Choose app to share achievement")); }
+                                                })
+                                                .setCancelable(true)
+                                                .build();
+                                        mDialog.show();
+                                    }
+                                    else if(takeNotesOpening == 100){
+                                        BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(getActivity())
+                                                .setTitle("Now That's a Milestone")
+                                                .setMessage("100th Note Huh, you just crossed one ultimate milestone.")
+                                                .setAnimation("confetti.json")
+                                                .setPositiveButton("Share and Feel Proud",R.drawable.share_now, new MaterialDialog.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                                        vibrateDeviceParty();
+                                                        Intent intent = new Intent(Intent.ACTION_SEND);
+                                                        String shareBody = "Just Scored a 100 in TakeNotes. How Many Have You Created?\nCreate Awesome Handwritten Notes now!\n\nDownload here: https://play.google.com/store/apps/details?id=com.aaxena.takenotes";
+                                                        intent.setType("text/plain");
+                                                        intent.putExtra(Intent.EXTRA_SUBJECT,"I Created 100 Notes using TakeNotes");
+                                                        intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                                                        startActivity(Intent.createChooser(intent, "Choose app to share achievement")); }
+                                                })
+                                                .setCancelable(true)
+                                                .build();
+                                        mDialog.show();
+                                    }
                                     String path = createAndSaveFileFromBase64Url(url);
                                 }
                                 else {
@@ -188,6 +273,15 @@ public class TakeNotes extends Fragment {
 
         return v;
     }
+    private void vibrateDeviceParty() {
+        Vibrator v3 = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+        long[] pattern = {0,25,30,35,40,45,100};
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v3.vibrate(VibrationEffect.createWaveform(pattern,-1));
+        } else {
+            v3.vibrate(pattern,-1);
+        }
+    }
     private InstallStateUpdatedListener installStateUpdatedListener = new
             InstallStateUpdatedListener() {
                 @Override
@@ -196,9 +290,6 @@ public class TakeNotes extends Fragment {
                         if (mAppUpdateManager != null){
                             mAppUpdateManager.unregisterListener(installStateUpdatedListener);
                         }
-
-                    } else {
-                        //App Is Fully Updated Nothing To Do, Continuing Normal WorkFlow but do not erase the else func
                     }
                 }
             };

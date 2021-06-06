@@ -19,7 +19,6 @@ import org.jetbrains.annotations.NotNull;
 import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
 import dev.shreyaspatil.MaterialDialog.MaterialDialog;
 import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
-import dev.shreyaspatil.MaterialDialog.interfaces.OnDismissListener;
 import nl.joery.animatedbottombar.AnimatedBottomBar;
 
 public class BottomHandler extends AppCompatActivity {
@@ -29,6 +28,7 @@ public class BottomHandler extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_handler);
+
         SharedPreferences opening = getSharedPreferences("OPENING_TIME", 0);
         int opening_time = opening.getInt("OPENING_TIME", 0);
         opening_time++;
