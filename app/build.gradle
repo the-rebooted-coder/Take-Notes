@@ -87,4 +87,10 @@ dependencies {
     //KenBurns
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
 
+    //Fading Text View
+    implementation 'com.tomer:fadingtextview:2.6'
+
+    //Liquid Swipe
+    implementation 'com.github.Chrisvin:LiquidSwipe:1.3'
+
 }

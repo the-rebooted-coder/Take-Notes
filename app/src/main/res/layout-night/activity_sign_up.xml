@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/notReallyBlue"
     android:layout_height="match_parent"
     tools:context=".SignUp">
     <ScrollView
@@ -17,6 +18,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/productsansbold"
                 app:texts="@array/greetings"
+                android:textColor="#FFFFFF"
                 app:timeout="2600"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
@@ -38,6 +40,7 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/awesomenotes"
                 android:textAlignment="center"
+                android:textColor="#FFFFFF"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/productsansbold"
                 android:textSize="24sp"
@@ -101,11 +104,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linePlace"
-                android:textColor="@color/browser_actions_title_color"
+                android:textColor="#AFAFAF"
                 android:text="@string/skip_for_now"
                 android:textSize="16sp"
-                android:layout_marginBottom="10dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"/>
         </RelativeLayout>
     </ScrollView>

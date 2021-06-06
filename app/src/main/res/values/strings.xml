@@ -29,10 +29,22 @@
     <string name="facebook_app_id">839436513489183</string>
     <string name="fb_login_protocol_scheme">fb839436513489183</string>
     <string name="yay">PDF Saved in Documents</string>
-    <string name="sign_in_with_facebook">Sign In</string>
-    <string name="sign_in">Sign In</string>
+    <string name="sign_in_with_facebook">Sign In with Facebook</string>
+    <string name="sign_in">Sign In with Google</string>
     <string name="share_subject">Have a look at Take Notes</string>
     <string name="share_using">Choose app to share Take Notes</string>
+
+    <string-array name="greetings">
+        <item>Hello</item>
+        <item>नमस्ते</item>
+        <item>Hola</item>
+        <item>Olá</item>
+        <item>こんにちは</item>
+        <item>你好</item>
+        <item>Salve</item>
+        <item>హలో</item>
+        <item>안녕하세요</item>
+    </string-array>
 
     <!--Intro-->
     <string name="next">NEXT</string>
@@ -103,4 +115,5 @@
     <string name="profile">Profile</string>
     <string name="dev_one">Spandan Saxena</string>
     <string name="dev_two">Shrish Sharma</string>
+    <string name="awesomenotes">Create Awesome Notes.\nJust a Click Away.</string>
 </resources>
