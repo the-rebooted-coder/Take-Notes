@@ -42,9 +42,6 @@
   background-color: transparent;
   width: 300px;
   height: 300px;
-  margin-bottom: 15px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.267);
-  border-radius: 10px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
   box-shadow: var(--box-shadow);
 }
@@ -85,23 +82,6 @@
   color: #000000;
   transform: rotateY(180deg);
 }
-
-.dev-head {
-  font-size: 30px;
-  margin: 0;
-  text-align: center;
-}
-
-.avatar{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.img-avatar {
-  border-radius: 15px;
-}
-
 </style>
 </head>
 <body>
@@ -111,7 +91,8 @@
         title="Toggle Dark Mode"
         aria-pressed="false"
         onclick="toggleTheme(this)"
-        class="dark-mode-toggle">
+        class="dark-mode-toggle"
+      >
       <span class="sun">
         <img
           alt="sun icon that represents light mode"
@@ -125,40 +106,51 @@
           src="images/Dark.png"
       /></span>
       </button>
-      <h1 class="dev-head">Meet The Devs!</h1>
+      <h1>Meet The <br> Devs!</h1>
       <section style="font-size: 1rem; padding: 20px 0px;">
-        <p style="text-align: center;">Development is an Art!<br>We tried to be as much abstract as possible.
-            Enjoy Take Notes! &#10084; 🎊</p>
+        <p>
+        <strong>Development is an Art! We tried to be as much abstract as possible.
+            Enjoy Take Notes! &#10084; 🎊</strong>
+        <br /><br /><br />
+        </p>
       </section>
-      <section class="avatar" style="font-size: 1rem; padding: 20px 0px;">
+      <section style="font-size: 1rem; padding: 20px 0px;">
+        <center>
         <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
-                <img src="images/Spandan Saxena.jpg" alt="Avatar" class="img-avatar" style="width:300px;height:300px;">
+                <img src="images/Spandan Saxena.jpg" alt="Avatar" style="width:300px;height:300px;">
               </div>
-              <div class="flip-card-back img-avatar">
+              <div class="flip-card-back">
                 <h1>Spandan Saxena</h1>
+                <br>
                 <a href="https://github.com/the-rebooted-coder"><i class="fa fa-github fa-2x"></i></a> &nbsp;
                 <a href="https://www.linkedin.com/in/spandn/"><i class="fa fa-linkedin fa-2x"></i></a> &nbsp;
                 <a href="https://spandansaxena.codes"><i class="fa fa-globe fa-2x"></i></a>
               </div>
             </div>
           </div>
+          <br>
           <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
-                <img src="images/Shady.jpeg" alt="Avatar" class="img-avatar" style="width:300px;height:300px;">
+                <img src="images/Shady.jpeg" alt="Avatar" style="width:300px;height:300px;">
               </div>
-              <div class="flip-card-back img-avatar">
+              <div class="flip-card-back">
                 <h1>Shrish Sharma</h1>
+                <br>
                 <a href="https://github.com/shrish-sharma-git"><i class="fa fa-github fa-2x"></i></a> &nbsp;
                 <a href="https://www.linkedin.com/in/shrish-sharma"><i class="fa fa-linkedin fa-2x"></i></a> &nbsp;
-                <a href="https://shrish-sharma-git.github.io/My-Portfolio/"><i class="fa fa-globe fa-2x"></i></a>
+                <a href="https://shrishsharma.me/"><i class="fa fa-globe fa-2x"></i></a>
               </div>
             </div>
           </div>
-          <p style="text-align: center;">Thank you for using Take Notes App
-            Remember: There's no alternative to handwritten notes!</p>
+        </center> 
+        <br><br>
+        <center>
+            <b>Thank you for using Take Notes App
+              Remember: There's no alternative to handwritten notes!</b>
+        </center> 
       </section>
     </main>
 
