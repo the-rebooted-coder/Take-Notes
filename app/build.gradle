@@ -90,7 +90,4 @@ dependencies {
     //Fading Text View
     implementation 'com.tomer:fadingtextview:2.6'
 
-    //Liquid Swipe
-    implementation 'com.github.Chrisvin:LiquidSwipe:1.3'
-
 }
