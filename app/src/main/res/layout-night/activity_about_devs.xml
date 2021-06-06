@@ -9,6 +9,7 @@
         android:orientation="vertical">
         <androidx.cardview.widget.CardView
             android:layout_height="wrap_content"
+            android:id="@+id/devOneHolder"
             app:cardCornerRadius="12dp"
             android:elevation="30dp"
             android:layout_gravity="center_horizontal"
@@ -18,6 +19,7 @@
                 android:id="@+id/devOne"
                 android:layout_width="250dp"
                 android:layout_height="250dp"
+                android:transitionName="devTitle"
                 android:background="@drawable/gradient_four"
                 android:src="@drawable/anshu"/>
             <TextView
@@ -38,6 +40,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"/>
         <androidx.cardview.widget.CardView
+            android:id="@+id/devTwoHolder"
             android:layout_height="wrap_content"
             app:cardCornerRadius="12dp"
             android:elevation="30dp"
@@ -49,6 +52,7 @@
                 android:id="@+id/devTwo"
                 android:layout_width="250dp"
                 android:layout_height="250dp"
+                android:transitionName="devTitleTwo"
                 android:background="@drawable/gradient_three"
                 android:src="@drawable/shrish"/>
             <TextView

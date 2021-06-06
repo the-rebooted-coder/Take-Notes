@@ -7,7 +7,9 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/devOneHolder"
         android:layout_height="wrap_content"
         app:cardCornerRadius="12dp"
         android:elevation="30dp"
@@ -17,6 +19,7 @@
         <ImageView
             android:id="@+id/devOne"
             android:layout_width="250dp"
+            android:transitionName="devTitle"
             android:layout_height="250dp"
             android:background="@drawable/gradient_one"
             android:src="@drawable/anshu"/>
@@ -38,6 +41,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"/>
     <androidx.cardview.widget.CardView
+        android:id="@+id/devTwoHolder"
         android:layout_height="wrap_content"
         app:cardCornerRadius="12dp"
         android:elevation="30dp"
@@ -49,6 +53,7 @@
             android:id="@+id/devTwo"
             android:layout_width="250dp"
             android:layout_height="250dp"
+            android:transitionName="devTitleTwo"
             android:background="@drawable/gradient_two"
             android:src="@drawable/shrish"/>
         <TextView

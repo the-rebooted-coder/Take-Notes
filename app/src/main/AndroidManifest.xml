@@ -23,7 +23,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="q">
-        <activity android:name=".AboutDevs"></activity>
+        <activity android:name=".AboutDevs"/>
         <activity
             android:name=".LaunchScreen"
             android:screenOrientation="portrait"
@@ -36,6 +36,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".TakeNotes" />
+        <activity android:name=".devOnePopup"/>
+        <activity android:name=".devTwoPopup"/>
         <activity android:name=".BottomHandler" />
         <activity android:name=".MyName" />
         <activity android:name=".WelcomeActivity" />
