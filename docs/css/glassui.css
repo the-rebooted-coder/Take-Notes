@@ -1,0 +1,80 @@
+body {
+    --box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+body.dark {
+    --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.267);
+}
+.glass-ui {
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: var(--box-shadow);
+    backdrop-filter: blur( 4.0px );
+    -webkit-backdrop-filter: blur( 4.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+h1{
+    display: flex;
+    margin-top: -50px;
+    margin-bottom: 50px;
+    justify-content: center;
+}
+
+/* More Options */
+.more-options {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.more-options > button {
+    margin-bottom: 30px;
+    box-shadow: var(--box-shadow);
+}
+
+.op-btn > a{
+    color:#fff;
+    text-decoration: none;
+}
+
+.op-btn {
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: var(--box-shadow);
+    backdrop-filter: blur( 4.0px );
+    -webkit-backdrop-filter: blur( 4.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    width: 500px;
+    color: #fff;
+}
+
+.modal-glass-ui {
+    border: none;
+    background: rgba( 255, 255, 255, 0.25 );
+    /* box-shadow: var(--box-shadow); */
+    backdrop-filter: blur( 4.0px );
+    -webkit-backdrop-filter: blur( 4.0px );
+    /* border-radius: 10px; */
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.elements-center {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive Queries */
+@media (max-width: 767px) {
+   .land-head {
+       font-size: 20px;
+       margin-top: -70px;
+       margin-left: -180px;
+       display: none;
+   } 
+
+   .op-btn {
+       width: 320px;
+   }
+}
