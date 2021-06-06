@@ -56,7 +56,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+import dev.shreyaspatil.MaterialDialog.AbstractDialog;
 import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
+import dev.shreyaspatil.MaterialDialog.MaterialDialog;
+import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
+import dev.shreyaspatil.MaterialDialog.interfaces.OnDismissListener;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.aaxena.takenotes.MyName.SHARED_PREFS;
@@ -254,9 +258,77 @@ public class More extends Fragment {
         });
 
         Button theme = v3.findViewById(R.id.theme);
-        theme.setOnClickListener(view -> CreateAlertDialogWithRadioButtonGroup());
+        theme.setOnClickListener(view -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                createThemeForPie();
+                vibrateDevice();
+            }
+            else {
+                CreateAlertDialogWithRadioButtonGroup();
+                vibrateDevice();
+            }
+        });
         return v3;
     }
+
+    private void createThemeForPie() {
+        BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(getActivity())
+                .setTitle("Choose Theme for TakeNotes")
+                .setMessage("Swipe Down for System Default")
+                .setCancelable(true)
+                .setNegativeButton("Light", (dialogInterface, which) -> {
+                    int nightModeFlags =
+                            getContext().getResources().getConfiguration().uiMode &
+                                    Configuration.UI_MODE_NIGHT_MASK;
+                    switch (nightModeFlags) {
+                        case Configuration.UI_MODE_NIGHT_YES:
+                            vibrateDevice();
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                            SharedPreferences.Editor editor = getActivity().getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                            editor.putString("uiMode","Light");
+                            editor.apply();
+                            break;
+
+                        case Configuration.UI_MODE_NIGHT_NO:
+                            vibrateDevice();
+                            Toast.makeText(getApplicationContext(),"Already in Light Mode ☀",Toast.LENGTH_SHORT).show();
+                            break;
+                        default:
+                            Toast.makeText(getApplicationContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setPositiveButton("Dark", (dialogInterface, which) -> {
+                    int nightModeFlags =
+                            getContext().getResources().getConfiguration().uiMode &
+                                    Configuration.UI_MODE_NIGHT_MASK;
+                    switch (nightModeFlags) {
+                        case Configuration.UI_MODE_NIGHT_YES:
+                            vibrateDevice();
+                            Toast.makeText(getApplicationContext(),"Already in Dark Mode \uD83C\uDF19",Toast.LENGTH_SHORT).show();
+                            break;
+
+                        case Configuration.UI_MODE_NIGHT_NO:
+                            vibrateDevice();
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                            SharedPreferences.Editor editor = getActivity().getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                            editor.putString("uiMode","Dark");
+                            editor.apply();
+                            break;
+                        default:
+                            Toast.makeText(getApplicationContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setAnimation("dark_light.json")
+                .build();
+        mDialog.show();
+        mDialog.setOnDismissListener(dialogInterface -> {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+            SharedPreferences.Editor editor = getActivity().getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+            editor.putString("uiMode","System");
+            editor.apply();
+        });
+    }
+
     public class CreatePdfTask extends AsyncTask<String, Integer, File> {
         Context context;
         ArrayList<File> files;
@@ -329,59 +401,56 @@ public class More extends Fragment {
         }
     }
     public void CreateAlertDialogWithRadioButtonGroup() {
-        int nightModeFlags =
-                this.getResources().getConfiguration().uiMode &
-                        Configuration.UI_MODE_NIGHT_MASK;
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Choose Theme for Take Notes");
-        builder.setPositiveButton("Light", (dialog, which) -> {
-            switch (nightModeFlags) {
-                case Configuration.UI_MODE_NIGHT_YES:
-                    vibrateDevice();
-                    alertDialog1.dismiss();
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    SharedPreferences.Editor editor = getActivity().getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
-                    editor.putString("uiMode","Light");
-                    editor.apply();
-                    break;
-                case Configuration.UI_MODE_NIGHT_NO:
-                    Toast.makeText(getApplicationContext(),"Already in Light Mode ☀️",Toast.LENGTH_SHORT).show();
-                    alertDialog1.dismiss();
-                    break;
-                default:
-                    Toast.makeText(getApplicationContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
-            }
-        });
-        builder.setNegativeButton("Dark", (dialog, which) -> {
-            switch (nightModeFlags) {
-                case Configuration.UI_MODE_NIGHT_YES:
-                    Toast.makeText(getApplicationContext(),"Already in Dark Mode \uD83C\uDF19",Toast.LENGTH_SHORT).show();
-                    alertDialog1.dismiss();
-                    break;
-                case Configuration.UI_MODE_NIGHT_NO:
-                    vibrateDevice();
-                    alertDialog1.dismiss();
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    SharedPreferences.Editor editor = getActivity().getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
-                    editor.putString("uiMode","Dark");
-                    editor.apply();
-                    break;
-                default:
-                    Toast.makeText(getApplicationContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
-            }
-        });
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            builder.setNeutralButton("System Default", (dialog, which) -> {
-                vibrateDevice();
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                SharedPreferences.Editor editor = getActivity().getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
-                editor.putString("uiMode","System");
-                editor.apply();
-                alertDialog1.dismiss();
-            });
-        }
-        alertDialog1 = builder.create();
-        alertDialog1.show();
+        BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(getActivity())
+                .setTitle("Choose Theme for TakeNotes")
+                .setCancelable(true)
+                .setNegativeButton("Light", (dialogInterface, which) -> {
+                    int nightModeFlags =
+                            getContext().getResources().getConfiguration().uiMode &
+                                    Configuration.UI_MODE_NIGHT_MASK;
+                    switch (nightModeFlags) {
+                        case Configuration.UI_MODE_NIGHT_YES:
+                            vibrateDevice();
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                            SharedPreferences.Editor editor = getActivity().getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                            editor.putString("uiMode","Light");
+                            editor.apply();
+                            break;
+
+                        case Configuration.UI_MODE_NIGHT_NO:
+                            vibrateDevice();
+                            Toast.makeText(getApplicationContext(),"Already in Light Mode ☀",Toast.LENGTH_SHORT).show();
+                            break;
+                        default:
+                            vibrateDevice();
+                            Toast.makeText(getApplicationContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setPositiveButton("Dark", (dialogInterface, which) -> {
+                    int nightModeFlags =
+                            getContext().getResources().getConfiguration().uiMode &
+                                    Configuration.UI_MODE_NIGHT_MASK;
+                    switch (nightModeFlags) {
+                        case Configuration.UI_MODE_NIGHT_YES:
+                            vibrateDevice();
+                            Toast.makeText(getApplicationContext(),"Already in Dark Mode \uD83C\uDF19",Toast.LENGTH_SHORT).show();
+                            break;
+
+                        case Configuration.UI_MODE_NIGHT_NO:
+                            vibrateDevice();
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                            SharedPreferences.Editor editor = getActivity().getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                            editor.putString("uiMode","Dark");
+                            editor.apply();
+                            break;
+                        default:
+                            vibrateDevice();
+                            Toast.makeText(getApplicationContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setAnimation("dark_light.json")
+                .build();
+        mDialog.show();
     }
     private void vibrateDevice() {
         Vibrator v3 = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
