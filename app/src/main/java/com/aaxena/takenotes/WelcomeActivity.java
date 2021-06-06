@@ -23,6 +23,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
 public class WelcomeActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -44,7 +47,6 @@ public class WelcomeActivity extends AppCompatActivity {
         }
         // Making notification bar transparent
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-
         setContentView(R.layout.activity_welcome);
 
         viewPager = findViewById(R.id.view_pager);
@@ -92,13 +94,26 @@ public class WelcomeActivity extends AppCompatActivity {
     private void launchHomeScreen() {
        if(checkPermissions()){
            prefManager.setFirstTimeLaunch(false);
-           startActivity(new Intent(WelcomeActivity.this, SignUp.class));
-           overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-           finish();
+          check();
        }
         else{
             requestPermissions();
         }
+    }
+    private void check(){
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+        Intent i;
+        if (account !=null){
+            //User Signed In, Proceeding to Landing
+            i = new Intent(WelcomeActivity.this, BottomHandler.class);
+        }
+        else {
+            //Newbie
+            i = new Intent(WelcomeActivity.this, SignUp.class);
+        }
+        startActivity(i);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
     }
     private boolean checkPermissions() {
         return ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED;

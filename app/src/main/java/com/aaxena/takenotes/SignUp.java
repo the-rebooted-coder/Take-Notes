@@ -3,6 +3,8 @@ package com.aaxena.takenotes;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
@@ -83,6 +85,9 @@ public class SignUp extends AppCompatActivity {
         loginButton = findViewById(R.id.login_button);
         loginButton.setOnClickListener(v -> {
                 vibrateDevice();
+                if(!haveNetwork()){
+                    Toast.makeText(this,"No Internet",Toast.LENGTH_SHORT).show();
+                }
                 skip.setVisibility(View.INVISIBLE);
                 loginButton.setVisibility(View.INVISIBLE);
                 signInButton.setVisibility(View.INVISIBLE);
@@ -122,21 +127,21 @@ public class SignUp extends AppCompatActivity {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (acc_status.equals("okay")) {
-                    skip.setVisibility(View.INVISIBLE);
-                    loginButton.setVisibility(View.INVISIBLE);
-                    signInButton.setVisibility(View.INVISIBLE);
-                    loading.setVisibility(View.VISIBLE);
-                    loading.playAnimation();
-                    vibrateDevice();
-                    signIn();
-                }
-                else {
-                    Toast.makeText(SignUp.this,"Your account is temporarily suspended due to proactive use, contact the developer",Toast.LENGTH_LONG).show();
-                }
+        signInButton.setOnClickListener(v -> {
+            if(!haveNetwork()){
+                Toast.makeText(SignUp.this,"No Internet",Toast.LENGTH_SHORT).show();
+            }
+            if (acc_status.equals("okay")) {
+                skip.setVisibility(View.INVISIBLE);
+                loginButton.setVisibility(View.INVISIBLE);
+                signInButton.setVisibility(View.INVISIBLE);
+                loading.setVisibility(View.VISIBLE);
+                loading.playAnimation();
+                vibrateDevice();
+                signIn();
+            }
+            else {
+                Toast.makeText(SignUp.this,"Your account is temporarily suspended due to proactive use, contact the developer",Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -204,6 +209,23 @@ public class SignUp extends AppCompatActivity {
             //deprecated in API 26
             v3.vibrate(25);
         }
+    }
+    //Network Checking Boolean
+    private boolean haveNetwork() {
+        boolean have_WIFI = false;
+        boolean have_MobileData = false;
+
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo[] networkInfos = connectivityManager.getAllNetworkInfo();
+        for (NetworkInfo info : networkInfos) {
+            if (info.getTypeName().equalsIgnoreCase("WIFI"))
+                if (info.isConnected())
+                    have_WIFI = true;
+            if (info.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (info.isConnected())
+                    have_MobileData = true;
+        }
+        return have_MobileData||have_WIFI;
     }
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
         try {
