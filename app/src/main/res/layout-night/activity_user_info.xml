@@ -76,11 +76,11 @@
                     android:textSize="20sp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
-                    android:layout_below="@+id/username"/>
+                    android:layout_below="@+id/timesUsed"/>
                 <TextView
                     android:id="@+id/saving_name"
                     android:layout_width="wrap_content"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/productsansitalic"
                     android:text="@string/your_name"
@@ -89,6 +89,17 @@
                     android:layout_below="@+id/email"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/timesUsed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:visibility="gone"
+                    android:textSize="20sp"
+                    android:layout_below="@id/username"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="Used TakeNotes"/>
                 <Button
                     android:id="@+id/sign_out"
                     android:layout_width="wrap_content"

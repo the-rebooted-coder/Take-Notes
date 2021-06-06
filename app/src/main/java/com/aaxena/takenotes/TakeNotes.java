@@ -79,6 +79,7 @@ public class TakeNotes extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.activity_take_notes, container, false);
+
         hasSignedIn = getActivity().getSharedPreferences("hasSignedIn", 0);
         boolean hasSigned = hasSignedIn.getBoolean("hasSignedIn", false);
         ImageView paper = v.findViewById(R.id.pagePaper);
@@ -152,6 +153,12 @@ public class TakeNotes extends Fragment {
                                 if(hasSigned){
                                     //when url is base64 encoded data
                                     vibrateDevice();
+                                    SharedPreferences usedTakeNotes = getActivity().getSharedPreferences("TimeUsedTakeNotes", 0);
+                                    int takeNotesOpening = usedTakeNotes.getInt("TimeUsedTakeNotes", 0);
+                                    takeNotesOpening++;
+                                    SharedPreferences.Editor editor = usedTakeNotes.edit();
+                                    editor.putInt("TimeUsedTakeNotes",takeNotesOpening);
+                                    editor.apply();
                                     String path = createAndSaveFileFromBase64Url(url);
                                 }
                                 else {

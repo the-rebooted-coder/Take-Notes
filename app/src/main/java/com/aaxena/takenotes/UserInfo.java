@@ -58,6 +58,24 @@ public class UserInfo extends AppCompatActivity {
                 Toast.makeText(UserInfo.this, R.string.developer,Toast.LENGTH_LONG).show();
             });
 
+            TextView timesUsed = findViewById(R.id.timesUsed);
+            SharedPreferences usedTakeNotes = this.getSharedPreferences("TimeUsedTakeNotes", 0);
+            int takeNotesOpening = usedTakeNotes.getInt("TimeUsedTakeNotes", 0);
+            if(takeNotesOpening>=1){
+                timesUsed.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        SharedPreferences.Editor editor = usedTakeNotes.edit();
+                        editor.putInt("TimeUsedTakeNotes",0);
+                        editor.apply();
+                        Toast.makeText(UserInfo.this,"Counter Reset",Toast.LENGTH_SHORT).show();
+                        recreate();
+                    }
+                });
+                timesUsed.setVisibility(View.VISIBLE);
+                timesUsed.setText("Used TakeNotes "+takeNotesOpening+" times");
+            }
+
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
             photo = findViewById(R.id.accphoto);
             username = findViewById(R.id.username);
