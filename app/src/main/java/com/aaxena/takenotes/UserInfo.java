@@ -72,8 +72,14 @@ public class UserInfo extends AppCompatActivity {
                         recreate();
                     }
                 });
-                timesUsed.setVisibility(View.VISIBLE);
-                timesUsed.setText("Used TakeNotes "+takeNotesOpening+" times");
+                if(takeNotesOpening==1) {
+                    timesUsed.setVisibility(View.VISIBLE);
+                    timesUsed.setText("Used TakeNotes " + takeNotesOpening + " time");
+                }
+                else {
+                    timesUsed.setVisibility(View.VISIBLE);
+                    timesUsed.setText("Used TakeNotes " + takeNotesOpening + " times");
+                }
             }
 
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
