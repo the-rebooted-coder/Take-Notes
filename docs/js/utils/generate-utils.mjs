@@ -64,7 +64,7 @@ function removePaperStyles() {
 function renderOutput(outputImages) {
   if (outputImages.length <= 0) {
     document.querySelector('#output').innerHTML =
-      'Click "Generate Image" Button to generate new image.';
+      'Click the "Create Notes" Button.';
     document.querySelector('#download-as-pdf-button').classList.remove('show');
     return;
   }
