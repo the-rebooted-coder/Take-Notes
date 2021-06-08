@@ -1,4 +1,4 @@
-<h2 align="center">Take Notes</h2>
+<h2 align="center">TakeNotes</h2>
 
 ___
 <p align="center">
