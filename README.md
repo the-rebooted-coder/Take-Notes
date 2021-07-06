@@ -1,7 +1,7 @@
 <h2 align="center">TakeNotes</h2>
 <p align = "center"><a href="https://www.producthunt.com/posts/take-notes?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-take-notes" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=303196&theme=dark" alt="Take Notes - Handwritten notes made easy | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a></p>
 <p align="center">
-  <img src="https://i.ibb.co/Jv7ChLQ/Untitled-design.png" width="300" heigth="300"\>
+  <img src="https://i.ibb.co/qgjstR6/logo.png" width="300" heigth="300"\>
 </p>
 
 <p align="center">
