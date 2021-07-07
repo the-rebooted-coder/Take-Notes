@@ -29,7 +29,7 @@ ___
 
 ## :information_source: About
 
-It is an Android Application that Converts Text to Handwriting that looks and feels same as the text written by hand.
+An Android Application that Converts Text to Handwriting that looks and feels same as the text written by hand.
 
 ## :interrobang: Reason
 
