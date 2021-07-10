@@ -45,6 +45,7 @@ The project was developed using the following technologies:
 - Android Studio
 - Java
 - XML
+- SQL
 
 ## :link: How to contribute 
 
