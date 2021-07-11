@@ -37,7 +37,7 @@ Students often struggle writing notes and homework all by hand. To ease their wo
 
 ## :seedling: Requirements
 
-Android Phones with a minimum of Android 7 (Nougat SDK = 24+)
+Android Phones running Android 7 and up (Nougat SDK = 24+)
 
 ## :rocket: Technologies Used
 
