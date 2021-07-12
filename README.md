@@ -16,7 +16,7 @@
 ___
 
 <h3 align="center">
-  <a href="#information_source-about">About</a>&nbsp;|&nbsp;
+  <a href="#information_source-about">About Take Notes</a>&nbsp;|&nbsp;
   <a href="#interrobang-reason">Reason</a>&nbsp;|&nbsp;
   <a href="#seedling-requirements">Requirements</a>&nbsp;|&nbsp;
   <a href="#rocket-technologies-used">Technologies</a>&nbsp;|&nbsp;
