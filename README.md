@@ -27,7 +27,7 @@ ___
 ___
 <img src="https://i.ibb.co/yFYZ22T/unnamed.png" width="200"><img src="https://i.ibb.co/3NCdw8J/unnamed-1.png" width="200"><img src="https://i.ibb.co/HYw6CWG/unnamed-2.png" width="200"><img src="https://i.ibb.co/4ty77Ln/unnamed-3.png" width="200"><img src="https://i.ibb.co/vhx5j09/unnamed-4.png" width="200"><img src="https://i.ibb.co/PNqYZHR/unnamed-5.png" width="200"><img src="https://i.ibb.co/vk79YzQ/unnamed-6.png" width="200">
 
-## :information_source: About
+## :information_source: About Take Notes
 
 An Android Application that Converts Text to Handwriting that looks and feels same as the text written by hand.
 
