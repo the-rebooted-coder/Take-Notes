@@ -12,8 +12,9 @@
     <img alt="Licenses" src="https://img.shields.io/badge/License-MIT-success.svg">
   </a>
 </p>
-
-___
+<p align="center">
+Featured as the Top Note Taking App of 2021 By <a href ="https://leapdroid.com/best-note-taking-apps-of-2021-android/"</a>LeapDroid.
+</p>
 
 <h3 align="center">
   <a href="#information_source-about">About Take Notes</a>&nbsp;|&nbsp;
@@ -59,5 +60,3 @@ The project was developed using the following technologies:
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more details.
-
-Featured as the Top Note Taking App of 2021 By LeapDroid.
