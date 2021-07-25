@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <a href = "https://opensource.org/">
-    <img alt="License" src="https://badges.frapsoft.com/os/v2/open-source.svg?v=103">
+  <a href = "https://play.google.com/store/apps/details?id=com.aaxena.takenotes">
+    <img alt="Play Store" src="https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white" />
   </a>
   <a href="LICENSE">
-    <img alt="Licenses" src="https://img.shields.io/badge/License-MIT-success.svg">
+    <img alt="Licenses" src="https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge">
   </a>
 </p>
 <p align="center">
@@ -17,7 +17,7 @@ Featured as the Top Note Taking App of 2021 By <a href ="https://leapdroid.com/b
 </p>
 
 <h3 align="center">
-  <a href="#information_source-about">About Take Notes</a>&nbsp;|&nbsp;
+  <a href="#information_source">About Take Notes</a>&nbsp;|&nbsp;
   <a href="#interrobang-reason">Reason</a>&nbsp;|&nbsp;
   <a href="#seedling-requirements">Requirements</a>&nbsp;|&nbsp;
   <a href="#rocket-technologies-used">Technologies</a>&nbsp;|&nbsp;
