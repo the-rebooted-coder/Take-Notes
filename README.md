@@ -47,6 +47,7 @@ The project was developed using the following technologies:
 - Java
 - XML
 - SQL
+- Firebase 
 
 ## :link: How to contribute 
 
