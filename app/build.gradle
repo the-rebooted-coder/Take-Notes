@@ -16,8 +16,8 @@ android {
         applicationId "com.aaxena.takenotes"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 55
-        versionName "Cheetah"
+        versionCode 60
+        versionName "Cheetah+"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
