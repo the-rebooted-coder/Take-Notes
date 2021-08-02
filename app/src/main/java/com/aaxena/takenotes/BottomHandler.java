@@ -106,7 +106,7 @@ public class BottomHandler extends AppCompatActivity {
 
             @Override
             public void onTabReselected(int i, @NotNull AnimatedBottomBar.Tab tab) {
-                //DO NOTHING
+               
             }
         });
     }

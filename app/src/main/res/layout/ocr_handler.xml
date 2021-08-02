@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/ocr_bg"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ScrollView
@@ -15,6 +14,7 @@
             android:id="@+id/ocr_chooser"
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:visibility="invisible"
             android:background="@drawable/ic_ocr"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"
@@ -24,6 +24,7 @@
             android:layout_width="wrap_content"
             android:fontFamily="@font/productsansbold"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             android:text="@string/choose_image"
             android:layout_below="@+id/ocr_chooser"
             android:layout_marginTop="30dp"
@@ -52,6 +53,26 @@
                 android:textColorHint="@color/colorPrimary"
                 android:textSize="20sp"
                 android:importantForAutofill="no" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/copyToClipboard"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/notReallyBlue"
+                android:layout_height="wrap_content"
+                android:text="Copy"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addMore"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/com_facebook_blue"
+                android:layout_height="wrap_content"
+                android:text="Add More"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

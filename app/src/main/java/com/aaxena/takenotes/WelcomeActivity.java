@@ -70,7 +70,6 @@ public class WelcomeActivity extends AppCompatActivity {
         myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
-
         btnSkip.setOnClickListener(v -> launchHomeScreen());
 
         btnNext.setOnClickListener(v -> {
