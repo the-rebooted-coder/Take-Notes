@@ -396,13 +396,7 @@
         setInterval(
             function saveDraftInterval() {
             let text = document.getElementById('note').textContent;
-            
-            navigator.clipboard.writeText(text).then(() => {
-              console.log("Draft Saved!");
-              console.log(text);
-            }).catch((err) => {
-              console.log(err);
-            })
+            Android.saveDraft(text);
           }, 1000);
     </script>
 
