@@ -104,7 +104,6 @@
                   <div class="display-flex left-margin-and-content">
                     <div contenteditable="true" class="left-margin"></div>
                     <div class="paper-content" id="note" contenteditable="true">
-                       Welcome to Take Notes.
                     </div>
                   </div>
                   <div class="overlay"></div>
@@ -385,12 +384,20 @@
       History
     </div>
     <script>
+        // Log History
         function showHistory(){
           let text = document.getElementById('note').textContent;
           let history = document.getElementById('history');
           history.innerHTML = text;
           Android.showToast(text);
         }
+
+        // Save Draft
+        setInterval(
+            function saveDraftInterval() {
+            let text = document.getElementById('note').textContent;
+            Android.saveDraft(text);
+          }, 1000);
     </script>
 
     <!-- Fixed Elements -->
