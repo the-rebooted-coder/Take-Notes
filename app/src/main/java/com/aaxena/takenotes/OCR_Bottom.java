@@ -58,8 +58,6 @@ public class OCR_Bottom extends Fragment {
         getActivity().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        choose.setVisibility(View.VISIBLE);
-        tap.setVisibility(View.VISIBLE);
         choose.setOnClickListener(view -> chooseImage());
         tap.setOnClickListener(view -> chooseImage());
         return v2;
@@ -126,12 +124,6 @@ public class OCR_Bottom extends Fragment {
                                 resultTv.setText(result.getText());
                                 tap.setVisibility(View.GONE);
                                 choose.setVisibility(View.GONE);
-                             // copy.setVisibility(View.VISIBLE);
-                                String copied_value = resultTv.getText().toString();
-                                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE);
-                                ClipData clip = ClipData.newPlainText("Take Notes OCR", copied_value);
-                                clipboard.setPrimaryClip(clip);
-                                Toast.makeText(getApplicationContext(),R.string.text_copied_to_clipboard_message,Toast.LENGTH_SHORT).show();
                             })
                             .addOnFailureListener(
                                     e -> {
@@ -170,11 +162,6 @@ public class OCR_Bottom extends Fragment {
                             .addOnSuccessListener(result -> {
                                 // Task completed successfully
                                 resultTv.append("\n\n"+result.getText());
-                                String copied_value = resultTv.getText().toString();
-                                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE);
-                                ClipData clip = ClipData.newPlainText("Take Notes OCR", copied_value);
-                                clipboard.setPrimaryClip(clip);
-                                Toast.makeText(getApplicationContext(),R.string.text_copied_to_clipboard_message,Toast.LENGTH_SHORT).show();
                             })
                             .addOnFailureListener(
                                     e -> {
