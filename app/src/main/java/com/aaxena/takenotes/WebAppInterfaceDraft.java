@@ -5,7 +5,6 @@ import android.webkit.JavascriptInterface;
 
 public class WebAppInterfaceDraft {
     private Context context;
-    private DraftDB draftDB;
 
     public WebAppInterfaceDraft(Context context)
     {
@@ -15,8 +14,6 @@ public class WebAppInterfaceDraft {
     public void saveDraft(String draft)
     {
         if (!draft.isEmpty()) {
-            draftDB = new DraftDB(context);
-            draftDB.addNewCourse(draft);
         }
     }
 }
