@@ -17,7 +17,7 @@ public class WebAppInterface {
     {
         if (!message.isEmpty()) {
             dbHandler = new DBHandler(context);
-            dbHandler.addNewCourse(message.trim());
+            dbHandler.addNewCourse(message);
         }
         else {
             Toast.makeText(context,"Add Something to the Page",Toast.LENGTH_SHORT).show();

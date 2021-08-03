@@ -116,6 +116,7 @@ public class TakeNotes extends Fragment {
                 webview.getSettings().setUseWideViewPort(true);
                 webview.setInitialScale((int) 1.0);
                 webview.addJavascriptInterface(new WebAppInterface(getActivity()),"Android");
+                webview.addJavascriptInterface(new WebAppInterfaceDraft(getActivity()),"Draft");
                 webview.loadUrl("https://the-rebooted-coder.github.io/Take-Notes/");
                 webview.setLayerType(View.LAYER_TYPE_HARDWARE, null);
                 webview.setWebChromeClient(new WebChromeClient() {
