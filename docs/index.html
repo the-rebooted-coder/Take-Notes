@@ -380,8 +380,14 @@
         </div>
       </section>
     </main>
+    <!-- History Div -->
     <div id="history" style="display: none;">
       History
+    </div>
+
+    <!-- Draft Div -->
+    <div id="draft" style="display: none;">
+      Draft
     </div>
     <script>
         // Log History
@@ -396,6 +402,8 @@
         setInterval(
             function saveDraftInterval() {
             let text = document.getElementById('note').textContent;
+            let draft = document.getElementById('draft');
+            draft.innerHTML = text;
             Android.saveDraft(text);
           }, 1000);
     </script>
