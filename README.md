@@ -30,7 +30,7 @@ ___
 
 ## :information_source: About Take Notes
 
-An Android Application that Converts Text to Handwriting that looks and feels same as the text written by hand.
+An Android Application that Converts Text to Handwriting that looks and feels the same as if the text is written by hand.
 
 ## :interrobang: Reason
 
