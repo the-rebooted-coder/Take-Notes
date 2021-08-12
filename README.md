@@ -51,10 +51,10 @@ This project is developed using the following technologies:
 
 ## :link: How to contribute 
 
-- Fork the repository
-- Clone your repository
+- Fork
+- Clone
 - Create a branch with your feature
-- Commit your changes
+- Commit
 - 'Push' your branch
 - Go to Pull Requests of the original project and create a pull request with your commit
 
