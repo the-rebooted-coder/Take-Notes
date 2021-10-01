@@ -1,9 +1,8 @@
 <h2 align="center">TakeNotes.</h2>
-<p align = "center"><a href="https://www.producthunt.com/posts/take-notes?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-take-notes" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=303196&theme=dark" alt="Take Notes - Handwritten notes made easy | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a></p>
 <p align="center">
   <img src="https://i.ibb.co/qgjstR6/logo.png" width="300" heigth="300"\>
 </p>
-
+<p align = "center"><a href="https://www.producthunt.com/posts/take-notes?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-take-notes" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=303196&theme=dark" alt="Take Notes - Handwritten notes made easy | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a></p>
 <p align="center">
   <a href = "https://play.google.com/store/apps/details?id=com.aaxena.takenotes">
     <img alt="Play Store" src="https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white" />
