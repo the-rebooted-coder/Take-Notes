@@ -33,7 +33,7 @@ An Android Application that Converts Text to Handwriting that looks and feels th
 
 ## :interrobang: Reason
 
-Students often find writing notes and homework all by hand tough due to time. To ease their work, Take Notes will provide them ready to submit handwritten texts.
+Students sometimes find writing notes and homework all by hand tough due to reasons like time etcetra. To ease their work, Take Notes will provide them ready to submit handwritten texts.
 
 ## :seedling: Requirements
 
