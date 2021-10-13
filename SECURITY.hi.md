@@ -12,4 +12,4 @@
 
 ### सीधे एक मुद्दा न बनाएं!
 
-अपने सुझाव connectwithspandan@gmail.com पर मेल करें
+अपने सुझाव connectwithspandan@gmail.com पर साझा करें
