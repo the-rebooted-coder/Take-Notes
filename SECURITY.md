@@ -11,6 +11,6 @@ Below mentioned Android Versions are supported
 
 ## Reporting a Vulnerability
 
-### Create an Issue, then maintaners will discuss it over.
+### Create an Issue, then maintaners will discuss it over on the discussion page, then the PR will be entertained.
 
 Mail your suggestions [here](mailto:connectwithspandan@gmail.com) first
