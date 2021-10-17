@@ -1,0 +1,10 @@
+What is SHA Key?
+
+SHA-1 Keys
+It is a cryptographic hash function that will take input and it produces a 160-bit hash value. This generated hash value is known as a message digest. This generated hash value is then rendered in a hexadecimal format number which is 40 digits long. ... SHA key was introduced in 1995.
+
+command 
+keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+
+example
+keytool -list -v -keystore C:\Users\MG\Desktop\test.jks -alias test
