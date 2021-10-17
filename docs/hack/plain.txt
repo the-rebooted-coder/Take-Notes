@@ -1,1 +1,9 @@
 This is a test filea added to check SHA checksum in the repository.
+
+If you are using android studio use simple step
+
+Run your project
+Click on Gradle menu
+Expand Gradle Tasks tree
+Double click on android -> signingReport and see the magic
+It will tell you everything on the Run tab
