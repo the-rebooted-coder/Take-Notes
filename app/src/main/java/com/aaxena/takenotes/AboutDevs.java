@@ -17,7 +17,7 @@ public class AboutDevs extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_devs);
-        Toast.makeText(this,"Tap for More",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Tap for More",Toast.LENGTH_LONG).show();
         CardView devOne = findViewById(R.id.devOneHolder);
         devOne.setOnClickListener(view -> {
             ImageView spandanTitle = findViewById(R.id.devOne);
