@@ -47,7 +47,7 @@ public class SignUp extends AppCompatActivity {
     private Button signInButton;
     LottieAnimationView loading;
     private GoogleSignInClient mGoogleSignInClient;
-    private String TAG = "Login";
+    private String TAG = "Login -in";
     private FirebaseAuth mAuth;
     public static final String STATUS = "acc_status";
     private int RC_SIGN_IN =1;
