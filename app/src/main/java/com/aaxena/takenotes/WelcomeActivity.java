@@ -86,8 +86,8 @@ public class WelcomeActivity extends AppCompatActivity {
         });
     }
 
-    private int getItem(int i) {
-        return viewPager.getCurrentItem() + i;
+    private int getItem(int j) {
+        return viewPager.getCurrentItem() + j;
     }
 
     private void launchHomeScreen() {
