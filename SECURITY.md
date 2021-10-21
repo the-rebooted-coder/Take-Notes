@@ -1,6 +1,5 @@
 # Security Policy
-
-## Supported Versions
+## Supported Versions for Take Notes as of 2021
 
 Below mentioned Android Versions are supported
 
