@@ -63,8 +63,8 @@ public class History extends Fragment {
         }
         else if (courseRVAdapter.getItemCount()>=1 &&!hasCopiedFirst){
             BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(getActivity())
-                    .setTitle("Tip")
-                    .setMessage("Tap any card to copy it's content.")
+                    .setTitle("INFO")
+                    .setMessage("Tap the word or sentence to cut,copy or to paste it")
                     .setCancelable(true)
                     .build();
             mDialog.show();
