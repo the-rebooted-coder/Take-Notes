@@ -74,7 +74,7 @@ public class TakeNotes extends Fragment {
     public ValueCallback<Uri[]> mUMA;
     private AppUpdateManager mAppUpdateManager;
     private static final int RC_APP_UPDATE = 11;
-    private String hello;
+    private String Namaste;
     SharedPreferences hasSignedIn = null;
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -228,7 +228,8 @@ public class TakeNotes extends Fragment {
                                     else if(takeNotesOpening == 100){
                                         BottomSheetMaterialDialog mDialog = new BottomSheetMaterialDialog.Builder(getActivity())
                                                 .setTitle("Now That's a Milestone")
-                                                .setMessage("100th Note Huh, you just crossed one ultimate milestone.")
+                                                .setMessage("Congratulations!!")
+                                                .setMessage("100th Note yeah, you just crossed one ultimate milestone.")
                                                 .setAnimation("confetti.json")
                                                 .setPositiveButton("Share and Feel Proud",R.drawable.share_now, new MaterialDialog.OnClickListener() {
                                                     @Override
@@ -251,7 +252,7 @@ public class TakeNotes extends Fragment {
                                     Intent toSignUp = new Intent(getActivity(),SignUp.class);
                                     startActivity(toSignUp);
                                     vibrateDevice();
-                                    Toast.makeText(getContext(),"Sign In To Fully Experience TakeNotes",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(),"Sign In To Fully Dedicated TakeNotes",Toast.LENGTH_SHORT).show();
                                     getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                     getActivity().finish();
                                 }
