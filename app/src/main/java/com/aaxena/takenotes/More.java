@@ -67,6 +67,12 @@ public class More extends Fragment {
     GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
     @Nullable
     @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Intent intent = new Intent(getApplicationContext(), NoteEditorActivity.class);
+                intent.putExtra("noteID", position);
+                startActivity(intent);
+            }
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View v3 = inflater.inflate(R.layout.more, container, false);
