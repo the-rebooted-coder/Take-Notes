@@ -74,8 +74,8 @@ public class TakeNotes extends Fragment {
     public ValueCallback<Uri[]> mUMA;
     private AppUpdateManager mAppUpdateManager;
     private static final int RC_APP_UPDATE = 11;
-    private String hello;
-    SharedPreferences hasSignedIn = null;
+    private String Namaste;
+    https://github.com/the-rebooted-coder/Take-Notes SharedPreferences hasSignedIn = null;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Nullable
