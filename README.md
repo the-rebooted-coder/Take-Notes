@@ -56,7 +56,7 @@ This project is developed using the following technologies:
 - Create a branch with your feature
 - Commit
 - 'Push' your branch
-- Go to Pull Requests of the original project and create a pull request with your commit
+- Go to Pull Requests of the original project and create a pull request with your commit, try adding relevant comments too.
 
 ## License
 
