@@ -36,7 +36,7 @@ public class AboutDevs extends AppCompatActivity {
             pairs[0] = new Pair<View, String>(shrishTitle,"devTitleTwo");
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(AboutDevs.this,pairs);
             startActivity(toDetails,options.toBundle());
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+           
         });
     }
 }
