@@ -30,10 +30,9 @@ ___
 ## :information_source: About Take Notes:
 
 An Android Application that Converts Text to Handwriting that looks and feels the same as if the text is written by hand.
-
 ## :interrobang: Reason
 
-Students sometimes find writing notes and homework all by hand tough due to reasons like time etcetra. To ease their work, Take Notes will provide them ready to submit handwritten texts.
+Students sometimes find writing notes and homework all by hand tough due to reasons like time etcetra. To ease their work, Take Notes will provide them ready to submit handwritten texts.Comes with added functionaties
 
 ## :seedling: Requirements
 
