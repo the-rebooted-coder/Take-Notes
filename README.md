@@ -44,10 +44,10 @@ Android Phones running Android 7 and up (Nougat SDK = 24+) will run TakeNotes.
 This project is developed using the following technologies:
 - Android Studio
 - Java
-- Kotlin
 - XML
 - SQL
 - OCR
+- Kotlin
 - Firebase 
 
 ## :link: How to contribute 
