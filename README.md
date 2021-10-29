@@ -53,7 +53,7 @@ This project is developed using the following technologies:
 ## :link: How to contribute 
 
 - Fork
-- Clone on your local server
+- Clone it, on your local server
 - Create a branch with your feature
 - Commit
 - 'Push' your branch
