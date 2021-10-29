@@ -55,7 +55,7 @@ This project is developed using the following technologies:
 - Fork this repository
 - Clone it, on your local server
 - Create a branch with your feature
-- Commit
+- Commit the changes
 - 'Push' your branch
 - Go to Pull Requests of the original project and create a pull request with your commit, try adding relevant comments too.
 
