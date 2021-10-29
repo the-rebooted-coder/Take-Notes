@@ -49,6 +49,7 @@ This project is developed using the following technologies:
 - OCR
 - Firebase 
 
+
 ## :link: How to contribute 
 
 - Fork
