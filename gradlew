@@ -2,7 +2,7 @@
 
 ##############################################################################
 ##
-##  Gradle start up script for UN*X Take Notes Project 2021 Change
+##  Gradle start up script for UN*X Take Notes Project 2022 Change
 ##
 ##############################################################################
 
