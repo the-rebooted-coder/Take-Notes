@@ -99,6 +99,20 @@
                     android:layout_marginTop="40dp"
                     android:fontFamily="@font/productsansbold"
                     android:text="@string/save"/>
+                
+                <Button
+                    android:id="@+id/save_name_hidden"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/inputLayout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="40dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:elevation="30dp"
+                    android:fontFamily="@font/productsansbold"
+                    android:text="@string/save"
+                    android:textColor="@color/black"
+                    android:visibility="invisible" />
             </RelativeLayout>
             </ScrollView>
         </androidx.cardview.widget.CardView>
