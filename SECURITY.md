@@ -13,4 +13,4 @@ Below mentioned Android Versions are supported
 
 ### Create an Issue, then maintaners will discuss it over.
 
-Mail your suggestions [here](mailto:connectwithspandan@gmail.com) first
+Mail your suggestions [here](mailto:connectwithspandan@gmail.com) first...
