@@ -46,6 +46,7 @@ This project is developed using the following technologies:
 - Kotlin
 - XML
 - SQL
+- MySQL
 - OCR
 - Firebase 
 
