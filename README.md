@@ -47,6 +47,7 @@ This project is developed using the following technologies:
 - XML
 - SQL
 - OCR
+- Play Developer Console
 - Firebase 
 
 
