@@ -27,6 +27,17 @@
             android:layout_gravity="center_horizontal"
             android:layout_centerHorizontal="true"
             android:src="@drawable/privacy_lock_white"/>
+            
+            <ImageView
+                android:id="@+id/lockhidden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/privacy_lock_white"
+                android:transitionName="imageTransition"
+                android:visibility="invisible"/>
+            
         <TextView
             android:id="@+id/privacy"
             android:layout_width="match_parent"
