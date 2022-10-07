@@ -1,4 +1,4 @@
-<h2 align="center">TakeNotes.</h2>
+<h2 align="center">TakeNotes!</h2>
 <p align="center">
   <img src="https://i.ibb.co/qgjstR6/logo.png" width="300" heigth="300"\>
 </p>
