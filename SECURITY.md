@@ -1,6 +1,6 @@
 # Security Policy
 
-## Supported Versions
+## Supported Versions:
 
 Below mentioned Android Versions are supported
 
