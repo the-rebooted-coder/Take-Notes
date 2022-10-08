@@ -12,7 +12,7 @@
   </a>
 </p>
 <p align="center">
-Featured as the Top Note Taking App of 2021 By <a href ="https://leapdroid.com/best-note-taking-apps-of-2021-android/"</a>LeapDroid Media London.
+Featured as the Top Note Taking   App of 2021 By <a href ="https://leapdroid.com/best-note-taking-apps-of-2021-android/"</a>LeapDroid Media London.
 </p>
 
 <h3 align="center">
