@@ -41,4 +41,4 @@ This policy is effective as of 2021-11-05
 
 **Contact Us**
 
-If you have any questions or suggestions about the Privacy Policy, do not hesitate to contact me at connectwithspandan@gmail.com.
+If you have any questions or suggestions about the Privacy Policy, do not hesitate to contact me at connectwithspandan@gmail.com & anujvishwakarma33@gmail.com
