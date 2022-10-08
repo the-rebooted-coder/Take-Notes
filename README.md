@@ -34,7 +34,7 @@ An Android Application that Converts Text to Handwriting that looks and feels th
 
 Students sometimes find writing notes and homework all by hand tough due to reasons like time etcetra. To ease their work, Take Notes will provide them ready to submit handwritten texts.
 
-## :seedling: Requirements
+## :seedling: Requirements..
 
 Android Phones running Android 7 and up (Nougat SDK = 24+) will run TakeNotes.
 
