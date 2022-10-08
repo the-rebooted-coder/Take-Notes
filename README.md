@@ -50,7 +50,7 @@ This project is developed using the following technologies:
 - Firebase 
 
 
-## :link: How to contribute 
+## :link: How to contribute? 
 
 - Fork this repository
 - Clone it, on your local server
