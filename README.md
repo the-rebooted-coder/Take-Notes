@@ -48,6 +48,7 @@ This project is developed using the following technologies:
 - SQL
 - OCR
 - Firebase 
+- Visual studio 
 
 
 ## :link: How to contribute 
