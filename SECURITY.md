@@ -9,7 +9,7 @@ Below mentioned Android Versions are supported
 | 7.0 & 7.0.x +  | :white_check_mark: |
 
 
-## Reporting a Vulnerability
+## Reporting a Vulnerabilitys
 
 ### Create an Issue, then maintaners will discuss it over.
 
