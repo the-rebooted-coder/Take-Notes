@@ -16,7 +16,7 @@ Featured as the Top Note Taking App of 2021 By <a href ="https://leapdroid.com/b
 </p>
 
 <h3 align="center">
-  <a href="#information_source">About Take Notes</a>&nbsp;|&nbsp;
+  <a href="#information_source">About  Take Notes</a>&nbsp;|&nbsp;
   <a href="#interrobang-reason">Reason</a>&nbsp;|&nbsp;
   <a href="#seedling-requirements">Requirements</a>&nbsp;|&nbsp;
   <a href="#rocket-technologies-used">Technologies Used</a>&nbsp;|&nbsp;
