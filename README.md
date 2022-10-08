@@ -8,7 +8,7 @@
     <img alt="Play Store" src="https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white" />
   </a>
   <a href="LICENSE">
-    <img alt="Licenses" src="https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge">
+    <img alt="License" src="https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge">
   </a>
 </p>
 <p align="center">
