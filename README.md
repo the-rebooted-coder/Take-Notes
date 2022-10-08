@@ -11,6 +11,7 @@
     <img alt="Licenses" src="https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge">
   </a>
 </p>
+
 <p align="center">
 Featured as the Top Note Taking App of 2021 By <a href ="https://leapdroid.com/best-note-taking-apps-of-2021-android/"</a>LeapDroid Media London.
 </p>
@@ -23,6 +24,7 @@ Featured as the Top Note Taking App of 2021 By <a href ="https://leapdroid.com/b
   <a href="#link-how-to-contribute">How to Contribute</a>&nbsp;|&nbsp;
   <a href="#license">License</a>
 </h3>
+<h2> hello spandan sir </h2>
 
 ___
 <img src="https://i.ibb.co/yFYZ22T/unnamed.png" width="200"><img src="https://i.ibb.co/3NCdw8J/unnamed-1.png" width="200"><img src="https://i.ibb.co/HYw6CWG/unnamed-2.png" width="200"><img src="https://i.ibb.co/4ty77Ln/unnamed-3.png" width="200"><img src="https://i.ibb.co/vhx5j09/unnamed-4.png" width="200"><img src="https://i.ibb.co/PNqYZHR/unnamed-5.png" width="200"><img src="https://i.ibb.co/vk79YzQ/unnamed-6.png" width="200">
@@ -46,7 +48,7 @@ This project is developed using the following technologies:
 - Kotlin
 - XML
 - SQL
-- OCR
+- OC
 - Firebase 
 
 
