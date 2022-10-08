@@ -36,7 +36,7 @@ Students sometimes find writing notes and homework all by hand tough due to reas
 
 ## :seedling: Requirements
 
-Android Phones running Android 7 and up (Nougat SDK = 24+) will run TakeNotes.
+Android Phones running Android 7 and above (Nougat SDK = 24+) will run TakeNotes.
 
 ## :rocket: Technologies Used
 
