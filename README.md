@@ -59,6 +59,6 @@ This project is developed using the following technologies:
 - 'Push' your branch
 - Go to Pull Requests of the original project and create a pull request with your commit, try adding relevant comments too.
 
-## License
+## License... 
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more details.
