@@ -2,8 +2,6 @@
 
 ## Supported Versions
 
-Below mentioned Android Versions are supported
-
 | Version        | Supported          |
 | ----------     | ------------------ |
 | 7.0 & 7.0.x +  | :white_check_mark: |
