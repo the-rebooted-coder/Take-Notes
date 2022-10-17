@@ -32,7 +32,7 @@ public class SplashScreen extends AppCompatActivity {
         SharedPreferences prefsmanager = getSharedPreferences(STATUS, MODE_PRIVATE);
         acc_status = prefsmanager.getString("acc_status", "okay");
         if (acc_status.equals("suspended")) {
-            Toast.makeText(SplashScreen.this,"Your account is temporarily suspended due to proactive use, contact the developer",Toast.LENGTH_LONG).show();
+            Toast.makeText(SplashScreen.this,"Your account is temporarily sus pended due to proactive use, contact the developer",Toast.LENGTH_LONG).show();
             finish();
         }
         else {
