@@ -1,7 +1,7 @@
 # Beartas Slándála
 
 ## Leaganacha Tacaithe
-
+  
 Tugtar tacaíocht do Leaganacha Android atá luaite thíos
 
 | Leagan         | Tacaithe           |
