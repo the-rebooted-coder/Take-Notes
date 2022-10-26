@@ -10,6 +10,7 @@ Below mentioned Android Versions are supported
 
 
 ## Reporting a Vulnerability
+##securing the boot changes.
 
 ### Create an Issue, then maintaners will discuss it over.
 
