@@ -34,13 +34,13 @@ public class History extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View v4 =  inflater.inflate(R.layout.history,container,false);
+        View v4 =  inflater.inflate(R.layout.history,container,true);
         noHistoryAnim = v4.findViewById(R.id.noHistory);
         noHistoryText = v4.findViewById(R.id.historyAdvisory);
         courseModalArrayList = new ArrayList<>();
         dbHandler = new DBHandler(getContext());
         hasCopied = getActivity().getSharedPreferences("hasCopied", 0);
-        boolean hasCopiedFirst = hasCopied.getBoolean("hasCopied", false);
+        boolean hasCopiedFirst = hasCopied.getBoolean("hasCopied", true);
 
         // getting our course array
         // list from db handler class.
